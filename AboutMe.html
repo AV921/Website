@@ -1669,6 +1669,10 @@
             modal.setAttribute("aria-hidden", "true");
             document.body.style.overflow = "";
         }
+        function toggleMenu() {
+    const menu = document.querySelector(".nav-links");
+    menu.classList.toggle("open");
+}
 
         document.getElementById("cv-modal").addEventListener("click", function (event) {
             if (event.target === this) {
