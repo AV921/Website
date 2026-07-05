@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrea Vennarucci - About Me</title>
+
+    <style>
+        :root {
+            --navy: #0a1f44;
+            --ink: #14213d;
+            --muted: #5d6d7e;
+            --paper: #ffffff;
+            --gold: #d7b25d;
+            --shadow: 0 18px 50px rgba(10,31,68,.13);
+            --radius: 28px;
+            --max: 1160px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: var(--ink);
+            background: #ffffff;
+            line-height: 1.65;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(255,255,255,.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(10,31,68,.08);
+        }
+
+        .nav {
+            max-width: var(--max);
+            margin: auto;
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            padding: 0 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 800;
+            color: var(--navy);
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg,var(--navy),#2d75bd);
+            color: white;
+            font-family: Georgia,serif;
+            font-size: 20px;
+            box-shadow: 0 8px 20px rgba(10,31,68,.18);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 650;
+            color: #41556e;
+        }
+
+            .nav-links a {
+                position: relative;
+                padding: 26px 0;
+            }
+
+                .nav-links a.active,
+                .nav-links a:hover {
+                    color: var(--navy);
+                }
+
+                    .nav-links a.active:after,
+                    .nav-links a:hover:after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        bottom: 18px;
+                        height: 2px;
+                        background: var(--navy);
+                        border-radius: 99px;
+                    }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: transparent;
+            font-size: 30px;
+            color: var(--navy);
+            cursor: pointer;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 620px;
+            padding: 120px 24px 100px;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 115%;
+            object-fit: cover;
+            object-position: left top;
+            transform: translateY(0) scale(1.05);
+            will-change: transform;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10,31,68,.05);
+            z-index: 1;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: var(--max);
+            min-height: 380px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: clamp(42px,5vw,72px);
+            font-weight: 600;
+            line-height: 1;
+            margin: 0 0 22px;
+            color: #ffffff;
+            letter-spacing: -1px;
+            text-shadow: 0 5px 24px rgba(0,0,0,.65);
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--gold);
+            margin-bottom: 28px;
+            text-shadow: 0 3px 12px rgba(0,0,0,.60);
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .chip {
+            padding: 10px 15px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.92);
+            color: var(--navy);
+            font-size: 13px;
+            font-weight: 800;
+            border: 1px solid rgba(215,178,93,.50);
+            box-shadow: 0 8px 22px rgba(0,0,0,.18);
+        }
+
+        .section {
+            position: relative;
+            z-index: 3;
+            max-width: var(--max);
+            margin: auto;
+            padding: 76px 24px;
+            background: #ffffff;
+        }
+
+        .section-title {
+            font-size: clamp(28px,4vw,44px);
+            line-height: 1.1;
+            margin: 0 0 12px;
+            color: var(--navy);
+            letter-spacing: -1px;
+        }
+
+            .section-title:after {
+                content: "";
+                display: block;
+                width: 72px;
+                height: 3px;
+                margin-top: 16px;
+                background: linear-gradient(90deg,var(--navy),#6ec1ff);
+                border-radius: 99px;
+            }
+
+        .section-kicker {
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 46px;
+            align-items: start;
+        }
+
+        .profile-panel {
+            position: sticky;
+            top: 104px;
+            background: var(--paper);
+            border: 1px solid rgba(10,31,68,.08);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+            .profile-panel h2 {
+                margin: 0 0 10px;
+                color: var(--navy);
+                font-size: 28px;
+            }
+
+            .profile-panel p {
+                margin: 0;
+                color: var(--muted);
+            }
+
+        .profile-copy {
+            font-size: 16px;
+            color: #30435a;
+        }
+
+            .profile-copy p {
+                margin: 0 0 18px;
+            }
+
+        .quote {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 0 24px 76px;
+            position: relative;
+            z-index: 3;
+            background: #ffffff;
+        }
+
+        .quote-box {
+            border-radius: 34px;
+            padding: 44px;
+            background: linear-gradient(135deg,var(--navy),#1c5f9f);
+            color: white;
+            box-shadow: 0 24px 60px rgba(10,31,68,.24);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .quote-box p {
+                position: relative;
+                margin: 0;
+                font-size: clamp(23px,3vw,38px);
+                line-height: 1.25;
+                font-weight: 700;
+                letter-spacing: -.8px;
+            }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 26px;
+        }
+
+        .timeline-card,
+        .activity-card,
+        .award-card {
+            background: var(--paper);
+            border: 1px solid rgba(10,31,68,.08);
+            border-radius: 26px;
+            padding: 30px;
+            box-shadow: 0 12px 34px rgba(10,31,68,.08);
+        }
+
+            .timeline-card h3,
+            .activity-card h3,
+            .award-card h3 {
+                margin: 0 0 22px;
+                color: var(--navy);
+                font-size: 24px;
+            }
+
+        .journey-item {
+            position: relative;
+            padding-left: 26px;
+            margin: 0 0 24px;
+        }
+
+            .journey-item:last-child {
+                margin-bottom: 0;
+            }
+
+            .journey-item:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 8px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--navy);
+                box-shadow: 0 0 0 5px #eef6ff;
+            }
+
+        .date {
+            font-size: 13px;
+            color: #1769aa;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .role {
+            font-weight: 800;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .place {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.45;
+            margin-top: 3px;
+        }
+
+        .cv-section {
+            padding-top: 20px;
+        }
+
+        .cv-card {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 32px;
+            align-items: center;
+            background: #050505;
+            color: white;
+            border-radius: 34px;
+            overflow: hidden;
+            box-shadow: 0 26px 70px rgba(0,0,0,.22);
+        }
+
+        .cv-info {
+            padding: 36px;
+        }
+
+            .cv-info h2 {
+                font-size: 38px;
+                line-height: 1.05;
+                margin: 0 0 14px;
+                font-family: Georgia,serif;
+            }
+
+            .cv-info p {
+                color: #d7d7d7;
+                margin: 0 0 20px;
+            }
+
+        .cv-image img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 12px 18px;
+            border-radius: 999px;
+            background: #fff;
+            color: var(--navy);
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        .activities {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 26px;
+        }
+
+        .activity-card p,
+        .award-card p {
+            color: #465a70;
+            margin: 0 0 14px;
+        }
+
+        .footer {
+            padding: 36px 24px;
+            text-align: center;
+            color: #6b7c8f;
+            border-top: 1px solid rgba(10,31,68,.08);
+            background: #fff;
+            font-size: 14px;
+        }
+
+        .chip-group {
+            position: relative;
+            display: inline-flex;
+            justify-content: center;
+        }
+
+        .chip {
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .skill-map {
+            position: absolute;
+            top: calc(100% + 16px);
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            width: 260px;
+            padding: 18px;
+            border-radius: 22px;
+            background: rgba(255,255,255,.96);
+            box-shadow: 0 18px 42px rgba(0,0,0,.22);
+            border: 1px solid rgba(215,178,93,.42);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+            z-index: 5;
+        }
+
+            .skill-map::before {
+                content: "";
+                position: absolute;
+                top: -8px;
+                left: 50%;
+                width: 16px;
+                height: 16px;
+                transform: translateX(-50%) rotate(45deg);
+                background: rgba(255,255,255,.96);
+                border-left: 1px solid rgba(215,178,93,.42);
+                border-top: 1px solid rgba(215,178,93,.42);
+            }
+
+            .skill-map span {
+                position: relative;
+                padding: 8px 10px;
+                border-radius: 999px;
+                background: #eef6ff;
+                color: var(--navy);
+                font-size: 12px;
+                font-weight: 700;
+                line-height: 1.2;
+                text-align: center;
+            }
+
+        .chip-group:hover .skill-map,
+        .chip-group:focus-within .skill-map {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .profile-copy {
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .keyword {
+            color: var(--navy);
+            font-weight: 800;
+        }
+
+        .button {
+            border: 0;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .cv-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100000;
+            background: rgba(0, 15, 35, .88);
+            backdrop-filter: blur(6px);
+            padding: 36px;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .cv-modal.open {
+                display: flex;
+            }
+
+            .cv-modal img {
+                max-width: min(1200px, 96vw);
+                max-height: 92vh;
+                object-fit: contain;
+                border-radius: 18px;
+                box-shadow: 0 24px 80px rgba(0,0,0,.45);
+                background: #ffffff;
+            }
+
+        .cv-modal-close {
+            position: fixed;
+            top: 22px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            border: 0;
+            border-radius: 999px;
+            background: #ffffff;
+            color: var(--navy);
+            font-size: 32px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 10px 28px rgba(0,0,0,.22);
+        }
+
+        .back-home {
+            position: relative;
+            z-index: 3;
+            background: linear-gradient(180deg,#ffffff,#f6f9fd);
+            padding: 90px 20px 110px;
+            text-align: center;
+        }
+
+        .back-home-content {
+            max-width: 720px;
+            margin: auto;
+        }
+
+        .back-home h2 {
+            font-size: clamp(28px,4vw,40px);
+            color: var(--navy);
+            margin: 0 0 16px;
+            letter-spacing: -1px;
+        }
+
+        .back-home p {
+            color: #5c6b82;
+            font-size: 17px;
+            line-height: 1.8;
+            margin: 0 auto 38px;
+        }
+
+        .home-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 38px;
+            border-radius: 999px;
+            background: linear-gradient(135deg,#0a1f44,#235aa0);
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: .3px;
+            transition: transform .30s ease, box-shadow .30s ease, background .30s ease;
+            box-shadow: 0 12px 30px rgba(10,31,68,.18);
+        }
+
+            .home-button:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 18px 40px rgba(10,31,68,.28);
+                background: linear-gradient(135deg,#12346c,#377ed1);
+            }
+
+        @media(max-width:860px) {
+            .nav {
+                min-height: 68px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 68px;
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                background: white;
+                border-bottom: 1px solid rgba(10,31,68,.08);
+                box-shadow: 0 18px 40px rgba(10,31,68,.12);
+            }
+
+                .nav-links.open {
+                    display: flex;
+                }
+
+                .nav-links a {
+                    width: 100%;
+                    padding: 16px 24px;
+                }
+
+                    .nav-links a.active:after,
+                    .nav-links a:hover:after {
+                        display: none;
+                    }
+
+            .hero {
+                min-height: 560px;
+                padding: 100px 18px 80px;
+            }
+
+            .hero-image {
+                height: 110%;
+                object-position: left top;
+            }
+
+            .hero-inner {
+                min-height: 360px;
+            }
+
+            .profile-grid,
+            .summary-grid,
+            .activities,
+            .cv-card {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-panel {
+                position: relative;
+                top: auto;
+            }
+
+            .section {
+                padding: 54px 18px;
+            }
+
+            .quote {
+                padding: 0 18px 54px;
+            }
+
+            .quote-box {
+                padding: 32px 26px;
+            }
+
+            .cv-info {
+                padding: 30px 26px;
+            }
+
+            .cv-image {
+                order: -1;
+            }
+
+            .brand span {
+                font-size: 15px;
+            }
+        }
+
+        .skill-map {
+            width: min(260px, 82vw);
+        }
+
+        @media(max-width:520px) {
+            .hero {
+                min-height: 500px;
+                padding: 90px 16px 70px;
+            }
+
+            h1 {
+                font-size: clamp(36px,9vw,52px);
+            }
+
+            .eyebrow {
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
+
+            .chips {
+                gap: 8px;
+            }
+
+            .chip {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            .timeline-card,
+            .activity-card,
+            .award-card,
+            .profile-panel {
+                padding: 24px;
+                border-radius: 22px;
+            }
+
+            .section-title {
+                font-size: 31px;
+            }
+
+            .cv-info h2 {
+                font-size: 31px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+
+        <nav class="nav">
+
+            <a class="brand" href="index.html">
+
+                <img src="image/Logo.png"
+                     alt="Andrea Vennarucci"
+                     style="width:42px;height:42px;object-fit:contain;">
+
+                <span>Eng. Andrea Vennarucci</span>
+
+            </a>
+
+            <div class="nav-links">
+
+                <a href="index.html">Home</a>
+
+                <a class="active" href="about-me.html">About Me</a>
+
+                <a href="portfolio.html">Portfolio</a>
+
+                <a href="ScientificPublications.html">Publications</a>
+
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+            <button class="menu-toggle"
+                    onclick="toggleMenu()"
+                    aria-label="Toggle navigation">
+                ☰
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <main id="top">
+        <section class="hero">
+            <img class="hero-image"
+                 src="image\HeaderAboutMe.png"
+                 alt="Andrea Vennarucci">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <h1>Andrea Vennarucci</h1>
+
+                    <div class="eyebrow">Civil Engineer | Ph.D. Candidate | Road Safety Researcher</div>
+                    <div class="chips">
+                        <div class="chip-group">
+                            <button class="chip" type="button">Road Safety</button>
+                            <div class="skill-map">
+                                <span>Human Factors</span>
+                                <span>VRU Safety</span>
+                                <span>Crash Risk Analysis</span>
+                                <span>Behavioural Data</span>
+                            </div>
+                        </div>
+
+                        <div class="chip-group">
+                            <button class="chip" type="button">Fire Safety Engineering</button>
+                            <div class="skill-map">
+                                <span>Fire Prevention</span>
+                                <span>Risk Assessment</span>
+                                <span>Emergency Management</span>
+                                <span>Regulatory Compliance</span>
+                            </div>
+                        </div>
+
+                        <div class="chip-group">
+                            <button class="chip" type="button">Virtual Reality</button>
+                            <div class="skill-map">
+                                <span>Driving Simulation</span>
+                                <span>Immersive Environments</span>
+                                <span>Unity Development</span>
+                                <span>Co-simulation</span>
+                            </div>
+                        </div>
+
+                        <div class="chip-group">
+                            <button class="chip" type="button">BIM & Digital Twins</button>
+                            <div class="skill-map">
+                                <span>Asset Management</span>
+                                <span>Due Diligence</span>
+                                <span>Property Management</span>
+                                <span>Environmental Impact</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="profile-grid">
+                <aside class="profile-panel">
+                    <div class="section-kicker">About Me</div>
+                    <h2>Professional Profile</h2>
+                    <p>Research, engineering practice and institutional experience integrated within a single technical path.</p>
+                </aside>
+                <div class="profile-copy">
+                    <p>Andrea Vennarucci is a <span class="keyword">Civil Engineer</span>, <span class="keyword">Ph.D. Candidate</span>, and researcher specialized in <span class="keyword">road safety</span>, <span class="keyword">virtual reality</span>, and <span class="keyword">digital infrastructure systems</span>. His research activity focuses on the integration of advanced simulation technologies, <span class="keyword">BIM-based digital twins</span>, and immersive environments for the analysis of human behaviour, transportation safety, and innovative mobility solutions.</p>
+
+                    <p>Prior to his current academic and institutional roles, he gained professional experience within the <span class="keyword">Ferrovie dello Stato Italiane S.p.A. Group</span> as an <span class="keyword">Asset Management Specialist</span>, contributing to real estate asset management, technical due diligence, strategic portfolio optimization, and asset lifecycle analysis.</p>
+
+                    <p>Alongside his academic career, he serves as a <span class="keyword">Technical Officer</span> at the <span class="keyword">Italian National Firefighter Corps</span>, combining institutional experience with scientific research and engineering practice. His work is characterized by a multidisciplinary approach that merges infrastructure engineering, data analysis, digital modelling, fire safety, and immersive simulation technologies.</p>
+
+                    <p>Throughout his academic and professional path, he has contributed to national and international research activities, scientific publications, and conference presentations, with particular attention to <span class="keyword">road safety engineering</span>, <span class="keyword">behavioural analysis</span>, and the development of advanced methodologies for transportation safety assessment.</p>
+
+                    <p>His interests include <span class="keyword">human factors</span>, virtual and augmented reality systems, BIM and digital twins, fire safety engineering, driving simulation, and the application of emerging technologies to mobility and infrastructure research.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quote">
+            <div class="quote-box">
+                <p>Transforming complex mobility challenges into innovative and data driven engineering solutions.</p>
+            </div>
+        </section>
+
+
+
+        <section>
+            <div class="journey-section">
+                <style>
+                    .journey-section {
+                        font-family: "Segoe UI", Arial, sans-serif;
+                        background: #ffffff;
+                        padding: 34px 16px;
+                        color: #071b3a;
+                    }
+
+                    .journey-title {
+                        text-align: center;
+                        font-size: 30px;
+                        font-weight: 700;
+                        color: #001f4d;
+                        letter-spacing: 2px;
+                        margin-bottom: 8px;
+                        text-transform: uppercase;
+                    }
+
+                    .journey-subtitle {
+                        text-align: center;
+                        font-size: 14px;
+                        color: #5c6b82;
+                        margin-bottom: 38px;
+                    }
+
+                    .timeline {
+                        display: flex;
+                        justify-content: space-between;
+                        position: relative;
+                        gap: 14px;
+                        max-width: 1600px;
+                        margin: 0 auto;
+                    }
+
+                        .timeline::before {
+                            content: "";
+                            position: absolute;
+                            top: 39px;
+                            left: 6%;
+                            right: 6%;
+                            height: 2px;
+                            background: linear-gradient(90deg, #002855, #6ec1ff);
+                            z-index: 0;
+                        }
+
+                    .journey-item {
+                        position: relative;
+                        z-index: 1;
+                        flex: 1;
+                        text-align: center;
+                        padding-left: 0;
+                        margin: 0;
+                    }
+
+                        .journey-item::before {
+                            display: none;
+                        }
+
+
+                    .dot {
+                        width: 15px;
+                        height: 15px;
+                        background: #0059b3;
+                        border: 3px solid white;
+                        border-radius: 50%;
+                        margin: 32px auto 18px auto;
+                        box-shadow: 0 0 0 2px #0059b3;
+                    }
+
+                    .card {
+                        position: relative;
+                        overflow: hidden;
+                        background: #ffffff;
+                        border-radius: 20px;
+                        padding: 16px 10px 28px 10px;
+                        min-height: 200px;
+                        box-shadow: 0 4px 12px rgba(0, 40, 85, 0.08);
+                        border: 1px solid #e9eef5;
+                        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+                        cursor: pointer;
+                    }
+
+                        .card::after {
+                            content: "Click to explore →";
+                            position: absolute;
+                            bottom: 4px;
+                            right: 14px;
+                            color: #6ec1ff;
+                            font-size: 12px;
+                            font-weight: 600;
+                            opacity: 0;
+                            transition: opacity 0.25s ease;
+                        }
+
+                        .card:hover::after {
+                            opacity: 1;
+                        }
+
+                        .card:hover {
+                            transform: translateY(-6px);
+                            box-shadow: 0 12px 24px rgba(0, 40, 85, 0.15);
+                            border-color: #6ec1ff;
+                        }
+
+                    .date {
+                        display: inline-block;
+                        background: linear-gradient(90deg, #002855, #6ec1ff);
+                        color: #ffffff;
+                        font-size: 11px;
+                        font-weight: 700;
+                        padding: 7px 12px;
+                        border-radius: 18px;
+                        margin-bottom: 16px;
+                    }
+
+                    .date-academic {
+                        background: linear-gradient(90deg, #002855, #6ec1ff);
+                    }
+
+                    .date-professional {
+                        background: linear-gradient(90deg, #3d4f63, #8faec7);
+                    }
+
+                    .role {
+                        font-size: 16px;
+                        font-weight: 700;
+                        line-height: 1.28;
+                        margin-bottom: 10px;
+                        color: #071b3a;
+                    }
+
+                    .detail {
+                        font-size: 13px;
+                        line-height: 1.42;
+                        color: #31425c;
+                    }
+
+                    .italic {
+                        font-style: italic;
+                    }
+
+                    .journey-modal {
+                        display: none;
+                        position: fixed;
+                        z-index: 99999;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        overflow: auto;
+                        background: rgba(0, 20, 45, 0.72);
+                        backdrop-filter: blur(5px);
+                    }
+
+                    .journey-modal-content {
+                        background: #ffffff;
+                        margin: 8% auto;
+                        padding: 28px;
+                        border-radius: 22px;
+                        width: min(720px, 88%);
+                        box-shadow: 0 18px 42px rgba(0, 40, 85, 0.28);
+                        border: 1px solid #e9eef5;
+                        position: relative;
+                        animation: modalFade 0.22s ease;
+                    }
+
+                    @keyframes modalFade {
+                        from {
+                            opacity: 0;
+                            transform: translateY(18px);
+                        }
+
+                        to {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    .journey-modal-close {
+                        position: absolute;
+                        right: 22px;
+                        top: 16px;
+                        font-size: 28px;
+                        color: #31425c;
+                        cursor: pointer;
+                        line-height: 1;
+                    }
+
+                        .journey-modal-close:hover {
+                            color: #0059b3;
+                        }
+
+                    .modal-tag {
+                        display: inline-block;
+                        background: linear-gradient(90deg, #002855, #6ec1ff);
+                        color: #ffffff;
+                        font-size: 11px;
+                        font-weight: 700;
+                        padding: 7px 12px;
+                        border-radius: 18px;
+                        margin-bottom: 16px;
+                    }
+
+                    .modal-title {
+                        font-size: 24px;
+                        font-weight: 700;
+                        color: #071b3a;
+                        margin-bottom: 12px;
+                        line-height: 1.25;
+                    }
+
+                    .modal-text {
+                        font-size: 14px;
+                        line-height: 1.65;
+                        color: #31425c;
+                    }
+
+                    .modal-placeholder {
+                        margin-top: 18px;
+                        padding: 16px;
+                        border-left: 3px solid #6ec1ff;
+                        background: #f7fbff;
+                        color: #071b3a;
+                        font-weight: 600;
+                    }
+
+                    @media (max-width: 900px) {
+                        .journey-section {
+                            padding: 18px 8px;
+                        }
+
+                        .journey-title {
+                            font-size: 22px;
+                            letter-spacing: 3px;
+                            margin-bottom: 4px;
+                        }
+
+                        .journey-subtitle {
+                            font-size: 12px;
+                            line-height: 1.35;
+                            margin-bottom: 14px;
+                        }
+
+                        .timeline {
+                            flex-direction: column;
+                            gap: 12px;
+                            margin-top: 0;
+                        }
+
+                            .timeline::before {
+                                top: 0;
+                                bottom: 0;
+                                left: 13px;
+                                right: auto;
+                                width: 2px;
+                                height: auto;
+                            }
+
+                        .journey-item {
+                            display: flex;
+                            align-items: flex-start;
+                            text-align: left;
+                            gap: 10px;
+                        }
+
+                        .dot {
+                            width: 12px;
+                            height: 12px;
+                            flex: 0 0 auto;
+                            margin: 18px 0 0 5px;
+                            box-shadow: 0 0 0 2px #0059b3;
+                        }
+
+                        .card {
+                            width: 100%;
+                            min-height: 120px;
+                            padding: 14px 14px 26px 14px;
+                            border-radius: 16px;
+                        }
+
+                        .date {
+                            font-size: 10px;
+                            padding: 5px 9px;
+                            margin-bottom: 8px;
+                        }
+
+                        .role {
+                            font-size: 14px;
+                            line-height: 1.22;
+                            margin-bottom: 6px;
+                        }
+
+                        .detail {
+                            font-size: 12px;
+                            line-height: 1.3;
+                        }
+
+                        .card::after {
+                            opacity: 1;
+                            bottom: 5px;
+                            right: 10px;
+                            font-size: 10px;
+                        }
+
+                        .card:hover {
+                            transform: none;
+                        }
+
+                        .journey-modal-content {
+                            margin: 12% auto;
+                            padding: 20px;
+                            width: min(720px, 90%);
+                        }
+
+                        .modal-title {
+                            font-size: 18px;
+                        }
+
+                        .modal-text {
+                            font-size: 13px;
+                        }
+                    }
+                </style>
+
+                <div class="journey-title">Professional Journey</div>
+                <div class="journey-subtitle">
+                    An overview of my academic and professional journey<br>
+                    combining education, research and engineering practice.
+                </div>
+
+                <div class="timeline">
+
+                    <div class="journey-item">
+                        <div class="dot"></div>
+                        <div class="card" onclick="openJourneyModal('modal-bachelor')">
+                            <div class="date date-academic">SEP 2011 <br>SEP 2016</div>
+                            <div class="role">Bachelor's Degree<br>in Civil Engineering</div>
+                            <div class="detail">University of Roma Tre</div>
+                        </div>
+                    </div>
+
+                    <div class="journey-item">
+                        <div class="dot"></div>
+                        <div class="card" onclick="openJourneyModal('modal-master')">
+                            <div class="date date-academic">SEP 2016 <br>JUL 2019</div>
+                            <div class="role">Master's Degree<br>in Civil Engineering</div>
+                            <div class="detail italic">Transportation Infrastructure</div>
+                            <div class="detail">University of Roma Tre</div>
+                        </div>
+                    </div>
+
+                    <div class="journey-item">
+                        <div class="dot"></div>
+                        <div class="card" onclick="openJourneyModal('modal-ferservizi')">
+                            <div class="date date-professional">MAR 2019 <br>JUN 2022</div>
+                            <div class="role">Asset Management Specialist</div>
+                            <div class="detail">Ferservizi S.p.A. <br><em>Ferrovie dello Stato Italiane S.p.A. Group</em></div>
+                        </div>
+                    </div>
+
+                    <div class="journey-item">
+                        <div class="dot"></div>
+                        <div class="card" onclick="openJourneyModal('modal-bim')">
+                            <div class="date date-academic">OCT 2020 <br>OCT 2021</div>
+                            <div class="role">Post Graduate<br>in BIM Manager</div>
+                            <div class="detail italic">Master di II livello</div>
+                            <div class="detail">Politecnico di Milano <br><em>Scuola Master F.lli Pesenti</em></div>
+                        </div>
+                    </div>
+
+                    <div class="journey-item">
+                        <div class="dot"></div>
+                        <div class="card" onclick="openJourneyModal('modal-cnvvf')">
+                            <div class="date date-professional">JUN 2022 <br>PRESENT</div>
+                            <div class="role">Technical Officer</div>
+                            <div class="detail"><em>Ministry of the Interior</em></div>
+                            <div class="detail">National Firefighter Corps</div>
+                        </div>
+                    </div>
+
+                    <div class="journey-item">
+                        <div class="dot"></div>
+                        <div class="card" onclick="openJourneyModal('modal-phd')">
+                            <div class="date date-academic">JAN 2024 <br>DEC 2026</div>
+                            <div class="role">Ph.D. Candidate<br>in Civil Engineering</div>
+                            <div class="detail italic">Road Safety & Driving Simulation Researcher</div>
+                            <div class="detail">University of Roma Tre</div>
+                        </div>
+                    </div>
+
+                    <div class="journey-item">
+                        <div class="dot"></div>
+                        <div class="card" onclick="openJourneyModal('modal-hasselt')">
+                            <div class="date date-academic">MAY 2026 <br>JUL 2026</div>
+                            <div class="role">International Visiting Researcher</div>
+                            <div class="detail">Transportation Research Institute</div>
+                            <div class="detail">Hasselt University</div>
+                            <div class="detail">IMOB, Hasselt, Belgium</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="modal-bachelor" class="journey-modal">
+                    <div class="journey-modal-content">
+                        <span class="journey-modal-close" onclick="closeJourneyModal('modal-bachelor')">&times;</span>
+                        <div class="modal-tag">SEP 2011 – SEP 2016</div>
+                        <div class="modal-title">Bachelor's Degree in Civil Engineering</div>
+                        <div class="modal-text">
+                            <strong>Institution:</strong> University of Roma Tre<br>
+                            <strong>Field:</strong> Civil Engineering
+                            <div class="modal-placeholder">
+                                <strong>Bachelor's Thesis:</strong> "Analysis of Road Infrastructure Distress Catalogues"<br>
+                                <strong>Final Grade:</strong> 94/110
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal-master" class="journey-modal">
+                    <div class="journey-modal-content">
+                        <span class="journey-modal-close" onclick="closeJourneyModal('modal-master')">&times;</span>
+                        <div class="modal-tag">SEP 2016 – JUL 2019</div>
+                        <div class="modal-title">Master's Degree in Civil Engineering</div>
+                        <div class="modal-text">
+                            <strong>Institution:</strong> University of Roma Tre<br>
+                            <strong>Specialisation:</strong> Transportation Infrastructure
+                            <div class="modal-placeholder">
+                                <strong>Master's Thesis:</strong>
+                                <em>Analysis of the Effects of Texting While Driving on Road Users Through Virtual Reality Simulation</em><br>
+                                <strong>Final Grade:</strong> 110/110 cum laude
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal-ferservizi" class="journey-modal">
+                    <div class="journey-modal-content">
+                        <span class="journey-modal-close" onclick="closeJourneyModal('modal-ferservizi')">&times;</span>
+                        <div class="modal-tag">MAR 2019 – JUN 2022</div>
+                        <div class="modal-title">Asset Management Specialist</div>
+                        <div class="modal-text">
+                            <strong>Company:</strong> Ferservizi S.p.A.<br>
+                            <strong>Area:</strong> Asset Management
+                            <div class="modal-placeholder">Supported technical and strategic asset management activities within the Ferrovie dello Stato Italiane S.p.A. Group, contributing to property enhancement, disposal and optimization initiatives. Participated in more than 20 asset disposal procedures and over 10 real estate due diligence projects involving high-value assets. Developed expertise in asset lifecycle management, maintenance planning, portfolio optimization and decision-support processes in complex industrial environments.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal-bim" class="journey-modal">
+                    <div class="journey-modal-content">
+                        <span class="journey-modal-close" onclick="closeJourneyModal('modal-bim')">&times;</span>
+                        <div class="modal-tag">OCT 2020 – OCT 2021</div>
+                        <div class="modal-title">Post Graduate in BIM Manager</div>
+                        <div class="modal-text">
+                            <strong>Institution:</strong> Politecnico di Milano<br>
+                            <strong>Programme:</strong> Master di II livello
+                            <div class="modal-placeholder">
+                                <strong>Post Graduate Master's Final Project:</strong>
+                                <em>Digital Twin Applications in Asset Management: The Case Study of the Ferservizi Headquarters Building, Ferrovie dello Stato Italiane Group</em><br>
+                                <strong>Final Grade:</strong> 110/110
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal-cnvvf" class="journey-modal">
+                    <div class="journey-modal-content">
+                        <span class="journey-modal-close" onclick="closeJourneyModal('modal-cnvvf')">&times;</span>
+                        <div class="modal-tag">JUN 2022 – PRESENT</div>
+                        <div class="modal-title">Technical Officer</div>
+                        <div class="modal-text">
+                            <strong>Institution:</strong> Ministry of the Interior<br>
+                            <strong>Corps:</strong> National Firefighter Corps
+                            <div class="modal-placeholder">As a Technical Officer within the Italian National Fire and Rescue Service, I work in the fields of fire safety, occupational safety and regulatory compliance. My activities include technical project assessment, fire prevention procedures, emergency response operations and real-time risk evaluation in complex scenarios. The role has enabled me to develop advanced expertise in safety engineering, risk management, technical regulation, emergency management and personnel coordination.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal-phd" class="journey-modal">
+                    <div class="journey-modal-content">
+                        <span class="journey-modal-close" onclick="closeJourneyModal('modal-phd')">&times;</span>
+                        <div class="modal-tag">JAN 2024 – DEC 2026</div>
+                        <div class="modal-title">Ph.D. Candidate in Civil Engineering</div>
+                        <div class="modal-text">
+                            <strong>Institution:</strong> University of Roma Tre<br>
+                            <strong>Research Area:</strong> Road Safety & Driving Simulation
+                            <div class="modal-placeholder">My research activities focus on transportation infrastructure, road safety, driving simulation and human factors. I collaborate with national and international research groups while supporting university teaching activities in transportation engineering. To date, my work has resulted in more than 10 scientific publications and participation in competitive research projects, including the PRIN 2022 programme funded by the Italian Ministry of University and Research.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal-hasselt" class="journey-modal">
+                    <div class="journey-modal-content">
+                        <span class="journey-modal-close" onclick="closeJourneyModal('modal-hasselt')">&times;</span>
+                        <div class="modal-tag">MAY 2026 – JUL 2026</div>
+                        <div class="modal-title">International Visiting Researcher</div>
+                        <div class="modal-text">
+                            <strong>Institution:</strong> Transportation Research Institute, Hasselt University<br>
+                            <strong>Research Centre:</strong> Instituut voor Mobiliteit – IMOB<br>
+                            <strong>Location:</strong> Hasselt, Belgium
+                            <div class="modal-placeholder">
+                                <strong>Research Areas:</strong> Artificial Intelligence, BIM-based Road Design and Road Safety Analysis.
+                                <br><br>
+                                Conducted research activities within an international and multidisciplinary environment, focusing on the integration of Artificial Intelligence techniques, Building Information Modelling (BIM) and road safety assessment methodologies. The visiting period provided the opportunity to collaborate with international researchers and contribute to innovative approaches for transportation infrastructure analysis and safety management.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function openJourneyModal(id) {
+                        document.getElementById(id).style.display = "block";
+                    }
+
+                    function closeJourneyModal(id) {
+                        document.getElementById(id).style.display = "none";
+                    }
+
+                    window.addEventListener("click", function (event) {
+                        const modals = document.querySelectorAll(".journey-modal");
+                        modals.forEach(function (modal) {
+                            if (event.target === modal) {
+                                modal.style.display = "none";
+                            }
+                        });
+                    });
+                </script>
+            </div>
+
+
+
+        </section>
+
+
+
+        <section class="activities-section">
+            <style>
+                .activities-section {
+                    font-family: "Segoe UI", Arial, sans-serif;
+                    background: #ffffff;
+                    padding: 34px 16px 76px;
+                    color: #071b3a;
+                    position: relative;
+                    z-index: 3;
+                }
+
+                .activities-title {
+                    text-align: center;
+                    font-size: 30px;
+                    font-weight: 700;
+                    color: #001f4d;
+                    letter-spacing: 2px;
+                    margin-bottom: 8px;
+                    text-transform: uppercase;
+                }
+
+                .activities-subtitle {
+                    text-align: center;
+                    font-size: 14px;
+                    color: #5c6b82;
+                    margin-bottom: 38px;
+                }
+
+                .activities-grid {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 20px;
+                    max-width: 1400px;
+                    margin: 0 auto;
+                }
+
+                .activities-section .activity-card {
+                    background: #ffffff;
+                    border-radius: 20px;
+                    padding: 16px 10px;
+                    min-height: 200px;
+                    box-shadow: 0 4px 12px rgba(0, 40, 85, 0.08);
+                    border: 1px solid #e9eef5;
+                    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+                }
+
+                    .activities-section .activity-card:hover {
+                        transform: translateY(-6px);
+                        box-shadow: 0 12px 24px rgba(0, 40, 85, 0.15);
+                        border-color: #6ec1ff;
+                    }
+
+                .activity-tag {
+                    display: inline-block;
+                    background: linear-gradient(90deg, #002855, #6ec1ff);
+                    color: #ffffff;
+                    font-size: 11px;
+                    font-weight: 700;
+                    padding: 7px 12px;
+                    border-radius: 18px;
+                    margin-bottom: 16px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+
+                .activity-title {
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 1.28;
+                    color: #071b3a;
+                    margin-bottom: 10px;
+                }
+
+                .activity-text {
+                    font-size: 13px;
+                    line-height: 1.42;
+                    color: #31425c;
+                }
+
+                    .activity-text strong {
+                        color: #071b3a;
+                        font-weight: 700;
+                    }
+
+                    .activity-text em {
+                        font-style: italic;
+                    }
+
+                @media (max-width: 900px) {
+                    .activities-section {
+                        padding: 30px 12px 60px;
+                    }
+
+                    .activities-title {
+                        font-size: 24px;
+                    }
+
+                    .activities-subtitle {
+                        font-size: 13px;
+                        margin-bottom: 28px;
+                    }
+
+                    .activities-grid {
+                        grid-template-columns: 1fr;
+                        gap: 18px;
+                    }
+
+                    .activities-section .activity-card {
+                        padding: 18px;
+                    }
+
+                    .activity-title {
+                        font-size: 16px;
+                    }
+
+                    .activity-text {
+                        font-size: 13px;
+                    }
+                }
+            </style>
+
+            <div class="activities-title">Research, Academic Activities & Awards</div>
+
+            <div class="activities-subtitle">
+                Academic appointments, research projects and scientific recognition.
+            </div>
+
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-tag">Academic Appointment</div>
+
+                    <div class="activity-title">Cultore della Materia</div>
+
+                    <div class="activity-text">
+                        Teaching Assistant for courses within the SSD CEAR-03/A
+                        Roads, Railways and Airports.
+                        <br><br>
+                        Department of Civil Engineering, Computer Science and Aeronautical Technologies.
+                        <br>
+                        Roma Tre University.
+                        <br><br>
+                        <strong>2024–2026</strong>
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-tag">Research Project</div>
+
+                    <div class="activity-title">PRIN 2022 – ARCADE</div>
+
+                    <div class="activity-text">
+                        Member of the research group of the national project
+                        <em>
+                            Accident Risk Reduction of Vulnerable Road Users:
+                            an Interdisciplinary Multiperspective Approach
+                        </em>.
+                        <br><br>
+                        Funded by the Italian Ministry of University and Research
+                        under the PRIN 2022 programme.
+                        <br><br>
+                        Research focused on the reduction of crash risk involving vulnerable road users.
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-tag">National Award</div>
+
+                    <div class="activity-title">Road Safety Research Award</div>
+
+                    <div class="activity-text">
+                        Winner of the award for studies on alcohol and drug-related road safety.
+                        <br><br>
+                        Awarded by Roma Tre University within the project
+                        <em>"Against Alcohol and Drugs for Safe Driving"</em>,
+                        promoted and funded by the Presidency of the Council of Ministers
+                        – Department for Anti-Drug Policies.
+                        <br><br>
+                        Awarded project: development of an immersive virtual reality tool for simulating the effects of acute alcohol and drug intoxication on road users.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="section cv-section" id="cv">
+            <div class="cv-card">
+                <div class="cv-info">
+                    <h2>Short CV</h2>
+                    <p>A compact visual overview of contact information, skills, professional experience, education and portfolio highlights.</p>
+                    <button class="button" type="button" onclick="openCvModal()">Open visual CV</button>
+                </div>
+
+                <div class="cv-image">
+                    <img src="image\SmartCV.png"
+                         alt="Andrea Vennarucci short CV visual page">
+                </div>
+            </div>
+        </section>
+
+        <div id="cv-modal" class="cv-modal" aria-hidden="true">
+            <button class="cv-modal-close" type="button" onclick="closeCvModal()" aria-label="Close visual CV">&times;</button>
+
+            <img src="image\SmartCV.png"
+                 alt="Andrea Vennarucci visual CV">
+        </div>
+
+        <section class="back-home">
+            <div class="back-home-content">
+
+                <h2>Thank You for Visiting</h2>
+
+                <p>
+                    Return to the top of the page to continue exploring my academic profile,
+                    research activities and professional experience.
+                </p>
+
+                <button class="home-button" onclick="scrollToTop()">
+                    ↑ Back to Top
+                </button>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">© Andrea Vennarucci</footer>
+
+
+    <script>
+        const heroImage = document.querySelector(".hero-image");
+
+        window.addEventListener("scroll", function () {
+            const scrollY = window.scrollY;
+            const movement = scrollY * 0.22;
+            const scale = 1.05 + scrollY * 0.00008;
+
+            heroImage.style.transform =
+                "translateY(" + movement + "px) scale(" + scale + ")";
+        });
+        function scrollToTop() {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+        function openCvModal() {
+            const modal = document.getElementById("cv-modal");
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeCvModal() {
+            const modal = document.getElementById("cv-modal");
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+        }
+
+        document.getElementById("cv-modal").addEventListener("click", function (event) {
+            if (event.target === this) {
+                closeCvModal();
+            }
+        });
+
+        window.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                closeCvModal();
+
+                const modals = document.querySelectorAll(".journey-modal");
+                modals.forEach(function (modal) {
+                    modal.style.display = "none";
+                });
+            }
+        });
+    </script>
+
+       }
+</body>
+</html>

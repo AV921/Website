@@ -1,0 +1,1659 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrea Vennarucci - Portfolio</title>
+
+    <style>
+        :root {
+            --navy: #0a1f44;
+            --ink: #14213d;
+            --muted: #5d6d7e;
+            --paper: #ffffff;
+            --gold: #d7b25d;
+            --soft: #f6f9fd;
+            --line: #e9eef5;
+            --shadow: 0 18px 50px rgba(10,31,68,.13);
+            --radius: 28px;
+            --max: 1160px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI",Arial,sans-serif;
+            color: var(--ink);
+            background: #ffffff;
+            line-height: 1.65;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255,255,255,.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(10,31,68,.08);
+        }
+
+        .nav {
+            max-width: var(--max);
+            margin: auto;
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px;
+            padding: 0 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 800;
+            color: var(--navy);
+        }
+
+            .brand img {
+                width: 42px;
+                height: 42px;
+                object-fit: contain;
+            }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 650;
+            color: #41556e;
+        }
+
+            .nav-links a {
+                position: relative;
+                padding: 26px 0;
+            }
+
+                .nav-links a.active,
+                .nav-links a:hover {
+                    color: var(--navy);
+                }
+
+                    .nav-links a.active:after,
+                    .nav-links a:hover:after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        bottom: 18px;
+                        height: 2px;
+                        background: var(--navy);
+                        border-radius: 99px;
+                    }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: transparent;
+            font-size: 30px;
+            color: var(--navy);
+            cursor: pointer;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 560px;
+            padding: 115px 24px 95px;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 112%;
+            object-fit: cover;
+            object-position: center top;
+            transform: translateY(0) scale(1.04);
+            will-change: transform;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,rgba(10,31,68,.58),rgba(10,31,68,.42),rgba(10,31,68,.25));
+            z-index: 1;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: var(--max);
+            min-height: 350px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 860px;
+            margin: auto
+        }
+
+        h1 {
+            font-size: clamp(42px,6vw,78px);
+            font-weight: 600;
+            line-height: 1;
+            margin: 0 0 22px;
+            color: #ffffff;
+            letter-spacing: -1px;
+            text-shadow: 0 5px 24px rgba(0,0,0,.65);
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 28px;
+            text-shadow: 0 3px 12px rgba(0,0,0,.60);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px,2vw,21px);
+            color: rgba(255,255,255,.92);
+            max-width: 780px;
+            margin: 0 auto;
+            text-shadow: 0 3px 14px rgba(0,0,0,.55);
+        }
+
+        .section {
+            position: relative;
+            z-index: 3;
+            max-width: var(--max);
+            margin: auto;
+            padding: 76px 24px;
+            background: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(28px,4vw,44px);
+            line-height: 1.1;
+            margin: 0 0 12px;
+            color: var(--navy);
+            letter-spacing: -1px;
+        }
+
+            .section-title:after {
+                content: "";
+                display: block;
+                width: 72px;
+                height: 3px;
+                margin: 16px auto 0;
+                background: linear-gradient(90deg,var(--navy),#6ec1ff);
+                border-radius: 99px;
+            }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 42px;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        .portfolio-intro {
+            display: grid;
+            grid-template-columns: .85fr 1.15fr;
+            gap: 42px;
+            align-items: start;
+        }
+
+        .portfolio-side {
+            position: sticky;
+            top: 104px;
+            background: var(--paper);
+            border: 1px solid rgba(10,31,68,.08);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+            .portfolio-side h2 {
+                margin: 0 0 12px;
+                color: var(--navy);
+                font-size: 28px;
+                line-height: 1.15;
+            }
+
+            .portfolio-side p {
+                margin: 0;
+                color: var(--muted)
+            }
+
+        .portfolio-copy {
+            font-size: 16px;
+            color: #30435a;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+            .portfolio-copy p {
+                margin: 0 0 18px
+            }
+
+        .keyword {
+            color: var(--navy);
+            font-weight: 800
+        }
+
+        .projects-list {
+            display: grid;
+            gap: 22px
+        }
+
+        .project-card {
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            background: #ffffff;
+            overflow: hidden;
+            box-shadow: 0 12px 34px rgba(10,31,68,.08);
+            transition: box-shadow .25s ease,border-color .25s ease,transform .25s ease;
+        }
+
+            .project-card:hover {
+                border-color: #6ec1ff;
+                box-shadow: 0 20px 46px rgba(10,31,68,.14);
+                transform: translateY(-3px);
+            }
+
+        .project-header {
+            display: grid;
+            grid-template-columns: 260px 1fr auto;
+            align-items: center;
+            gap: 26px;
+            padding: 22px;
+            cursor: pointer;
+            border: 0;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+            font-family: inherit;
+            color: inherit;
+        }
+
+        .project-thumb {
+            width: 100%;
+            height: 180px;
+            border-radius: 0px;
+            object-fit: contain;
+            object-position: center;
+            object-position: center;
+            display: block;
+            background: ##ffffff;
+        }
+
+        .project-summary h3 {
+            margin: 0 0 8px;
+            color: var(--navy);
+            font-size: 22px;
+            line-height: 1.25;
+        }
+
+        .project-summary p {
+            margin: 0;
+            color: #465a70;
+            font-size: 14px;
+            line-height: 1.55;
+        }
+
+        .project-toggle {
+            display: inline-grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 999px;
+            background: linear-gradient(135deg,var(--navy),#235aa0);
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 800;
+            transition: transform .35s ease;
+            flex: 0 0 auto;
+        }
+
+        .project-card.open .project-toggle {
+            transform: rotate(180deg)
+        }
+
+        .project-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .55s ease;
+        }
+
+        .project-inner {
+            padding: 0 28px 30px;
+            border-top: 1px solid rgba(10,31,68,.08);
+        }
+
+        .project-layout {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 30px;
+            padding-top: 28px;
+            align-items: start;
+        }
+
+        .project-main-image {
+            width: 95%;
+            height: 330px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 18px 44px rgba(10,31,68,.14);
+            background: #ffffff;
+        }
+
+        .project-details h4 {
+            margin: 0 0 10px;
+            color: var(--navy);
+            font-size: 19px;
+        }
+
+        .project-details p {
+            margin: 0 0 18px;
+            color: #30435a;
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        .project-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 18px 0;
+        }
+
+        .project-meta {
+            background: #f7fbff;
+            border-left: 3px solid #6ec1ff;
+            border-radius: 16px;
+            padding: 14px;
+        }
+
+            .project-meta strong {
+                display: block;
+                color: var(--navy);
+                font-size: 13px;
+                margin-bottom: 4px;
+            }
+
+            .project-meta span {
+                color: #465a70;
+                font-size: 13px;
+                line-height: 1.4;
+            }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 16px;
+        }
+
+        .badge {
+            display: inline-flex;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: #eef6ff;
+            color: #1769aa;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+            .project-gallery img {
+                width: 100%;
+                height: 120px;
+                object-fit: cover;
+                border-radius: 18px;
+                border: 1px solid var(--line);
+                background: #eef6ff;
+            }
+
+
+
+        .related-publications-block {
+            margin-top: 30px;
+            padding-top: 26px;
+            border-top: 1px solid rgba(10,31,68,.08);
+        }
+
+        .related-publications-title {
+            margin: 0 0 10px;
+            color: var(--navy);
+            font-size: 22px;
+            line-height: 1.25;
+        }
+
+        .related-publications-subtitle {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .related-publications-list {
+            display: grid;
+            gap: 14px;
+            counter-reset: related-pub;
+        }
+
+        .publication-card {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 22px 24px 22px 74px;
+            box-shadow: 0 10px 28px rgba(10,31,68,.07);
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+            cursor: pointer;
+        }
+
+            .publication-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 18px 40px rgba(10,31,68,.13);
+                border-color: #6ec1ff;
+            }
+
+            .publication-card:active {
+                transform: scale(.99);
+            }
+
+            .publication-card:before {
+                counter-increment: related-pub;
+                content: counter(related-pub);
+                position: absolute;
+                left: 22px;
+                top: 22px;
+                width: 34px;
+                height: 34px;
+                border-radius: 50%;
+                display: grid;
+                place-items: center;
+                background: linear-gradient(135deg,var(--navy),#2d75bd);
+                color: #ffffff;
+                font-weight: 800;
+                font-size: 14px;
+            }
+
+            .publication-card:after {
+                content: "Read publication →";
+                position: absolute;
+                right: 20px;
+                bottom: 16px;
+                color: #6ec1ff;
+                font-size: 12px;
+                font-weight: 700;
+                opacity: 0;
+                transition: opacity .25s ease;
+            }
+
+            .publication-card:hover:after {
+                opacity: 1;
+            }
+
+            .publication-card h3 {
+                margin: 0 0 8px;
+                color: var(--navy);
+                font-size: 17px;
+                line-height: 1.35;
+                padding-right: 120px;
+            }
+
+            .publication-card p {
+                margin: 0;
+                color: #30435a;
+                font-size: 14px;
+                line-height: 1.55;
+            }
+
+        .publication-meta {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .tag {
+            display: inline-flex;
+            padding: 6px 11px;
+            border-radius: 999px;
+            background: #eef6ff;
+            color: #1769aa;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .doi {
+            display: inline-flex;
+            padding: 6px 11px;
+            border-radius: 999px;
+            background: #ffffff;
+            color: var(--navy);
+            font-size: 12px;
+            font-weight: 800;
+            border: 1px solid rgba(10,31,68,.12);
+        }
+
+        .author {
+            color: #1769aa;
+            font-weight: 800;
+            border-bottom: 2px solid #1769aa;
+            padding-bottom: 1px;
+        }
+
+        .mosaic-section {
+            position: relative;
+            z-index: 3;
+            background: #ffffff;
+            padding: 20px 0 86px;
+            overflow: hidden;
+        }
+
+        .mosaic-title {
+            max-width: var(--max);
+            margin: 0 auto 24px;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+            .mosaic-title h2 {
+                font-size: clamp(28px,4vw,44px);
+                line-height: 1.1;
+                margin: 0 0 12px;
+                color: var(--navy);
+                letter-spacing: -1px;
+            }
+
+            .mosaic-title p {
+                margin: 0 auto;
+                max-width: 760px;
+                color: var(--muted);
+            }
+
+        .mosaic-track {
+            display: flex;
+            width: max-content;
+            gap: 18px;
+            animation: mosaicSlide 38s linear infinite;
+            padding: 16px 0;
+        }
+
+            .mosaic-track:hover {
+                animation-play-state: paused
+            }
+
+        .mosaic-item {
+            width: 320px;
+            height: 210px;
+            border-radius: 26px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            box-shadow: 0 12px 34px rgba(10,31,68,.10);
+            background: #eef6ff;
+        }
+
+            .mosaic-item.tall {
+                height: 260px
+            }
+
+            .mosaic-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+        @keyframes mosaicSlide {
+            from {
+                transform: translateX(0)
+            }
+
+            to {
+                transform: translateX(-50%)
+            }
+        }
+
+        .quote {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 0 24px 76px;
+            position: relative;
+            z-index: 3;
+            background: #ffffff;
+        }
+
+        .quote-box {
+            border-radius: 34px;
+            padding: 44px;
+            background: linear-gradient(135deg,var(--navy),#1c5f9f);
+            color: white;
+            box-shadow: 0 24px 60px rgba(10,31,68,.24);
+            text-align: center;
+        }
+
+            .quote-box p {
+                margin: 0;
+                font-size: clamp(23px,3vw,38px);
+                line-height: 1.25;
+                font-weight: 700;
+                letter-spacing: -.8px;
+            }
+
+        .back-top {
+            position: relative;
+            z-index: 3;
+            background: linear-gradient(180deg,#ffffff,#f6f9fd);
+            padding: 86px 20px 100px;
+            text-align: center;
+        }
+
+            .back-top h2 {
+                font-size: clamp(28px,4vw,40px);
+                color: var(--navy);
+                margin: 0 0 16px;
+                letter-spacing: -1px;
+            }
+
+            .back-top p {
+                color: #5c6b82;
+                font-size: 17px;
+                line-height: 1.8;
+                margin: 0 auto 34px;
+                max-width: 720px;
+            }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 24px;
+            border-radius: 999px;
+            background: #ffffff;
+            color: var(--navy);
+            font-weight: 800;
+            font-size: 14px;
+            border: 1px solid rgba(215,178,93,.55);
+            box-shadow: 0 10px 28px rgba(0,0,0,.12);
+            transition: transform .25s ease,box-shadow .25s ease,background .25s ease;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+            .button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 16px 34px rgba(0,0,0,.18);
+            }
+
+        .button-primary {
+            background: linear-gradient(135deg,#0a1f44,#235aa0);
+            color: white;
+            border: 0;
+        }
+
+        .footer {
+            padding: 36px 24px;
+            text-align: center;
+            color: #6b7c8f;
+            border-top: 1px solid rgba(10,31,68,.08);
+            background: #fff;
+            font-size: 14px;
+        }
+
+        @media(max-width:860px) {
+            .nav {
+                min-height: 68px
+            }
+
+            .menu-toggle {
+                display: block
+            }
+
+            .nav-links {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 68px;
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                background: white;
+                border-bottom: 1px solid rgba(10,31,68,.08);
+                box-shadow: 0 18px 40px rgba(10,31,68,.12);
+            }
+
+                .nav-links.open {
+                    display: flex
+                }
+
+                .nav-links a {
+                    width: 100%;
+                    padding: 16px 24px
+                }
+
+                    .nav-links a.active:after, .nav-links a:hover:after {
+                        display: none
+                    }
+
+            .hero {
+                min-height: 520px;
+                padding: 100px 18px 78px
+            }
+
+            .hero-image {
+                height: 110%;
+                object-position: center top
+            }
+
+            .hero-inner {
+                min-height: 330px
+            }
+
+            .section {
+                padding: 54px 18px
+            }
+
+            .portfolio-intro, .project-layout {
+                grid-template-columns: 1fr
+            }
+
+            .portfolio-side {
+                position: relative;
+                top: auto
+            }
+
+            .project-header {
+                grid-template-columns: 1fr;
+                gap: 18px
+            }
+
+            .project-toggle {
+                justify-self: start
+            }
+
+            .project-main-image {
+                height: 260px
+            }
+
+            .project-meta-grid, .project-gallery {
+                grid-template-columns: 1fr
+            }
+
+                .project-gallery img {
+                    height: 180px
+                }
+
+            .quote {
+                padding: 0 18px 54px
+            }
+
+            .quote-box {
+                padding: 32px 26px
+            }
+
+            .brand span {
+                font-size: 15px
+            }
+        }
+        .project-features {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            background: #f7fbff;
+            border: 1px solid #e9eef5;
+            border-radius: 20px;
+            padding: 24px;
+            transition: .25s;
+        }
+
+            .feature:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 26px rgba(10,31,68,.10);
+            }
+
+            .feature h5 {
+                margin: 0 0 14px;
+                color: #0a1f44;
+                font-size: 18px;
+                font-weight: 700;
+            }
+
+            .feature p {
+                margin: 0;
+                color: #465a70;
+                font-size: 14px;
+                line-height: 1.7;
+                text-align: justify;
+            }
+
+        .ongoing-notice {
+            margin-top: 26px;
+            padding: 22px 24px;
+            border-radius: 22px;
+            background: linear-gradient(135deg,#f7fbff,#ffffff);
+            border: 1px solid #e9eef5;
+            box-shadow: 0 12px 28px rgba(10,31,68,.08);
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+
+            .ongoing-notice h4 {
+                margin: 0 0 8px;
+                color: var(--navy);
+                font-size: 18px;
+            }
+
+            .ongoing-notice p {
+                margin: 0;
+                color: #465a70;
+                font-size: 14px;
+                line-height: 1.65;
+            }
+
+        .ongoing-pulse {
+            width: 16px;
+            height: 16px;
+            margin-top: 6px;
+            border-radius: 50%;
+            background: #d7b25d;
+            box-shadow: 0 0 0 rgba(215,178,93,.65);
+            animation: pulseResearch 1.8s infinite;
+            flex: 0 0 auto;
+        }
+
+        @keyframes pulseResearch {
+            0% {
+                box-shadow: 0 0 0 0 rgba(215,178,93,.65);
+            }
+
+            70% {
+                box-shadow: 0 0 0 16px rgba(215,178,93,0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(215,178,93,0);
+            }
+        }
+        @media(max-width:860px) {
+
+            .project-features {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media(max-width:520px) {
+            .hero {
+                min-height: 500px;
+                padding: 90px 16px 70px
+            }
+
+            h1 {
+                font-size: clamp(36px,9vw,52px)
+            }
+
+            .eyebrow {
+                font-size: 11px;
+                letter-spacing: 2px
+            }
+
+            .project-inner {
+                padding: 0 18px 24px
+            }
+
+            .project-main-image {
+                height: 210px
+            }
+
+
+
+            .publication-card {
+                padding: 72px 18px 42px;
+            }
+
+                .publication-card:before {
+                    left: 18px;
+                    top: 20px;
+                }
+
+                .publication-card h3 {
+                    padding-right: 0;
+                }
+
+                .publication-card:after {
+                    opacity: 1;
+                    left: 18px;
+                    right: auto;
+                    bottom: 16px;
+                }
+
+            .mosaic-item {
+                width: 260px;
+                height: 170px
+            }
+
+                .mosaic-item.tall {
+                    height: 220px
+                }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="nav" aria-label="Main navigation">
+            <a class="brand" href="index.html">
+                <img src="image/Logo.png" alt="Andrea Vennarucci">
+                <span>Eng. Andrea Vennarucci</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="AboutMe.html">About Me</a>
+                <a class="active" href="portfolio.html">Portfolio</a>
+                <a href="ScientificPublications.html">Publications</a>
+                <a href="Contact.html">Contact</a>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+        </nav>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <img class="hero-image" src="image/HeaderHome.png" alt="Andrea Vennarucci portfolio header">
+            <div class="hero-overlay"></div>
+
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <h1>Portfolio</h1>
+                    <div class="eyebrow">Engineering Practice | Research Projects | Digital Innovation</div>
+                    <p class="hero-subtitle">A selection of projects connecting infrastructure engineering, road safety, virtual reality, digital twins, fire safety and data-driven methods.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="portfolio-intro">
+                <aside class="portfolio-side">
+                    <h2>Project Portfolio</h2>
+                    <p>Research, engineering and software development activities developed across academic, institutional and professional contexts.</p>
+                </aside>
+
+                <div class="portfolio-copy">
+                    <p>This portfolio presents projects located at the intersection of <span class="keyword">civil engineering</span>, <span class="keyword">transportation safety</span>, <span class="keyword">digital technologies</span> and <span class="keyword">public service</span>. The aim is to show not only research outputs, but also the practical and technical path that connects infrastructure management, simulation, fire safety engineering and innovation.</p>
+                    <p>The projects are organised as expandable cards. Each card provides a concise overview and can be opened to explore objectives, methods, technologies and outcomes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <h2 class="section-title">Selected Projects</h2>
+            <p class="section-subtitle">Click on each project card to open or close the detailed project sheet.</p>
+
+            <div class="projects-list">
+                <article class="project-card">
+                    <button class="project-header" type="button" aria-expanded="false">
+                        <img class="project-thumb" src="image/Cosimu.png" alt="Driving Co-Simulation project">
+                        <div class="project-summary">
+                            <h3>Driving Multi-Users Simulation in Virtual Reality Environment</h3>
+                            <p>Development of immersive driving simulation environments for road safety studies, human behaviour analysis and interaction among different road users.</p>
+                        </div>
+                        <span class="project-toggle">⌄</span>
+                    </button>
+
+                    <div class="project-content">
+                        <div class="project-inner">
+                            <div class="project-layout">
+                                <img class="project-main-image" src="image/Cosimulazione.png" alt="Driving Co-Simulation environment">
+
+                                <div class="project-details">
+                                    <h4>Project overview</h4>
+                                    <p>Development of a co-simulation architecture (Calvi et al., 2025) based on synchronized virtual environments in which multiple users and intelligent agents can interact simultaneously. This platform enables the study of complex mobility dynamics, mutual interference processes, and behavioural interactions between different categories of road users within immersive and high-fidelity simulation ecosystems. The system integrates virtual reality technologies, network synchronization, behavioural data acquisition, and real-time interaction modelling.</p>
+
+                                    <div class="project-meta-grid">
+                                        <div class="project-meta">
+                                            <strong>Main focus</strong>
+                                            <span>Road safety, driver behaviour, immersive simulation.</span>
+                                        </div>
+
+                                        <div class="project-meta">
+                                            <strong>Role</strong>
+                                            <span>Scenario development, system integration, experimental setup.</span>
+                                        </div>
+                                    </div>
+
+                                    <h4>Technologies</h4>
+                                    <div class="badge-list">
+                                        <span class="badge">BIM Authoring</span>
+                                        <span class="badge">Digital Twins</span>
+                                        <span class="badge">Unity</span>
+                                        <span class="badge">Virtual Reality</span>
+                                        <span class="badge">Driving Simulation</span>
+                                        <span class="badge">C#</span>
+                                        <span class="badge">Human Factors</span>
+                                        <span class="badge">Users Behaviour</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4>Head-Mounted Display (HMD) Simulators</h4>
+                            <p>To establish a shared simulation environment, three highly immersive simulation platforms were developed. Together, they enable the investigation of the behaviour of different road users in both collaborative multi-user virtual environments and standalone simulation scenarios, providing a versatile framework for the study of human behaviour, traffic interactions and road safety.</p>
+
+
+                            <div class="project-features">
+                                <div class="feature">
+                                    <h5>HMD Driving Simulator</h5>
+
+                                    <p>
+                                        Development of a car driving simulation platform focused on the study of driver behaviour, human factors, and transportation safety. The simulator allows the recreation of controlled and repeatable experimental scenarios in which driving performance, decision-making processes, and interaction mechanisms between users, vehicles, and infrastructure systems can be analysed through immersive and data-driven methodologies.
+                                    </p>
+                                </div>
+
+                                <div class="feature">
+                                    <h5>HMD Motorcyclist Simualtor</h5>
+
+                                    <p>
+                                        Development of an immersive motorcycle riding simulator designed for the analysis of rider behaviour, risk perception, and interaction dynamics within complex traffic scenarios. The simulator integrates physical riding controls with virtual environments developed through advanced simulation technologies, enabling the investigation of behavioural responses under different road safety conditions, including interactions with vulnerable road users and critical traffic situations.
+                                    </p>
+                                </div>
+
+                                <div class="feature">
+                                    <h5>HMD Pedestrian Simulator</h5>
+
+                                    <p>
+                                        Development of an immersive pedestrian simulation platform aimed at analysing pedestrian behaviour, crossing decision-making processes, and interaction dynamics within urban traffic environments. The simulator enables the study of user perception, gap acceptance behaviour, and safety-related responses under controlled and repeatable experimental conditions. By integrating virtual reality technologies, behavioural data collection, and realistic traffic scenarios, the platform supports the investigation of interactions between pedestrians, vehicles, and surrounding infrastructure systems within highly immersive environments.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <div class="related-publications-block">
+                                <h4 class="related-publications-title">Related Scientific Publications</h4>
+                                <p class="related-publications-subtitle">Scientific outputs connected to this project area.</p>
+                                <div class="related-publications-list">
+                                    <article class="publication-card" onclick="openPublication('https://doi.org/10.1016/j.trpro.2025.06.088')" onkeydown="publicationKeyOpen(event,'https://doi.org/10.1016/j.trpro.2025.06.088')" role="link" tabindex="0">
+                                        <h3>A Novel Co-Simulation Platform for Driving Performance Evaluation of Various Road Users</h3>
+                                        <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2025). Transportation Research Procedia, 90, 710–717.</p>
+                                        <div class="publication-meta">
+                                            <span class="tag">Proceedings</span>
+                                            <span class="doi">10.1016/j.trpro.2025.06.088</span>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <button class="project-header" type="button" aria-expanded="false">
+                        <img class="project-thumb" src="image/Micro.png" alt="Microsimulation">
+                        <div class="project-summary">
+                            <h3>Microsimulation & Virtual Reality</h3>
+                            <p>Ongoing Research.</p>
+                        </div>
+                        <span class="project-toggle">⌄</span>
+                    </button>
+
+                    <div class="project-content">
+                        <div class="project-inner">
+                            <div class="project-layout">
+                                <div class="ongoing-notice">
+                                    <div class="ongoing-pulse"></div>
+
+                                    <div>
+                                        <h4>Ongoing Research</h4>
+                                        <p>
+                                            This project is currently under development. Detailed technical information,
+                                            experimental data and complete methodological materials are not publicly available yet.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-features">
+                                <div class="feature">
+                                    <h5>Objective</h5>
+
+                                    <p>
+                                        To investigate the integration of traffic microsimulation and immersive virtual reality within a shared simulation environment for transportation research.
+                                    </p>
+                                </div>
+
+                                <div class="feature">
+                                    <h5>Methodology</h5>
+
+                                    <p>
+                                        Development of an experimental framework combining traffic simulation,
+                                        virtual reality and multiple interactive road users in a common virtual environment.
+                                    </p>
+                                </div>
+
+                                <div class="feature">
+                                    <h5>Expected Outcomes</h5>
+
+                                    <p>
+                                        A flexible research platform supporting future studies on road user behaviour,
+                                        traffic interactions and transportation systems.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <button class="project-header" type="button" aria-expanded="false">
+                        <img class="project-thumb" src="image/drug.png" alt="Driving Co-Simulation project">
+                        <div class="project-summary">
+                            <h3>Immersive VR Platform for Simulating Alcohol and Drug Impairment</h3>
+                            <p>First Prize Winner – Road Safety Research Award on Alcohol and Drug Impairment. </p>
+                        </div>
+                        <span class="project-toggle">⌄</span>
+                    </button>
+
+                    <div class="project-content">
+                        <div class="project-inner">
+                            <div class="project-layout">
+                                <img class="project-main-image" src="image/drugandother.jpg" alt="Driving Co-Simulation environment">
+
+                                <div class="project-details">
+                                    <h4>Project overview</h4>
+                                    <p>
+                                        Research and development project focused on the design and implementation of an immersive Virtual Reality framework for the simulation
+                                        of perceptual, cognitive and motor impairments induced by psychoactive substances. The project involved the analysis of scientific
+                                        literature concerning alcohol, cannabis (THC) and hallucinogenic substances, the identification of reproducible behavioural and
+                                        perceptual effects, and the development of modular simulation algorithms within a real-time 3D environment. The framework was
+                                        designed to support education and awareness activities related to road safety, enabling the safe reproduction of altered states
+                                        through Virtual Reality technologies and interactive simulation environments.
+                                    </p>
+
+                                    <div class="project-meta-grid">
+                                        <div class="project-meta">
+                                            <strong>Main focus</strong>
+                                            <span>Road safety, driver behaviour, immersive simulation.</span>
+                                        </div>
+
+                                        <div class="project-meta">
+                                            <strong>Role</strong>
+                                            <span>Scenario development, system integration, experimental setup.</span>
+                                        </div>
+                                    </div>
+
+                                    <h4>Technologies</h4>
+                                    <div class="badge-list">
+                                        <span class="badge">Unity</span>
+                                        <span class="badge">Virtual Reality</span>
+                                        <span class="badge">Driving Simulation</span>
+                                        <span class="badge">C#</span>
+                                        <span class="badge">Human Factors</span>
+                                        <span class="badge">Users Behaviour</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4>Key Outcomes</h4>
+                            <p>
+                                <ul>
+                                    <li>Development of a modular Virtual Reality framework capable of reproducing perceptual alterations associated with alcohol, THC and hallucinogenic substances.</li>
+
+                                    <li>Design and implementation of configurable visual, auditory and motor impairment simulation algorithms.</li>
+
+                                    <li>Integration of scientific evidence on psychoactive substance effects into immersive simulation environments.</li>
+
+                                    <li>Creation of a reusable software architecture applicable to road safety education and public awareness initiatives.</li>
+                                </ul>
+                            </p>
+
+                            <!--<div class="project-gallery">
+        <img src="image/PortfolioDigitalTwin_1.png" alt="BIM model">
+        <img src="image/PortfolioDigitalTwin_2.png" alt="Digital twin workflow">
+        <img src="image/PortfolioDigitalTwin_3.png" alt="Asset management">
+    </div>-->
+
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <button class="project-header" type="button" aria-expanded="false">
+                        <img class="project-thumb" src="image/DigTwin.png" alt="Digital Twin for Asset Management">
+                        <div class="project-summary">
+                            <h3>Digital Twin for Asset Management</h3>
+                            <p>Application of BIM-based digital twins to infrastructure and asset management, with attention to simulation, data integration and decision support.</p>
+                        </div>
+                        <span class="project-toggle">⌄</span>
+                    </button>
+
+                    <div class="project-content">
+                        <div class="project-inner">
+                            <div class="project-layout">
+                                <img class="project-main-image" src="image/BIM.png" alt="Digital twin project">
+
+                                <div class="project-details">
+                                    <h4>Project overview</h4>
+                                    <p>Research and development project concerning the implementation of Digital Twin methodologies for the management and valorisation of existing building assets. The work involved the creation of a structured digital information environment based on BIM principles, integrating geometric, technical and documentary information into a unified framework. The project addressed information acquisition, asset data modelling, digital documentation management and lifecycle-oriented asset management strategies, with the objective of enhancing operational efficiency, supporting maintenance activities and improving the overall accessibility and reliability of asset-related information.</p>
+                                    <h4>Case Study</h4>
+                                    <p>Palazzo Uffici di Ferservizi S.p.A., Gruppo Ferrovie dello Stato Italiane S.p.A.</p>
+                                    <div class="project-meta-grid">
+                                        <div class="project-meta">
+                                            <strong>Main focus</strong>
+                                            <span>BIM, digital twins, asset lifecycle, data integration, Property Management, Asset Management.</span>
+                                        </div>
+
+                                        <div class="project-meta">
+                                            <strong>Role</strong>
+                                            <span>Digital modelling, asset analysis, information management.</span>
+                                        </div>
+                                    </div>
+
+                                    <h4>Technologies</h4>
+                                    <div class="badge-list">
+                                        <span class="badge">BIM</span>
+                                        <span class="badge">Digital Twins</span>
+                                        <span class="badge">Asset Management</span>
+                                        <span class="badge">Facility Management</span>
+                                        <span class="badge">Property Management</span>
+                                        <span class="badge">Decision Support</span>
+                                        <span class="badge">Due Diligence</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--<div class="project-gallery">
+                                <img src="image/PortfolioDigitalTwin_1.png" alt="BIM model">
+                                <img src="image/PortfolioDigitalTwin_2.png" alt="Digital twin workflow">
+                                <img src="image/PortfolioDigitalTwin_3.png" alt="Asset management">
+                            </div>-->
+                            <h4>Key Outcomes</h4>
+                            <p>
+                                <ul>
+                                    <li>Development of a Digital Twin framework for Asset Management applications.</li>
+
+                                    <li>Integration of BIM-based information models with operational Asset Management Processes.</li>
+
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <button class="project-header" type="button" aria-expanded="false">
+                        <img class="project-thumb" src="image/Tesi.jpg" alt="Road safety engineering project">
+                        <div class="project-summary">
+                            <h3>Road Safety Engineering</h3>
+                            <p>Analysis of the effects of Texting While Driving on Driver Behaviour: A Driving Simulation Study vulnerable road users, driver distraction, advanced warning systems and behavioural responses in complex traffic scenarios.</p>
+                        </div>
+                        <span class="project-toggle">⌄</span>
+                    </button>
+
+                    <div class="project-content">
+                        <div class="project-inner">
+                            <div class="project-layout">
+                                <img class="project-main-image" src="image/drivwhiledriv.jpg" alt="Road safety research">
+
+                                <div class="project-details">
+                                    <h4>Project overview</h4>
+                                    <p>Research project focused on the analysis of driver distraction induced by smartphone use while driving. The study investigated the effects of texting activities on driver behaviour through an immersive driving simulation environment (Calvi et al., 2023). The research included a comprehensive literature review, a large-scale survey on driving habits involving more than 1,200 participants, the development of experimental driving scenarios, the implementation of controlled distraction conditions, and the statistical assessment of driving performance under conventional texting and smartphone-optimised interfaces (Calvi et al., 2024). The objective was to evaluate the impact of smartphone-related distractions on road safety and to assess the effectiveness of emerging driver-oriented technologies such as Android Auto in mitigating distraction-related risks.</p>
+
+                                    <div class="project-meta-grid">
+                                        <div class="project-meta">
+                                            <strong>Main focus</strong>
+                                            <span>Human behaviour, VRU safety, warning systems, risk assessment.</span>
+                                        </div>
+
+                                        <div class="project-meta">
+                                            <strong>Role</strong>
+                                            <span>Research design, data analysis, scientific dissemination.</span>
+                                        </div>
+                                    </div>
+
+                                    <h4>Technologies</h4>
+                                    <div class="badge-list">
+                                        <span class="badge">Road Safety</span>
+                                        <span class="badge">Human Factors</span>
+                                        <span class="badge">VRU Interaction</span>
+                                        <span class="badge">Statistical Analysis</span>
+                                        <span class="badge">Simulator Studies</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--<div class="project-gallery">
+                                <img src="image/PortfolioRoadSafety_1.png" alt="Road safety study">
+                                <img src="image/PortfolioRoadSafety_2.png" alt="Urban safety scenario">
+                                <img src="image/PortfolioRoadSafety_3.png" alt="Safety analysis">
+                            </div>-->
+
+                            <h4>Key Outcomes</h4>
+
+                            <ul>
+                                <li>Development of an experimental methodology for assessing the effects of smartphone-induced distraction on driving performance.</li>
+
+                                <li>Evaluation of behavioural and safety-related impacts associated with texting while driving.</li>
+
+                                <li>Assessment of Android Auto as a driver support technology for reducing distraction-related effects.</li>
+
+                                <li>Collection and analysis of behavioural data from immersive driving simulation experiments.</li>
+
+                                <li>Identification of critical factors influencing driver attention, reaction capability and safety performance.</li>
+                            </ul>
+
+                            <div class="related-publications-block">
+                                <h4 class="related-publications-title">Related Scientific Publications</h4>
+                                <p class="related-publications-subtitle">Scientific outputs connected to this project area.</p>
+                                <div class="related-publications-list">
+                                    <article class="publication-card" onclick="openPublication('https://www.stradeeautostrade.it/')" onkeydown="publicationKeyOpen(event,'https://www.stradeeautostrade.it/')" role="link" tabindex="0">
+                                        <h3>L’utilizzo dello smartphone alla guida</h3>
+                                        <p>Calvi, A., D’Amico, F., Mustone, V., <span class="author">Vennarucci, A.</span> (2023). Strade & Autostrade, 158, 203–208.</p>
+                                        <div class="publication-meta">
+                                            <span class="tag">Magazine Article</span>
+                                            <span class="doi">ISSN 1723-2155</span>
+                                        </div>
+                                    </article>
+                                    <article class="publication-card" onclick="openPublication('https://doi.org/10.48295/ET.2024.97.6')" onkeydown="publicationKeyOpen(event,'https://doi.org/10.48295/ET.2024.97.6')" role="link" tabindex="0">
+                                        <h3>Distraction effects of manual texting and voice messaging when approaching pedestrian crossings on urban roads</h3>
+                                        <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2024). European Transport, 97, 6.</p>
+                                        <div class="publication-meta">
+                                            <span class="tag">Journal Article</span>
+                                            <span class="doi">10.48295/ET.2024.97.6</span>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!--<article class="project-card">
+        <button class="project-header" type="button" aria-expanded="false">
+            <img class="project-thumb" src="image/PortfolioAI.png" alt="Artificial intelligence and computer vision project">
+            <div class="project-summary">
+                <h3>Artificial Intelligence & Computer Vision</h3>
+                <p>Use of LiDAR, detection systems and AI-based methods for the analysis of safety conditions and vulnerable road user interactions.</p>
+            </div>
+            <span class="project-toggle">⌄</span>
+        </button>
+
+        <div class="project-content">
+            <div class="project-inner">
+                <div class="project-layout">
+                    <img class="project-main-image" src="image/PortfolioAI.png" alt="AI and computer vision">
+
+                    <div class="project-details">
+                        <h4>Project overview</h4>
+                        <p>This project line investigates the use of sensing technologies and data-driven methods for safety assessment. The objective is to support real-time interpretation of road user behaviour and improve the understanding of interactions at critical road locations.</p>
+
+                        <div class="project-meta-grid">
+                            <div class="project-meta">
+                                <strong>Main focus</strong>
+                                <span>LiDAR, computer vision, detection, safety analytics.</span>
+                            </div>
+
+                            <div class="project-meta">
+                                <strong>Role</strong>
+                                <span>Data interpretation, research development, safety applications.</span>
+                            </div>
+                        </div>
+
+                        <h4>Technologies</h4>
+                        <div class="badge-list">
+                            <span class="badge">LiDAR</span>
+                            <span class="badge">Computer Vision</span>
+                            <span class="badge">AI</span>
+                            <span class="badge">Safety Analytics</span>
+                            <span class="badge">Urban Intersections</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-gallery">
+                    <img src="image/PortfolioAI_1.png" alt="LiDAR analysis">
+                    <img src="image/PortfolioAI_2.png" alt="Computer vision project">
+                    <img src="image/PortfolioAI_3.png" alt="AI road safety">
+                </div>
+                <div class="related-publications-block">
+                    <h4 class="related-publications-title">Related Scientific Publications</h4>
+                    <p class="related-publications-subtitle">Scientific outputs connected to this project area.</p>
+                    <div class="related-publications-list">
+                        <article class="publication-card" onclick="openPublication('https://doi.org/10.1117/12.3071919')" onkeydown="publicationKeyOpen(event,'https://doi.org/10.1117/12.3071919')" role="link" tabindex="0">
+                            <h3>Real-time LiDAR applications for assessing the safety of vulnerable road users at urban intersections</h3>
+                            <p><span class="author">Vennarucci, A.</span>, Manalo, J.R.D., Gagliardi, V., Calvi, A., Bella, F. (2025). Proc. SPIE 13671, 136710A.</p>
+                            <div class="publication-meta">
+                                <span class="tag">Proceedings</span>
+                                <span class="doi">10.1117/12.3071919</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+                <article class="project-card">
+                    <button class="project-header" type="button" aria-expanded="false">
+                        <img class="project-thumb" src="image/PortfolioFireSafety.png" alt="Fire safety engineering project">
+                        <div class="project-summary">
+                            <h3>Fire Safety Engineering</h3>
+                            <p>Institutional and technical experience in fire prevention, emergency management, risk assessment and regulatory compliance.</p>
+                        </div>
+                        <span class="project-toggle">⌄</span>
+                    </button>
+
+                    <div class="project-content">
+                        <div class="project-inner">
+                            <div class="project-layout">
+                                <p>Ongoing Research.</p>
+                            </div>
+                            <span class="project-toggle">⌄</span>
+                            </button>
+
+                            <div class="project-content">
+                                <div class="project-inner">
+                                    <div class="project-layout">
+                                        <div class="ongoing-notice">
+                                            <div class="ongoing-pulse"></div>
+
+                                            <div>
+                                                <h4>Ongoing Research</h4>
+                                                <p>
+                                                    This project is currently under development. Detailed technical information,
+                                                    experimental data and complete methodological materials are not publicly available yet.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="project-gallery">
+                                            <img src="image/PortfolioFireSafety_1.png" alt="Fire safety project">
+                                            <img src="image/PortfolioFireSafety_2.png" alt="Emergency management">
+                                            <img src="image/PortfolioFireSafety_3.png" alt="Risk assessment">
+                                        </div>
+                                    </div>
+                                </div>
+                </article>
+
+                <article class="project-card">
+                    <button class="project-header" type="button" aria-expanded="false">
+                        <img class="project-thumb" src="image/PortfolioAssetManagement.png" alt="Infrastructure asset management project">
+                        <div class="project-summary">
+                            <h3>Infrastructure Asset Management</h3>
+                            <p>Professional experience in real estate and infrastructure asset management, technical due diligence and portfolio optimisation.</p>
+                        </div>
+                        <span class="project-toggle">⌄</span>
+                    </button>
+
+                    <div class="project-content">
+                        <div class="project-inner">
+                            <div class="project-layout">
+                                <img class="project-main-image" src="image/PortfolioAssetManagement.png" alt="Infrastructure asset management">
+
+                                <div class="project-details">
+                                    <h4>Project overview</h4>
+                                    <p>This area summarises experience in asset management within a complex infrastructure-related industrial group. Activities include technical due diligence, property enhancement, disposal procedures and decision-support processes for asset lifecycle management.</p>
+
+                                    <div class="project-meta-grid">
+                                        <div class="project-meta">
+                                            <strong>Main focus</strong>
+                                            <span>Asset management, due diligence, portfolio analysis.</span>
+                                        </div>
+
+                                        <div class="project-meta">
+                                            <strong>Role</strong>
+                                            <span>Asset management specialist, technical analysis, process support.</span>
+                                        </div>
+                                    </div>
+
+                                    <h4>Technologies and topics</h4>
+                                    <div class="badge-list">
+                                        <span class="badge">Asset Management</span>
+                                        <span class="badge">Due Diligence</span>
+                                        <span class="badge">Property Management</span>
+                                        <span class="badge">Lifecycle Analysis</span>
+                                        <span class="badge">BIM Support</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="project-gallery">
+                                <img src="image/PortfolioAssetManagement_1.png" alt="Asset management">
+                                <img src="image/PortfolioAssetManagement_2.png" alt="Due diligence">
+                                <img src="image/PortfolioAssetManagement_3.png" alt="Infrastructure portfolio">
+                            </div>
+                        </div>
+                    </div>
+                </article>-->
+            </div>
+        </section>
+
+        <!--<section class="mosaic-section">
+            <div class="mosaic-title">
+                <h2>Project Gallery</h2>
+                <p>A moving visual mosaic collecting images from research, simulation, infrastructure, conferences and engineering activities.</p>
+            </div>
+
+            <div class="mosaic-track">
+                <div class="mosaic-item"><img src="image/Mosaic_1.png" alt="Project image"></div>
+                <div class="mosaic-item tall"><img src="image/Mosaic_2.png" alt="Project image"></div>
+                <div class="mosaic-item"><img src="image/Mosaic_3.png" alt="Project image"></div>
+                <div class="mosaic-item tall"><img src="image/Mosaic_4.png" alt="Project image"></div>
+                <div class="mosaic-item"><img src="image/Mosaic_5.png" alt="Project image"></div>
+                <div class="mosaic-item"><img src="image/Mosaic_6.png" alt="Project image"></div>
+                <div class="mosaic-item"><img src="image/Mosaic_1.png" alt="Project image"></div>
+                <div class="mosaic-item tall"><img src="image/Mosaic_2.png" alt="Project image"></div>
+                <div class="mosaic-item"><img src="image/Mosaic_3.png" alt="Project image"></div>
+                <div class="mosaic-item tall"><img src="image/Mosaic_4.png" alt="Project image"></div>
+                <div class="mosaic-item"><img src="image/Mosaic_5.png" alt="Project image"></div>
+                <div class="mosaic-item"><img src="image/Mosaic_6.png" alt="Project image"></div>
+            </div>
+        </section>-->
+
+        <section class="quote">
+            <div class="quote-box">
+                <p>Engineering projects become meaningful when research, practice and technology converge toward safer and smarter systems.</p>
+            </div>
+        </section>
+
+        <section class="back-top">
+            <h2>Continue Exploring</h2>
+            <p>Return to the top of the page or use the navigation menu to explore the remaining sections of the website.</p>
+            <button class="button button-primary" type="button" onclick="scrollToTop()">↑ Back to Top</button>
+        </section>
+    </main>
+
+    <footer class="footer">© Andrea Vennarucci</footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("open");
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        const heroImage = document.querySelector(".hero-image");
+
+        window.addEventListener("scroll", function () {
+            const y = window.scrollY;
+            heroImage.style.transform = "translateY(" + (y * .18) + "px) scale(" + (1.04 + y * .00005) + ")";
+        });
+
+        function openPublication(url) {
+            if (url) {
+                window.open(url, "_blank", "noopener");
+            }
+        }
+
+        function publicationKeyOpen(event, url) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openPublication(url);
+            }
+        }
+
+        document.querySelectorAll(".project-card").forEach(function (card) {
+            const header = card.querySelector(".project-header");
+            const content = card.querySelector(".project-content");
+
+            header.addEventListener("click", function () {
+                const isOpen = card.classList.contains("open");
+
+                if (isOpen) {
+                    card.classList.remove("open");
+                    header.setAttribute("aria-expanded", "false");
+                    content.style.maxHeight = null;
+                } else {
+                    card.classList.add("open");
+                    header.setAttribute("aria-expanded", "true");
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+
+        window.addEventListener("resize", function () {
+            document.querySelectorAll(".project-card.open .project-content").forEach(function (content) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            });
+        });
+    </script>
+</body>
+</html>
