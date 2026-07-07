@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -699,6 +700,174 @@
             width: min(260px, 82vw);
         }
 
+        .expertise-explorer {
+            margin-top: 34px;
+            width: 100%;
+            position: relative;
+        }
+
+        .expertise-tabs {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 18px;
+            max-width: 980px;
+            margin: 0 auto 26px;
+        }
+
+        .expertise-tab {
+            min-height: 118px;
+            border-radius: 28px;
+            border: 1px solid rgba(215,178,93,.55);
+            background: rgba(5,20,45,.78);
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 18px 40px rgba(0,0,0,.28);
+            backdrop-filter: blur(8px);
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+            .expertise-tab:hover,
+            .expertise-tab.active {
+                transform: translateY(-6px);
+                border-color: var(--gold);
+                box-shadow: 0 0 0 1px rgba(215,178,93,.65), 0 22px 48px rgba(0,0,0,.36);
+            }
+
+        .expertise-icon {
+            display: block;
+            font-size: 34px;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .expertise-panel {
+            position: absolute;
+            top: calc(100% + 24px);
+            left: 0;
+            right: 0;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-15px) scale(.98);
+            transition: opacity .30s ease, transform .30s ease, visibility .30s;
+            pointer-events: none;
+            max-width: 980px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 30px;
+            background: rgba(5,20,45,.92);
+            border: 1px solid rgba(215,178,93,.6);
+            box-shadow: 0 30px 70px rgba(0,0,0,.35);
+        }
+
+            .expertise-panel.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0) scale(1);
+                pointer-events: auto;
+            }
+
+            .expertise-panel h3 {
+                margin: 0 0 14px;
+                color: var(--gold);
+                font-size: 24px;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+            }
+
+            .expertise-panel p {
+                margin: 0 0 22px;
+                color: rgba(255,255,255,.92);
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+        .expertise-details {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 14px;
+        }
+
+            .expertise-details span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 70px;
+                padding: 14px;
+                border-radius: 18px;
+                background: rgba(255,255,255,.94);
+                color: var(--navy);
+                font-size: 13px;
+                font-weight: 800;
+                text-align: center;
+            }
+
+        @keyframes expertiseFade {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media(max-width:860px) {
+            .expertise-tabs {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .expertise-tab {
+                min-height: 96px;
+                font-size: 12px;
+                letter-spacing: 1.2px;
+                border-radius: 22px;
+            }
+
+            .expertise-icon {
+                font-size: 28px;
+            }
+
+            .expertise-panel {
+                padding: 22px;
+                border-radius: 24px;
+            }
+
+                .expertise-panel.active {
+                    padding: 22px;
+                }
+
+            .expertise-details {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width:520px) {
+            .expertise-tabs {
+                grid-template-columns: 1fr;
+            }
+
+            .expertise-panel {
+                margin-top: 16px;
+            }
+
+            .expertise-details {
+                grid-template-columns: 1fr;
+            }
+
+            .expertise-panel.active {
+                max-height: 760px;
+            }
+        }
+
         @media(max-width:520px) {
             .hero {
                 min-height: 500px;
@@ -738,8 +907,224 @@
             .cv-info h2 {
                 font-size: 31px;
             }
+
+            .skill-map {
+                position: static;
+                transform: none;
+                width: 100%;
+                margin-top: 10px;
+                display: none;
+                grid-template-columns: 1fr;
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+                .skill-map::before {
+                    display: none;
+                }
+
+            .chip-group.open .skill-map {
+                display: grid;
+            }
+        }
+
+        /* Expertise modal explorer */
+
+        .expertise-explorer {
+            margin-top: 34px;
+            width: 100%;
+        }
+
+        .expertise-tabs {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 18px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .expertise-tab {
+            min-height: 118px;
+            border-radius: 28px;
+            border: 1px solid rgba(215,178,93,.55);
+            background: rgba(5,20,45,.78);
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 18px 40px rgba(0,0,0,.28);
+            backdrop-filter: blur(8px);
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+
+            .expertise-tab:hover {
+                transform: translateY(-6px);
+                border-color: var(--gold);
+                box-shadow: 0 0 0 1px rgba(215,178,93,.65), 0 22px 48px rgba(0,0,0,.36);
+            }
+
+        .expertise-icon {
+            display: block;
+            font-size: 34px;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .expertise-panel {
+            display: none !important;
+        }
+
+        .expertise-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(0,15,35,.72);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .30s ease, visibility .30s ease;
+        }
+
+            .expertise-modal.open {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+        .expertise-modal-box {
+            width: min(780px,94vw);
+            border-radius: 32px;
+            padding: 38px;
+            background: linear-gradient(135deg,rgba(5,20,45,.96),rgba(10,31,68,.94));
+            border: 1px solid rgba(215,178,93,.70);
+            box-shadow: 0 34px 90px rgba(0,0,0,.45);
+            color: #ffffff;
+            position: relative;
+            transform: translateY(18px) scale(.97);
+            opacity: 0;
+            transition: transform .32s ease, opacity .32s ease;
+            text-align: justify;
+            margin: 0 auto 0px;
+        }
+
+        .expertise-modal.open .expertise-modal-box {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .expertise-modal-close {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            width: 42px;
+            height: 42px;
+            border: 0;
+            border-radius: 999px;
+            background: #ffffff;
+            color: var(--navy);
+            font-size: 30px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 12px 28px rgba(0,0,0,.25);
+        }
+
+        .expertise-modal-tag {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: linear-gradient(90deg,var(--gold),#f1d98b);
+            color: var(--navy);
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .expertise-modal-box h3 {
+            margin: 0 0 16px;
+            color: var(--gold);
+            font-size: clamp(28px,4vw,42px);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .expertise-modal-box p {
+            margin: 0 0 28px;
+            color: rgba(255,255,255,.90);
+            font-size: 16px;
+            line-height: 1.75;
+            max-width: 760px;
+        }
+
+        .expertise-modal-details {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 16px;
+        }
+
+            .expertise-modal-details span {
+                min-height: 86px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 16px;
+                border-radius: 20px;
+                background: rgba(255,255,255,.96);
+                color: var(--navy);
+                font-size: 14px;
+                font-weight: 850;
+                text-align: center;
+            }
+
+        @media(max-width:860px) {
+            .expertise-tabs {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .expertise-tab {
+                min-height: 96px;
+                font-size: 12px;
+                letter-spacing: 1.2px;
+                border-radius: 22px;
+            }
+
+            .expertise-modal-box {
+                padding: 30px 24px;
+            }
+
+            .expertise-modal-details {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width:520px) {
+            .expertise-tabs {
+                grid-template-columns: 1fr;
+            }
+
+            .expertise-modal {
+                align-items: flex-start;
+                padding-top: 90px;
+                overflow-y: auto;
+            }
+
+            .expertise-modal-details {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
+
 </head>
 
 <body>
@@ -796,47 +1181,33 @@
                     <h1>Andrea Vennarucci</h1>
 
                     <div class="eyebrow">Civil Engineer | Ph.D. Candidate | Road Safety Researcher</div>
-                    <p style="max-width:760px;margin:0 auto;color:#ffffff;font-size:16px;font-weight:500;text-shadow:0 4px 18px rgba(0,0,0,.65);">Research interests: Driving Simulation • Virtual Reality • Human Factors • Digital Twins • AI for Transportation</p>
-                    <div class="chips">
-                        <div class="chip-group">
-                            <button class="chip" type="button">Road Safety</button>
-                            <div class="skill-map">
-                                <span>Human Factors</span>
-                                <span>VRU Safety</span>
-                                <span>Crash Risk Analysis</span>
-                                <span>Behavioural Data</span>
-                            </div>
+                    <p style="max-width:760px;margin:0 auto;color:#ffffff;font-size:16px;font-weight:500;text-shadow:0 4px 18px rgba(0,0,0,.65);">Civil Engineer specialised in road safety, fire safety engineering, and asset management.</p>
+                    <div class="expertise-explorer">
+
+                        <div class="expertise-tabs">
+
+                            <button class="expertise-tab" type="button" onclick="openExpertiseModal('road')">
+                                <span class="expertise-icon">▥</span>
+                                <span>Road Safety</span>
+                            </button>
+
+                            <button class="expertise-tab" type="button" onclick="openExpertiseModal('fire')">
+                                <span class="expertise-icon">◈</span>
+                                <span>Fire Safety<br>Engineering</span>
+                            </button>
+
+                            <button class="expertise-tab" type="button" onclick="openExpertiseModal('vr')">
+                                <span class="expertise-icon">▣</span>
+                                <span>Virtual<br>Reality</span>
+                            </button>
+
+                            <button class="expertise-tab" type="button" onclick="openExpertiseModal('bim')">
+                                <span class="expertise-icon">⬡</span>
+                                <span>Asset<br>Management</span>
+                            </button>
+
                         </div>
 
-                        <div class="chip-group">
-                            <button class="chip" type="button">Fire Safety Engineering</button>
-                            <div class="skill-map">
-                                <span>Fire Prevention</span>
-                                <span>Risk Assessment</span>
-                                <span>Emergency Management</span>
-                                <span>Regulatory Compliance</span>
-                            </div>
-                        </div>
-
-                        <div class="chip-group">
-                            <button class="chip" type="button">Virtual Reality</button>
-                            <div class="skill-map">
-                                <span>Driving Simulation</span>
-                                <span>Immersive Environments</span>
-                                <span>Unity Development</span>
-                                <span>Co-simulation</span>
-                            </div>
-                        </div>
-
-                        <div class="chip-group">
-                            <button class="chip" type="button">BIM & Digital Twins</button>
-                            <div class="skill-map">
-                                <span>Asset Management</span>
-                                <span>Due Diligence</span>
-                                <span>Property Management</span>
-                                <span>Environmental Impact</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1418,6 +1789,81 @@
                             }
                         });
                     });
+
+                    const expertiseData = {
+                        road: {
+                            tag: "Area of Expertise",
+                            title: "Road Safety",
+                            text: "Academic and research expertise in road safety engineering, focusing on road infrastructure safety, transportation safety assessment and the identification of safety-critical issues affecting the entire road network. Particular attention is devoted to vulnerable road users and to the development of engineering methodologies supporting safer, more resilient and sustainable transportation systems.sis of road user behaviour, traffic interactions and safety-critical scenarios through data-driven and simulation-based approaches.",
+                            details: ["Safety Analysis", "Traffic Simulation", "User Behaviour", "Human Factors"]
+                        },
+
+                        fire: {
+                            tag: "Area of Expertise",
+                            title: "Fire Safety Engineering",
+                            text: "Expertise in fire safety engineering encompassing fire prevention, fire risk assessment, regulatory compliance and the safety evaluation of buildings and complex infrastructures. Professional experience integrates operational emergency management with engineering approaches to fire protection and life safety.",
+                            details: ["Fire Prevention", "Risk Assessment", "Emergency Management", "Regulatory Compliance"]
+                        },
+
+                        vr: {
+                            tag: "Area of Expertise",
+                            title: "Virtual Reality",
+                            text: "Expertise in virtual reality, immersive simulation and software development, including the design and implementation of interactive virtual environments, driving simulators, multi-user experiences and metaverse applications. Activities encompass real-time programming, system integration, co-simulation and the development of advanced digital platforms for engineering, research and professional training.",
+                            details: ["Driving Simulation", "Immersive Environments", "Unity Development", "Co-simulation"]
+                        },
+
+                        bim: {
+                            tag: "Area of Expertise",
+                            title: "Asset Management",
+                            text: "Professional expertise in asset management, technical due diligence and real estate engineering, developed through the technical management and enhancement of large property portfolios. Activities include building condition assessment, technical support for high-value real estate transactions, and the application of BIM methodologies and Digital Twin technologies for property and facility management.",
+                            details: ["Facility Management", "Due Diligence", "Property Management", "BIM & Digital Twins"]
+                        }
+                    };
+
+                    function openExpertiseModal(type) {
+                        const data = expertiseData[type];
+                        const modal = document.getElementById("expertise-modal");
+
+                        document.getElementById("expertise-modal-tag").textContent = data.tag;
+                        document.getElementById("expertise-modal-title").textContent = data.title;
+                        document.getElementById("expertise-modal-text").textContent = data.text;
+
+                        const details = document.getElementById("expertise-modal-details");
+                        details.innerHTML = "";
+
+                        data.details.forEach(item => {
+                            const span = document.createElement("span");
+                            span.textContent = item;
+                            details.appendChild(span);
+                        });
+
+                        modal.classList.add("open");
+                        modal.setAttribute("aria-hidden", "false");
+                        document.body.style.overflow = "hidden";
+                    }
+
+                    function closeExpertiseModal() {
+                        const modal = document.getElementById("expertise-modal");
+
+                        if (!modal) {
+                            return;
+                        }
+
+                        modal.classList.remove("open");
+                        modal.setAttribute("aria-hidden", "true");
+                        document.body.style.overflow = "";
+                    }
+
+                    const expertiseModal = document.getElementById("expertise-modal");
+
+                    if (expertiseModal) {
+                        expertiseModal.addEventListener("click", function (event) {
+                            if (event.target === this) {
+                                closeExpertiseModal();
+                            }
+                        });
+                    }
+
                 </script>
             </div>
 
@@ -1642,6 +2088,27 @@
             </div>
         </section>
 
+
+        <div id="expertise-modal" class="expertise-modal" aria-hidden="true">
+
+            <div class="expertise-modal-box">
+
+                <button class="expertise-modal-close" type="button" onclick="closeExpertiseModal()" aria-label="Close expertise panel">
+                    &times;
+                </button>
+
+                <div id="expertise-modal-tag" class="expertise-modal-tag"></div>
+
+                <h3 id="expertise-modal-title"></h3>
+
+                <p id="expertise-modal-text"></p>
+
+                <div id="expertise-modal-details" class="expertise-modal-details"></div>
+
+            </div>
+
+        </div>
+
     </main>
 
     <footer class="footer">© Andrea Vennarucci. All rights reserved.</footer>
@@ -1673,6 +2140,18 @@
             document.body.style.overflow = "hidden";
         }
 
+        function toggleSkillMap(button) {
+            const group = button.closest(".chip-group");
+
+            document.querySelectorAll(".chip-group").forEach(item => {
+                if (item !== group) {
+                    item.classList.remove("open");
+                }
+            });
+
+            group.classList.toggle("open");
+        }
+
         function closeCvModal() {
             const modal = document.getElementById("cv-modal");
             modal.classList.remove("open");
@@ -1690,6 +2169,30 @@
             }
         });
 
+        function showExpertise(id, button) {
+
+            const panel = document.getElementById(id);
+            const isOpen = panel.classList.contains("active");
+
+            // Chiude tutto
+            document.querySelectorAll(".expertise-panel").forEach(panel => {
+                panel.classList.remove("active");
+            });
+
+            document.querySelectorAll(".expertise-tab").forEach(tab => {
+                tab.classList.remove("active");
+            });
+
+            // Se era già aperto, rimane chiuso
+            if (isOpen) {
+                return;
+            }
+
+            // Altrimenti apre quello selezionato
+            panel.classList.add("active");
+            button.classList.add("active");
+        }
+
         window.addEventListener("keydown", function (event) {
             if (event.key === "Escape") {
                 closeCvModal();
@@ -1701,7 +2204,5 @@
             }
         });
     </script>
-
-
 </body>
 </html>
