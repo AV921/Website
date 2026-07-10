@@ -321,22 +321,8 @@
                 opacity: 1
             }
 
-            .publication-card:before {
-                counter-increment: pub;
-                content: counter(pub);
-                position: absolute;
-                left: 24px;
-                top: 24px;
-                width: 34px;
-                height: 34px;
-                border-radius: 50%;
-                display: grid;
-                place-items: center;
-                background: linear-gradient(135deg,var(--navy),#2d75bd);
-                color: #ffffff;
-                font-weight: 800;
-                font-size: 14px
-            }
+           
+
 
             .publication-card h3 {
                 margin: 0 0 8px;
@@ -796,34 +782,11 @@
             <h2 class="section-title">Peer Reviewed Publications</h2>
             <p class="section-subtitle">Selected publications in journals, conference proceedings and scientific venues.</p>
             <div class="publications-list">
-                <article class="publication-card" onclick="openPublication('https://www.opentransportationjournal.com/VOLUME/17/ELOCATOR/e187444782301191/FULLTEXT/')" role="link" tabindex="0">
-                    <h3>Comparing eye-tracking system effectiveness in field and driving simulator studies</h3>
-                    <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2023). Open Transportation Journal, 17, 3.</p>
-                    <div class="publication-meta"><span class="tag">Journal Article</span><span class="doi">DOI / Link</span></div>
-                </article>
 
-                <article class="publication-card" onclick="openPublication('https://www.stradeeautostrade.it/segnaletica-e-sicurezza/lutilizzo-dello-smartphone-alla-guida/')" role="link" tabindex="0">
-                    <h3>L’utilizzo dello smartphone alla guida</h3>
-                    <p>Calvi, A., D’Amico, F., Mustone, V., <span class="author">Vennarucci, A.</span> (2023). Strade & Autostrade, 158, 203–208.</p>
-                    <div class="publication-meta"><span class="tag">Magazine Article</span><span class="doi">ISSN 1723-2155</span></div>
-                </article>
-
-                <article class="publication-card" onclick="openPublication('https://ictct.net/')" role="link" tabindex="0">
-                    <h3>Driving simulator studies to evaluate advanced warning systems integrated with connected vehicles technology</h3>
-                    <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2023). 35th ICTCT Conference, Catania, Italy.</p>
-                    <div class="publication-meta"><span class="tag">Conference Paper</span><span class="doi">Conference Link</span></div>
-                </article>
-
-                <article class="publication-card" onclick="openPublication('https://www.researchgate.net/publication/380476260_Distraction_Effects_of_Manual_Texting_and_Voice_Messaging_When_Approaching_Pedestrian_Crossings_on_Urban_Roads_a_Driving_Simulator_Study')" role="link" tabindex="0">
-                    <h3>Distraction effects of manual texting and voice messaging when approaching pedestrian crossings on urban roads</h3>
-                    <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2024). European Transport, 97, 6.</p>
-                    <div class="publication-meta"><span class="tag">Journal Article</span><span class="doi">10.48295/ET.2024.97.6</span></div>
-                </article>
-
-                <article class="publication-card" onclick="openPublication('https://www.sciencedirect.com/science/article/pii/S2352146525005988')" role="link" tabindex="0">
-                    <h3>A Novel Co-Simulation Platform for Driving Performance Evaluation of Various Road Users</h3>
-                    <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2025). Transportation Research Procedia, 90, 710–717.</p>
-                    <div class="publication-meta"><span class="tag">Proceedings</span><span class="doi">10.1016/j.trpro.2025.06.088</span></div>
+                <article class="publication-card" onclick="openPublication('https://www.sciencedirect.com/science/article/pii/S136984782500395X')" role="link" tabindex="0">
+                    <h3>Assessing the Effectiveness of Augmented Reality Warnings for Improving Safety at Highway Merging Zones</h3>
+                    <p>Calvi, A., <span class="author">Vennarucci, A.</span> (2026). Transportation Research Part F: Traffic Psychology and Behaviour, 116, 103440.</p>
+                    <div class="publication-meta"><span class="tag">Journal Article</span><span class="doi">10.1016/j.trf.2025.103440</span></div>
                 </article>
 
                 <article class="publication-card" onclick="openPublication('https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13671/3071919/Real-time-LiDAR-applications-for-assessing-the-safety-of-vulnerable/10.1117/12.3071919.full')" role="link" tabindex="0">
@@ -832,11 +795,36 @@
                     <div class="publication-meta"><span class="tag">Proceedings</span><span class="doi">10.1117/12.3071919</span></div>
                 </article>
 
-                <article class="publication-card" onclick="openPublication('https://www.sciencedirect.com/science/article/pii/S136984782500395X')" role="link" tabindex="0">
-                    <h3>Assessing the Effectiveness of Augmented Reality Warnings for Improving Safety at Highway Merging Zones</h3>
-                    <p>Calvi, A., <span class="author">Vennarucci, A.</span> (2026). Transportation Research Part F: Traffic Psychology and Behaviour, 116, 103440.</p>
-                    <div class="publication-meta"><span class="tag">Journal Article</span><span class="doi">10.1016/j.trf.2025.103440</span></div>
+                <article class="publication-card" onclick="openPublication('https://www.sciencedirect.com/science/article/pii/S2352146525005988')" role="link" tabindex="0">
+                    <h3>A Novel Co-Simulation Platform for Driving Performance Evaluation of Various Road Users</h3>
+                    <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2025). Transportation Research Procedia, 90, 710–717.</p>
+                    <div class="publication-meta"><span class="tag">Proceedings</span><span class="doi">10.1016/j.trpro.2025.06.088</span></div>
                 </article>
+
+                <article class="publication-card" onclick="openPublication('https://www.researchgate.net/publication/380476260_Distraction_Effects_of_Manual_Texting_and_Voice_Messaging_When_Approaching_Pedestrian_Crossings_on_Urban_Roads_a_Driving_Simulator_Study')" role="link" tabindex="0">
+                    <h3>Distraction effects of manual texting and voice messaging when approaching pedestrian crossings on urban roads</h3>
+                    <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2024). European Transport, 97, 6.</p>
+                    <div class="publication-meta"><span class="tag">Journal Article</span><span class="doi">10.48295/ET.2024.97.6</span></div>
+                </article>
+
+                <article class="publication-card" onclick="openPublication('https://ictct.net/')" role="link" tabindex="0">
+                    <h3>Driving simulator studies to evaluate advanced warning systems integrated with connected vehicles technology</h3>
+                    <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2023). 35th ICTCT Conference, Catania, Italy.</p>
+                    <div class="publication-meta"><span class="tag">Conference Paper</span><span class="doi">Conference Link</span></div>
+                </article>
+
+                <article class="publication-card" onclick="openPublication('https://www.stradeeautostrade.it/segnaletica-e-sicurezza/lutilizzo-dello-smartphone-alla-guida/')" role="link" tabindex="0">
+                    <h3>L’utilizzo dello smartphone alla guida</h3>
+                    <p>Calvi, A., D’Amico, F., Mustone, V., <span class="author">Vennarucci, A.</span> (2023). Strade & Autostrade, 158, 203–208.</p>
+                    <div class="publication-meta"><span class="tag">Magazine Article</span><span class="doi">ISSN 1723-2155</span></div>
+                </article>
+
+                <article class="publication-card" onclick="openPublication('https://www.opentransportationjournal.com/VOLUME/17/ELOCATOR/e187444782301191/FULLTEXT/')" role="link" tabindex="0">
+                    <h3>Comparing eye-tracking system effectiveness in field and driving simulator studies</h3>
+                    <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2023). Open Transportation Journal, 17, 3.</p>
+                    <div class="publication-meta"><span class="tag">Journal Article</span><span class="doi">10.2174/18744478-v17-e230404-2022-49</span></div>
+                </article>
+
             </div>
         </section>
 
@@ -844,7 +832,7 @@
             <h2 class="section-title">International Conferences & Scientific Dissemination</h2>
             <p class="section-subtitle">Scientific dissemination activities, conference presentations and research events.</p>
             <div class="conference-grid">
-                <article class="conference-card"><span class="conference-date">13–16 Sep 2026</span><h3>SPIE Sensors + Imaging 2026</h3><div class="conference-place">Edinburgh, United Kingdom</div><p>Speaker at international conference. Topic: Digital Twins — Optimizing BIM-based software for enhanced virtual reality simulation based on Digital Twins.</p></article>
+                <article class="conference-card"><span class="conference-date">14–17 Sep 2026</span><h3>SPIE Sensors + Imaging 2026</h3><div class="conference-place">Edinburgh, United Kingdom</div><p>Speaker at international conference. Topic: Digital Twins — Optimizing BIM-based software for enhanced virtual reality simulation based on Digital Twins.</p></article>
                 <article class="conference-card"><span class="conference-date">23–26 Jun 2026</span><h3>Road Safety & Simulation 2026</h3><div class="conference-place">Napoli, Italy</div><p>Speaker at the 10th International Road Safety & Simulation Conference. Topics: HMD-based driving simulator validation and driver–pedestrian interaction at urban crosswalks.</p></article>
                 <article class="conference-card"><span class="conference-date">15 May 2026</span><h3>PRIN 2022 ARCADE Closing Event</h3><div class="conference-place">Roma, Italy</div><p>Presentation on multi-perspective simulation in virtual reality within the ARCADE research project, with patronage from the Order of Engineers of Rome.</p></article>
                 <article class="conference-card"><span class="conference-date">03–08 May 2026</span><h3>EGU General Assembly 2026</h3><div class="conference-place">Vienna, Austria</div><p>Co-author of a scientific poster on multi-source non-destructive testing survey for digital modelling and reconstruction.</p></article>
@@ -854,31 +842,63 @@
             </div>
         </section>
 
-        <!--   <section class="section">
-            <h2 class="section-title">Research & Conference Highlights</h2>
-            <p class="section-subtitle">A visual sequence of research activities, conference presentations and academic dissemination moments.</p>
+        <!--
+            
+        
 
-            <div class="publication-carousel" aria-label="Research and conference image carousel">
-                <div class="carousel-track">
-                    <article class="mosaic-card tall"><img src="image/LWC.jpg" alt="LWC 2023"><div class="mosaic-caption">LWC 2023 - Brescia 06/09/2023 - 08/09/2023</div></article>
-                    <article class="mosaic-card wide"><img src="image/TIS2024.png" alt="TIS 2024"><div class="mosaic-caption">TIS 2024 - Roma</div></article>-
-                    <article class="mosaic-card tall"><img src="image/Spie1.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
-                    <article class="mosaic-card tall"><img src="image/Spie2.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
-                    <article class="mosaic-card"><img src="image/RSS1.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
-                    <article class="mosaic-card"><img src="image/RSS2.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
-                    <article class="mosaic-card wide"><img src="image/ARCADE.jpeg" alt="PRIN 2022 ARCADE"><div class="mosaic-caption">ARCADE Project Closing Event  - Roma 15/05/2026</div></article>
 
-                    <article class="mosaic-card tall"><img src="image/LWC.jpg" alt="LWC 2023"><div class="mosaic-caption">LWC 2023 - Brescia 06/09/2023 - 08/09/2023</div></article>
-                    <article class="mosaic-card wide"><img src="image/TIS2024.png" alt="TIS 2024"><div class="mosaic-caption">TIS 2024 - Roma</div></article>
-                    <article class="mosaic-card tall"><img src="image/Spie1.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
-                    <article class="mosaic-card tall"><img src="image/Spie2.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
-                    <article class="mosaic-card"><img src="image/RSS1.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
-                    <article class="mosaic-card"><img src="image/RSS2.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
-                    <article class="mosaic-card wide"><img src="image/ARCADE.jpeg" alt="PRIN 2022 ARCADE"><div class="mosaic-caption">ARCADE Project Closing Event  - Roma 15/05/2026</div></article>
 
-                </div>
+                    .publication-card:before {
+            counter-increment: pub;
+            content: counter(pub);
+            position: absolute;
+            left: 24px;
+            top: 24px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg,var(--navy),#2d75bd);
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 14px
+        }
+
+
+
+
+
+
+
+
+
+
+        <section class="section">
+        <h2 class="section-title">Research & Conference Highlights</h2>
+        <p class="section-subtitle">A visual sequence of research activities, conference presentations and academic dissemination moments.</p>
+
+        <div class="publication-carousel" aria-label="Research and conference image carousel">
+            <div class="carousel-track">
+                <article class="mosaic-card tall"><img src="image/LWC.jpg" alt="LWC 2023"><div class="mosaic-caption">LWC 2023 - Brescia 06/09/2023 - 08/09/2023</div></article>
+                <article class="mosaic-card wide"><img src="image/TIS2024.png" alt="TIS 2024"><div class="mosaic-caption">TIS 2024 - Roma</div></article>-
+                <article class="mosaic-card tall"><img src="image/Spie1.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
+                <article class="mosaic-card tall"><img src="image/Spie2.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
+                <article class="mosaic-card"><img src="image/RSS1.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
+                <article class="mosaic-card"><img src="image/RSS2.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
+                <article class="mosaic-card wide"><img src="image/ARCADE.jpeg" alt="PRIN 2022 ARCADE"><div class="mosaic-caption">ARCADE Project Closing Event  - Roma 15/05/2026</div></article>
+
+                <article class="mosaic-card tall"><img src="image/LWC.jpg" alt="LWC 2023"><div class="mosaic-caption">LWC 2023 - Brescia 06/09/2023 - 08/09/2023</div></article>
+                <article class="mosaic-card wide"><img src="image/TIS2024.png" alt="TIS 2024"><div class="mosaic-caption">TIS 2024 - Roma</div></article>
+                <article class="mosaic-card tall"><img src="image/Spie1.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
+                <article class="mosaic-card tall"><img src="image/Spie2.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
+                <article class="mosaic-card"><img src="image/RSS1.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
+                <article class="mosaic-card"><img src="image/RSS2.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
+                <article class="mosaic-card wide"><img src="image/ARCADE.jpeg" alt="PRIN 2022 ARCADE"><div class="mosaic-caption">ARCADE Project Closing Event  - Roma 15/05/2026</div></article>
+
             </div>
-        </section>-->
+        </div>
+    </section>-->
 
         <section class="quote"><div class="quote-box"><p>Research as a bridge between human behaviour, digital technologies and safer infrastructure systems.</p></div></section>
 
