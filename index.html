@@ -118,6 +118,51 @@
                         border-radius: 99px;
                     }
 
+
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 4px;
+        }
+
+        .language-button {
+            width: 38px;
+            height: 34px;
+            padding: 0;
+            border: 1px solid rgba(10,31,68,.14);
+            border-radius: 10px;
+            background: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: .58;
+            overflow: hidden;
+            transition: opacity .2s ease, transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+        }
+
+            .language-button svg {
+                width: 28px;
+                height: 20px;
+                display: block;
+                border-radius: 3px;
+                box-shadow: 0 2px 6px rgba(10,31,68,.16);
+            }
+
+            .language-button:hover {
+                opacity: 1;
+                transform: translateY(-2px);
+                border-color: rgba(10,31,68,.34);
+            }
+
+            .language-button.active {
+                opacity: 1;
+                border-color: var(--gold);
+                box-shadow: 0 5px 14px rgba(10,31,68,.14);
+            }
+
         .menu-toggle {
             display: none;
             border: 0;
@@ -352,6 +397,43 @@
             font-weight: 800;
         }
 
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 18px;
+            margin-top: 34px;
+        }
+
+        .highlight-card {
+            background: #ffffff;
+            border: 1px solid #e7edf5;
+            border-radius: 22px;
+            padding: 24px 22px;
+            box-shadow: 0 10px 28px rgba(10,31,68,.08);
+            text-align: center;
+            transition: transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+        }
+
+            .highlight-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 16px 34px rgba(10,31,68,.13);
+                border-color: rgba(35,90,160,.35);
+            }
+
+            .highlight-card h3 {
+                margin: 0 0 10px;
+                color: var(--navy);
+                font-size: 18px;
+                line-height: 1.25;
+            }
+
+            .highlight-card p {
+                margin: 0;
+                color: #52657b;
+                font-size: 14px;
+                line-height: 1.55;
+            }
+
         .quote {
             max-width: var(--max);
             margin: 0 auto;
@@ -424,12 +506,54 @@
             .cards-grid {
                 grid-template-columns: 1fr;
             }
+
+            .highlights-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
         }
 
         @media(max-width:860px) {
             .nav {
                 min-height: 68px;
             }
+
+
+
+            .language-switcher {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-left: 4px;
+            }
+
+            .language-button {
+                width: 38px;
+                height: 34px;
+                padding: 0;
+                border: 1px solid rgba(10,31,68,.14);
+                border-radius: 10px;
+                background: #ffffff;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 21px;
+                line-height: 1;
+                cursor: pointer;
+                opacity: .58;
+                transition: opacity .2s ease, transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+            }
+
+                .language-button:hover {
+                    opacity: 1;
+                    transform: translateY(-2px);
+                    border-color: rgba(10,31,68,.34);
+                }
+
+                .language-button.active {
+                    opacity: 1;
+                    border-color: var(--navy);
+                    box-shadow: 0 5px 14px rgba(10,31,68,.14);
+                }
 
             .menu-toggle {
                 display: block;
@@ -477,6 +601,10 @@
             }
 
             .profile-highlight {
+                grid-template-columns: 1fr;
+            }
+
+            .highlights-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -547,22 +675,53 @@
                      alt="Andrea Vennarucci"
                      style="width:42px;height:42px;object-fit:contain;">
 
-                <span>Eng. Andrea Vennarucci</span>
+                <span data-i18n="brand">Eng. Andrea Vennarucci</span>
 
             </a>
 
             <div class="nav-links">
 
-                <a class="active" href="index.html">Home</a>
+                <a class="active" href="index.html" data-i18n="navHome">Home</a>
 
-                <a href="AboutMe.html">About Me</a>
+                <a href="AboutMe.html" data-i18n="navAbout">About Me</a>
 
-                <a href="portfolio.html">Portfolio</a>
+                <a href="portfolio.html" data-i18n="navPortfolio">Portfolio</a>
 
-                <a href="ScientificPublications.html">Publications</a>
+                <a href="ScientificPublications.html" data-i18n="navPublications">Publications</a>
 
-                <a href="Contact.html">Contact</a>
+                <a href="Contact.html" data-i18n="navContact">Contact</a>
 
+            </div>
+
+
+            <div class="language-switcher" aria-label="Language selection">
+                <button class="language-button active"
+                        type="button"
+                        data-lang="en"
+                        onclick="setLanguage('en')"
+                        aria-label="English"
+                        title="English">
+                    <svg viewBox="0 0 60 36" aria-hidden="true" focusable="false">
+                        <rect width="60" height="36" fill="#012169"></rect>
+                        <path d="M0 0 L60 36 M60 0 L0 36" stroke="#ffffff" stroke-width="8"></path>
+                        <path d="M0 0 L60 36 M60 0 L0 36" stroke="#c8102e" stroke-width="4"></path>
+                        <path d="M30 0 V36 M0 18 H60" stroke="#ffffff" stroke-width="12"></path>
+                        <path d="M30 0 V36 M0 18 H60" stroke="#c8102e" stroke-width="7"></path>
+                    </svg>
+                </button>
+
+                <button class="language-button"
+                        type="button"
+                        data-lang="it"
+                        onclick="setLanguage('it')"
+                        aria-label="Italiano"
+                        title="Italiano">
+                    <svg viewBox="0 0 60 36" aria-hidden="true" focusable="false">
+                        <rect x="0" y="0" width="20" height="36" fill="#009246"></rect>
+                        <rect x="20" y="0" width="20" height="36" fill="#ffffff"></rect>
+                        <rect x="40" y="0" width="20" height="36" fill="#ce2b37"></rect>
+                    </svg>
+                </button>
             </div>
 
             <button class="menu-toggle"
@@ -584,86 +743,208 @@
             <div class="hero-inner">
                 <div class="hero-content">
                     <h1>Andrea Vennarucci</h1>
-                    <div class="eyebrow">Civil Engineer | Ph.D. Candidate | Road Safety Researcher</div>
-                    <p class="hero-statement">Civil engineer integrating professional practice and scientific research to advance infrastructure, mobility and safety through innovation and digital technologies.</p>
+                    <div class="eyebrow" data-i18n="heroEyebrow">Civil Engineer | Ph.D. Candidate | Road Safety Researcher</div>
+                    <p class="hero-statement" data-i18n="heroStatement">Civil engineer integrating professional practice and scientific research to advance infrastructure, mobility and safety through innovation and digital technologies.</p>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <h2 class="section-title">Explore</h2>
-            <p class="section-subtitle">Bridging engineering practice, public service and scientific research to develop safer, smarter and more sustainable infrastructure systems.</p>
-
-            <div class="cards-grid">
-                <article class="home-card">
-                    <img class="card-icon" src="image/PortfolioIcon.png" alt="Portfolio icon">
-                    <h2>Portfolio</h2>
-                    <p>Projects and research activities connecting road safety, immersive simulation, BIM, digital twins, fire safety engineering and human factors.</p>
-                    <a class="button" href="portfolio.html">View Portfolio</a>
-                </article>
-
-                <article class="home-card">
-                    <img class="card-icon" src="image/AboutMeIcon.png" alt="About me icon">
-                    <h2>About Me</h2>
-                    <p>A civil engineering profile shaped by industrial experience, public service, academic research and international collaboration.</p>
-                    <a class="button" href="AboutMe.html">View Experience</a>
-                </article>
-
-                <article class="home-card">
-                    <img class="card-icon" src="image/ScientificIcon.png" alt="Scientific publications icon">
-                    <h2>Publications</h2>
-                    <p>Scientific publications in international journals, conference proceedings and applied transportation safety research.</p>
-                    <a class="button" href="ScientificPublications.html">View Publications</a>
-                </article>
-            </div>
-        </section>
-
-        <section class="quote">
-            <div class="quote-box">
-                <p>Transforming complex mobility challenges into innovative and data-driven engineering solutions.</p>
-            </div>
-        </section>
-
-        <section class="section section-after-quote">
             <div class="profile-highlight">
                 <div>
                     <img class="profile-highlight-image" src="image/ProfileHome.png" alt="Andrea Vennarucci profile visual">
                 </div>
 
                 <div>
-                    <h2>Civil Engineering, Research and Digital Innovation</h2>
-                    <p><span class="keyword">Civil Engineer</span> with a multidisciplinary background across infrastructure engineering, asset management, public safety and academic research. My work connects <span class="keyword">road safety</span>, <span class="keyword">fire safety engineering</span>, <span class="keyword">digital technologies</span>, <span class="keyword">BIM-based digital twins</span>, immersive simulation and <span class="keyword">human factors</span> to address real-world challenges in mobility, infrastructure and safety.</p>
-                    <a class="button button-primary" href="AboutMe.html">Read more about me</a>
+                    <h2 data-i18n="profileTitle">Civil Engineering, Research and Digital Innovation</h2>
+                    <p data-i18n-html="profileText"><span class="keyword">Civil Engineer</span> and <span class="keyword">Ph.D. Candidate</span> with a multidisciplinary profile combining transportation engineering, public safety, industrial experience and academic research. My work connects <span class="keyword">road safety</span>, <span class="keyword">fire safety engineering</span>, <span class="keyword">BIM-based digital twins</span>, immersive simulation, virtual reality and <span class="keyword">human factors</span> to address real-world challenges in mobility, infrastructure and safety.</p>
+                    <a class="button button-primary" href="AboutMe.html" data-i18n="readMore">Read more about me</a>
                 </div>
+            </div>
+
+            <div class="highlights-grid">
+                <article class="highlight-card">
+                    <h3 data-i18n="highlight1Title">Ph.D. Candidate</h3>
+                    <p data-i18n="highlight1Text">Transportation engineering, driving simulation, virtual reality, human factors and digital engineering methodologies.</p>
+                </article>
+
+                <article class="highlight-card">
+                    <h3 data-i18n="highlight2Title">Civil Engineering</h3>
+                    <p data-i18n="highlight2Text">Infrastructure engineering, mobility systems, BIM workflows and digital transformation for the built environment.</p>
+                </article>
+
+                <article class="highlight-card">
+                    <h3 data-i18n="highlight3Title">Public Service</h3>
+                    <p data-i18n="highlight3Text">Engineering activities within the Italian National Fire and Rescue Service, with a focus on fire safety, industrial risk and regulatory compliance.</p>
+                </article>
+
+                <article class="highlight-card">
+                    <h3 data-i18n="highlight4Title">Industry &amp; Asset Management</h3>
+                    <p data-i18n="highlight4Text">Professional experience in railway asset management, BIM implementation, property processes and digital innovation.</p>
+                </article>
             </div>
         </section>
 
+        <section class="quote">
+            <div class="quote-box">
+                <p data-i18n="quote">Transforming complex mobility challenges into innovative and data-driven engineering solutions.</p>
+            </div>
+        </section>
 
+        <section class="section section-after-quote">
+            <h2 class="section-title" data-i18n="exploreTitle">Explore My Work</h2>
+            <p class="section-subtitle" data-i18n="exploreSubtitle">Discover my professional background, research projects and scientific contributions across engineering, mobility and digital innovation.</p>
 
-<section class="contact-section">
+            <div class="cards-grid">
+                <article class="home-card">
+                    <img class="card-icon" src="image/AboutMeIcon.png" alt="About me icon">
+                    <h2 data-i18n="aboutCardTitle">About Me</h2>
+                    <p data-i18n="aboutCardText">A civil engineering profile shaped by industrial experience, public service, academic research and international collaboration.</p>
+                    <a class="button" href="AboutMe.html" data-i18n="aboutCardButton">View Experience</a>
+                </article>
 
-    <h2>Interested in Collaborating?</h2>
+                <article class="home-card">
+                    <img class="card-icon" src="image/PortfolioIcon.png" alt="Portfolio icon">
+                    <h2 data-i18n="portfolioCardTitle">Portfolio</h2>
+                    <p data-i18n="portfolioCardText">Projects and research activities connecting road safety, immersive simulation, BIM, digital twins, fire safety engineering and human factors.</p>
+                    <a class="button" href="portfolio.html" data-i18n="portfolioCardButton">View Portfolio</a>
+                </article>
 
-    <p>
-        Feel free to get in touch for research collaborations,
-        academic partnerships or engineering projects.
-    </p>
+                <article class="home-card">
+                    <img class="card-icon" src="image/ScientificIcon.png" alt="Scientific publications icon">
+                    <h2 data-i18n="publicationsCardTitle">Publications</h2>
+                    <p data-i18n="publicationsCardText">Scientific publications in international journals, conference proceedings and applied transportation safety research.</p>
+                    <a class="button" href="ScientificPublications.html" data-i18n="publicationsCardButton">View Publications</a>
+                </article>
+            </div>
+        </section>
 
-    <a class="button button-primary" href="Contact.html">
-        Get in Touch
-    </a>
+        <section class="contact-section">
+            <h2 data-i18n="contactTitle">Contact</h2>
+            <p data-i18n="contactText">Thank you for visiting my website. If you would like additional information about my research, professional activities or publications, please feel free to contact me.</p>
+            <a class="button button-primary" href="Contact.html" data-i18n="contactButton">Get in Touch</a>
+        </section>
 
-</section>
-
-        
     </main>
 
-    <footer class="footer">© Andrea Vennarucci. All rights reserved.</footer>
+    <footer class="footer" data-i18n="footer">© Andrea Vennarucci. All rights reserved.</footer>
 
     <script>
+        const translations = {
+            en: {
+                pageTitle: "Andrea Vennarucci - Home",
+                brand: "Eng. Andrea Vennarucci",
+                navHome: "Home",
+                navAbout: "About Me",
+                navPortfolio: "Portfolio",
+                navPublications: "Publications",
+                navContact: "Contact",
+                heroEyebrow: "Civil Engineer | Ph.D. Candidate | Road Safety Researcher",
+                heroStatement: "Civil engineer integrating professional practice and scientific research to advance infrastructure, mobility and safety through innovation and digital technologies.",
+                profileTitle: "Civil Engineering, Research and Digital Innovation",
+                profileText: '<span class="keyword">Civil Engineer</span> and <span class="keyword">Ph.D. Candidate</span> with a multidisciplinary profile combining transportation engineering, public safety, industrial experience and academic research. My work connects <span class="keyword">road safety</span>, <span class="keyword">fire safety engineering</span>, <span class="keyword">BIM-based digital twins</span>, immersive simulation, virtual reality and <span class="keyword">human factors</span> to address real-world challenges in mobility, infrastructure and safety.',
+                readMore: "Read more about me",
+                highlight1Title: "Ph.D. Candidate",
+                highlight1Text: "Transportation engineering, driving simulation, virtual reality, human factors and digital engineering methodologies.",
+                highlight2Title: "Civil Engineering",
+                highlight2Text: "Infrastructure engineering, mobility systems, BIM workflows and digital transformation for the built environment.",
+                highlight3Title: "Public Service",
+                highlight3Text: "Engineering activities within the Italian National Fire and Rescue Service, with a focus on fire safety, industrial risk and regulatory compliance.",
+                highlight4Title: "Industry & Asset Management",
+                highlight4Text: "Professional experience in railway asset management, BIM implementation, property processes and digital innovation.",
+                quote: "Transforming complex mobility challenges into innovative and data-driven engineering solutions.",
+                exploreTitle: "Explore My Work",
+                exploreSubtitle: "Discover my professional background, research projects and scientific contributions across engineering, mobility and digital innovation.",
+                aboutCardTitle: "About Me",
+                aboutCardText: "A civil engineering profile shaped by industrial experience, public service, academic research and international collaboration.",
+                aboutCardButton: "View Experience",
+                portfolioCardTitle: "Portfolio",
+                portfolioCardText: "Projects and research activities connecting road safety, immersive simulation, BIM, digital twins, fire safety engineering and human factors.",
+                portfolioCardButton: "View Portfolio",
+                publicationsCardTitle: "Publications",
+                publicationsCardText: "Scientific publications in international journals, conference proceedings and applied transportation safety research.",
+                publicationsCardButton: "View Publications",
+                contactTitle: "Contact",
+                contactText: "Thank you for visiting my website. If you would like additional information about my research, professional activities or publications, please feel free to contact me.",
+                contactButton: "Get in Touch",
+                footer: "© Andrea Vennarucci. All rights reserved."
+            },
+            it: {
+                pageTitle: "Andrea Vennarucci - Home",
+                brand: "Ing. Andrea Vennarucci",
+                navHome: "Home",
+                navAbout: "Chi sono",
+                navPortfolio: "Portfolio",
+                navPublications: "Pubblicazioni",
+                navContact: "Contatti",
+                heroEyebrow: "Ingegnere civile | Dottorando di ricerca | Ricercatore in sicurezza stradale",
+                heroStatement: "Ingegnere civile che integra pratica professionale e ricerca scientifica per contribuire allo sviluppo delle infrastrutture, della mobilità e della sicurezza attraverso l’innovazione e le tecnologie digitali.",
+                profileTitle: "Ingegneria civile, ricerca e innovazione digitale",
+                profileText: '<span class="keyword">Ingegnere civile</span> e <span class="keyword">dottorando di ricerca</span> con un profilo multidisciplinare che integra ingegneria delle infrastrutture viarie, ingegneria della sicurezza, esperienza industriale e ricerca accademica. Il mio lavoro collega <span class="keyword">sicurezza stradale</span>, <span class="keyword">sicurezza antincendio</span>, <span class="keyword">digital twin BIM-based</span>, simulazione immersiva, realtà virtuale e <span class="keyword">fattori umani</span> per affrontare problemi concreti riguardanti mobilità, infrastrutture e sicurezza.',
+                readMore: "Scopri di più",
+                highlight1Title: "Dottorando di ricerca",
+                highlight1Text: "Ingegneria delle infrastrutture viarie, simulazione di guida, realtà virtuale e fattori umani.",
+                highlight2Title: "Ingegneria civile",
+                highlight2Text: "Infrastrutture viarie, sistemi di trasporto, BIM e trasformazione digitale dell’ambiente costruito.",
+                highlight3Title: "Servizio pubblico",
+                highlight3Text: "Funzionario Tecnico nel Corpo nazionale dei Vigili del Fuoco, con particolare attenzione alla prevensione incendi e al rischio industriale.",
+                highlight4Title: "Industria e asset management",
+                highlight4Text: "Esperienza professionale nella gestione del patrimonio ferroviario, nei processi immobiliari e nella redazione di Due Diligence per vendita, property e facility management.",
+                quote: "Trasformare le complesse sfide della mobilità in soluzioni ingegneristiche innovative e basate sui dati.",
+                exploreTitle: "Esplora il mio lavoro",
+                exploreSubtitle: "Scopri il mio percorso professionale, i progetti di ricerca e i contributi scientifici nei settori dell’ingegneria, della mobilità e dell’innovazione digitale.",
+                aboutCardTitle: "Chi sono",
+                aboutCardText: "Un profilo di ingegnere civile costruito attraverso esperienza industriale, servizio pubblico, ricerca accademica e collaborazione internazionale.",
+                aboutCardButton: "Scopri il percorso",
+                portfolioCardTitle: "Portfolio",
+                portfolioCardText: "Progetti e attività che collegano sicurezza stradale, simulazione immersiva, BIM, digital twin, e fattori umani.",
+                portfolioCardButton: "Visualizza il portfolio",
+                publicationsCardTitle: "Pubblicazioni",
+                publicationsCardText: "Pubblicazioni scientifiche su riviste internazionali, atti di convegni e ricerche applicate alla sicurezza.",
+                publicationsCardButton: "Visualizza le pubblicazioni",
+                contactTitle: "Contatti",
+                contactText: "Grazie per aver visitato il mio sito. Per ricevere ulteriori informazioni sulle mie attività di ricerca, professionali o sulle mie pubblicazioni, è possibile contattarmi.",
+                contactButton: "Contattami",
+                footer: "© Andrea Vennarucci. Tutti i diritti riservati."
+            }
+        };
+
+        function setLanguage(language) {
+            const selectedLanguage = translations[language] ? language : "en";
+            const dictionary = translations[selectedLanguage];
+
+            document.documentElement.lang = selectedLanguage;
+            document.title = dictionary.pageTitle;
+
+            document.querySelectorAll("[data-i18n]").forEach(function (element) {
+                const key = element.getAttribute("data-i18n");
+                if (dictionary[key] !== undefined) {
+                    element.textContent = dictionary[key];
+                }
+            });
+
+            document.querySelectorAll("[data-i18n-html]").forEach(function (element) {
+                const key = element.getAttribute("data-i18n-html");
+                if (dictionary[key] !== undefined) {
+                    element.innerHTML = dictionary[key];
+                }
+            });
+
+            document.querySelectorAll(".language-button").forEach(function (button) {
+                const isActive = button.dataset.lang === selectedLanguage;
+                button.classList.toggle("active", isActive);
+                button.setAttribute("aria-pressed", isActive ? "true" : "false");
+            });
+
+            localStorage.setItem("siteLanguage", selectedLanguage);
+        }
+
         function toggleMenu() {
             document.querySelector(".nav-links").classList.toggle("open");
         }
+
+        const savedLanguage = localStorage.getItem("siteLanguage") || "en";
+        setLanguage(savedLanguage);
 
         const heroImage = document.querySelector(".hero-image");
 
