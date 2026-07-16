@@ -116,6 +116,50 @@
                         border-radius: 99px
                     }
 
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 4px;
+        }
+
+        .language-button {
+            width: 38px;
+            height: 34px;
+            padding: 0;
+            border: 1px solid rgba(10,31,68,.14);
+            border-radius: 10px;
+            background: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: .58;
+            overflow: hidden;
+            transition: opacity .2s ease, transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+        }
+
+            .language-button svg {
+                width: 28px;
+                height: 20px;
+                display: block;
+                border-radius: 3px;
+                box-shadow: 0 2px 6px rgba(10,31,68,.16);
+            }
+
+            .language-button:hover {
+                opacity: 1;
+                transform: translateY(-2px);
+                border-color: rgba(10,31,68,.34);
+            }
+
+            .language-button.active {
+                opacity: 1;
+                border-color: var(--gold);
+                box-shadow: 0 5px 14px rgba(10,31,68,.14);
+            }
+
         .menu-toggle {
             display: none;
             border: 0;
@@ -306,7 +350,7 @@
             }
 
             .publication-card::after {
-                content: "Read publication →";
+                content: var(--publication-cta, "Read publication →");
                 position: absolute;
                 right: 24px;
                 bottom: 18px;
@@ -321,7 +365,7 @@
                 opacity: 1
             }
 
-           
+
 
 
             .publication-card h3 {
@@ -722,22 +766,44 @@
                      alt="Andrea Vennarucci"
                      style="width:42px;height:42px;object-fit:contain;">
 
-                <span>Eng. Andrea Vennarucci</span>
+                <span data-i18n="brand">Eng. Andrea Vennarucci</span>
 
             </a>
 
             <div class="nav-links">
 
-                <a href="index.html">Home</a>
+                <a href="index.html" data-i18n="navHome">Home</a>
 
-                <a href="AboutMe.html">About Me</a>
+                <a href="AboutMe.html" data-i18n="navAbout">About Me</a>
 
-                <a href="portfolio.html">Portfolio</a>
+                <a href="portfolio.html" data-i18n="navPortfolio">Portfolio</a>
 
-                <a class="active" href="ScientificPublications.html">Publications</a>
+                <a class="active" href="ScientificPublications.html" data-i18n="navPublications">Publications</a>
 
-                <a href="Contact.html">Contact</a>
+                <a href="Contact.html" data-i18n="navContact">Contact</a>
 
+            </div>
+
+
+            <div class="language-switcher" aria-label="Language selection">
+                <button class="language-button active" type="button" data-lang="en"
+                        onclick="setLanguage('en')" aria-label="English" title="English">
+                    <svg viewBox="0 0 60 36" aria-hidden="true">
+                        <rect width="60" height="36" fill="#012169"></rect>
+                        <path d="M0 0 L60 36 M60 0 L0 36" stroke="#ffffff" stroke-width="8"></path>
+                        <path d="M0 0 L60 36 M60 0 L0 36" stroke="#c8102e" stroke-width="4"></path>
+                        <path d="M30 0 V36 M0 18 H60" stroke="#ffffff" stroke-width="12"></path>
+                        <path d="M30 0 V36 M0 18 H60" stroke="#c8102e" stroke-width="7"></path>
+                    </svg>
+                </button>
+                <button class="language-button" type="button" data-lang="it"
+                        onclick="setLanguage('it')" aria-label="Italiano" title="Italiano">
+                    <svg viewBox="0 0 60 36" aria-hidden="true">
+                        <rect x="0" width="20" height="36" fill="#009246"></rect>
+                        <rect x="20" width="20" height="36" fill="#ffffff"></rect>
+                        <rect x="40" width="20" height="36" fill="#ce2b37"></rect>
+                    </svg>
+                </button>
             </div>
 
             <button class="menu-toggle"
@@ -756,9 +822,9 @@
             <div class="hero-overlay"></div>
             <div class="hero-inner">
                 <div class="hero-content">
-                    <h1>Scientific Publications</h1>
-                    <div class="eyebrow">Research | Conferences | Scientific Dissemination</div>
-                    <p class="hero-subtitle">A research path focused on Virtual Reality, Road Safety, Immersive Simulation, Digital Twins and emerging technologies for safer mobility systems.</p>
+                    <h1 data-i18n="heroTitle">Scientific Publications</h1>
+                    <div class="eyebrow" data-i18n="heroEyebrow">Research | Conferences | Scientific Dissemination</div>
+                    <p class="hero-subtitle" data-i18n="heroSubtitle">A research path focused on Virtual Reality, Road Safety, Immersive Simulation, Digital Twins and emerging technologies for safer mobility systems.</p>
                 </div>
             </div>
         </section>
@@ -766,159 +832,280 @@
         <section class="section">
             <div class="research-panel">
                 <aside class="research-side">
-                    <h2>Research Profile</h2>
-                    <p>Human behaviour, virtual environments and digital infrastructure systems as integrated tools for road safety research.</p>
+                    <h2 data-i18n="researchTitle">Research Profile</h2>
+                    <p data-i18n="researchLead">Human behaviour, virtual environments and digital infrastructure systems as integrated tools for road safety research.</p>
                 </aside>
                 <div class="research-copy">
-                    <p>My research activity focuses on the analysis of the <span class="keyword">Human Factor</span> through advanced investigation and modelling methodologies. In particular, the study of <span class="keyword">User Behaviour</span> represents a central research field, aimed at understanding the decision-making, perceptual and operational dynamics that characterize the interaction between road users, vehicles and the road environment.</p>
-                    <p>Within this framework, an additional research area concerns <span class="keyword">co-simulation in virtual environments</span>, with the objective of analysing complex systems in which multiple users interact simultaneously. Special attention is devoted to the mutual interference among different road users, a crucial aspect in understanding safety and risk-related phenomena, especially in interactions involving <span class="keyword">Vulnerable Road Users</span> such as pedestrians and motorcyclists.</p>
-                    <p>At the same time, the research explores the potential offered by <span class="keyword">metaverse paradigms</span> and <span class="keyword">virtual reality technologies</span> for the development of highly immersive and high-fidelity simulation scenarios. These environments integrate data collected through field investigations in order to ensure a realistic and ecologically valid representation of behaviours and operational conditions observed in real-world contexts.</p>
-                    <p>Finally, a further area of development concerns the application of <span class="keyword">Building Information Modelling</span>, particularly in relation to the implementation of <span class="keyword">Digital Twins</span>. The objective is to create advanced simulation environments capable of dynamically integrating and analysing heterogeneous information, thus supporting the study of mobility and road safety phenomena within virtual, augmented and immersive contexts.</p>
+                    <p data-i18n-html="researchP1">My research activity focuses on the analysis of the <span class="keyword">Human Factor</span> through advanced investigation and modelling methodologies. In particular, the study of <span class="keyword">User Behaviour</span> represents a central research field, aimed at understanding the decision-making, perceptual and operational dynamics that characterize the interaction between road users, vehicles and the road environment.</p>
+                    <p data-i18n-html="researchP2">Within this framework, an additional research area concerns <span class="keyword">co-simulation in virtual environments</span>, with the objective of analysing complex systems in which multiple users interact simultaneously. Special attention is devoted to the mutual interference among different road users, a crucial aspect in understanding safety and risk-related phenomena, especially in interactions involving <span class="keyword">Vulnerable Road Users</span> such as pedestrians and motorcyclists.</p>
+                    <p data-i18n-html="researchP3">At the same time, the research explores the potential offered by <span class="keyword">metaverse paradigms</span> and <span class="keyword">virtual reality technologies</span> for the development of highly immersive and high-fidelity simulation scenarios. These environments integrate data collected through field investigations in order to ensure a realistic and ecologically valid representation of behaviours and operational conditions observed in real-world contexts.</p>
+                    <p data-i18n-html="researchP4">Finally, a further area of development concerns the application of <span class="keyword">Building Information Modelling</span>, particularly in relation to the implementation of <span class="keyword">Digital Twins</span>. The objective is to create advanced simulation environments capable of dynamically integrating and analysing heterogeneous information, thus supporting the study of mobility and road safety phenomena within virtual, augmented and immersive contexts.</p>
                 </div>
             </div>
         </section>
 
         <section class="section" id="publications">
-            <h2 class="section-title">Peer Reviewed Publications</h2>
-            <p class="section-subtitle">Selected publications in journals, conference proceedings and scientific venues.</p>
+            <h2 class="section-title" data-i18n="publicationsTitle">Publications</h2>
+            <p class="section-subtitle" data-i18n="publicationsSubtitle">Selected publications in journals, conference proceedings and scientific venues.</p>
             <div class="publications-list">
 
                 <article class="publication-card" onclick="openPublication('https://ssrn.com/abstract=7102039')" role="link" tabindex="0">
                     <h3>Motorcyclist Behaviour in Car-Following Conditions: Effects of an Auditory ARAS in an Immersive Virtual Reality Simulator</h3>
                     <p>Calvi, A., <span class="author">Vennarucci, A.</span>, Di Russo, R., Bella, F. (2026). Available at SSRN.</p>
-                    <div class="publication-meta"><span class="tag">Preprint Not Peer Reviewed</span><span class="doi">10.2139/ssrn.7102039</span></div>
+                    <div class="publication-meta"><span class="tag" data-i18n="tagPreprint">Preprint Not Peer Reviewed</span><span class="doi">10.2139/ssrn.7102039</span></div>
                 </article>
 
 
                 <article class="publication-card" onclick="openPublication('https://www.sciencedirect.com/science/article/pii/S136984782500395X')" role="link" tabindex="0">
                     <h3>Assessing the Effectiveness of Augmented Reality Warnings for Improving Safety at Highway Merging Zones</h3>
                     <p>Calvi, A., <span class="author">Vennarucci, A.</span> (2026). Transportation Research Part F: Traffic Psychology and Behaviour, 116, 103440.</p>
-                    <div class="publication-meta"><span class="tag">Journal Article</span><span class="doi">10.1016/j.trf.2025.103440</span></div>
+                    <div class="publication-meta"><span class="tag" data-i18n="tagJournal">Journal Article</span><span class="doi">10.1016/j.trf.2025.103440</span></div>
                 </article>
 
                 <article class="publication-card" onclick="openPublication('https://www.spiedigitallibrary.org/conference-proceedings-of-spie/13671/3071919/Real-time-LiDAR-applications-for-assessing-the-safety-of-vulnerable/10.1117/12.3071919.full')" role="link" tabindex="0">
                     <h3>Real-time LiDAR applications for assessing the safety of vulnerable road users at urban intersections</h3>
                     <p><span class="author">Vennarucci, A.</span>, Manalo, J.R.D., Gagliardi, V., Calvi, A., Bella, F. (2025). Proc. SPIE 13671, 136710A.</p>
-                    <div class="publication-meta"><span class="tag">Proceedings</span><span class="doi">10.1117/12.3071919</span></div>
+                    <div class="publication-meta"><span class="tag" data-i18n="tagProceedings">Proceedings</span><span class="doi">10.1117/12.3071919</span></div>
                 </article>
 
                 <article class="publication-card" onclick="openPublication('https://www.sciencedirect.com/science/article/pii/S2352146525005988')" role="link" tabindex="0">
                     <h3>A Novel Co-Simulation Platform for Driving Performance Evaluation of Various Road Users</h3>
                     <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2025). Transportation Research Procedia, 90, 710–717.</p>
-                    <div class="publication-meta"><span class="tag">Proceedings</span><span class="doi">10.1016/j.trpro.2025.06.088</span></div>
+                    <div class="publication-meta"><span class="tag" data-i18n="tagProceedings">Proceedings</span><span class="doi">10.1016/j.trpro.2025.06.088</span></div>
                 </article>
 
                 <article class="publication-card" onclick="openPublication('https://www.researchgate.net/publication/380476260_Distraction_Effects_of_Manual_Texting_and_Voice_Messaging_When_Approaching_Pedestrian_Crossings_on_Urban_Roads_a_Driving_Simulator_Study')" role="link" tabindex="0">
                     <h3>Distraction effects of manual texting and voice messaging when approaching pedestrian crossings on urban roads</h3>
                     <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2024). European Transport, 97, 6.</p>
-                    <div class="publication-meta"><span class="tag">Journal Article</span><span class="doi">10.48295/ET.2024.97.6</span></div>
+                    <div class="publication-meta"><span class="tag" data-i18n="tagJournal">Journal Article</span><span class="doi">10.48295/ET.2024.97.6</span></div>
                 </article>
 
                 <article class="publication-card" onclick="openPublication('https://ictct.net/')" role="link" tabindex="0">
                     <h3>Driving simulator studies to evaluate advanced warning systems integrated with connected vehicles technology</h3>
                     <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2023). 35th ICTCT Conference, Catania, Italy.</p>
-                    <div class="publication-meta"><span class="tag">Conference Paper</span><span class="doi">Conference Link</span></div>
+                    <div class="publication-meta"><span class="tag" data-i18n="tagConferencePaper">Conference Paper</span><span class="doi" data-i18n="tagConferenceLink">Conference Link</span></div>
                 </article>
 
                 <article class="publication-card" onclick="openPublication('https://www.stradeeautostrade.it/segnaletica-e-sicurezza/lutilizzo-dello-smartphone-alla-guida/')" role="link" tabindex="0">
                     <h3>L’utilizzo dello smartphone alla guida</h3>
                     <p>Calvi, A., D’Amico, F., Mustone, V., <span class="author">Vennarucci, A.</span> (2023). Strade & Autostrade, 158, 203–208.</p>
-                    <div class="publication-meta"><span class="tag">Magazine Article</span><span class="doi">ISSN 1723-2155</span></div>
+                    <div class="publication-meta"><span class="tag" data-i18n="tagMagazine">Magazine Article</span><span class="doi">ISSN 1723-2155</span></div>
                 </article>
 
                 <article class="publication-card" onclick="openPublication('https://www.opentransportationjournal.com/VOLUME/17/ELOCATOR/e187444782301191/FULLTEXT/')" role="link" tabindex="0">
                     <h3>Comparing eye-tracking system effectiveness in field and driving simulator studies</h3>
                     <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2023). Open Transportation Journal, 17, 3.</p>
-                    <div class="publication-meta"><span class="tag">Journal Article</span><span class="doi">10.2174/18744478-v17-e230404-2022-49</span></div>
+                    <div class="publication-meta"><span class="tag" data-i18n="tagJournal">Journal Article</span><span class="doi">10.2174/18744478-v17-e230404-2022-49</span></div>
                 </article>
 
             </div>
         </section>
 
         <section class="section" id="conferences">
-            <h2 class="section-title">International Conferences & Scientific Dissemination</h2>
-            <p class="section-subtitle">Scientific dissemination activities, conference presentations and research events.</p>
+            <h2 class="section-title" data-i18n="conferencesTitle">International Conferences & Scientific Dissemination</h2>
+            <p class="section-subtitle" data-i18n="conferencesSubtitle">Scientific dissemination activities, conference presentations and research events.</p>
             <div class="conference-grid">
-                <article class="conference-card"><span class="conference-date">14–17 Sep 2026</span><h3>SPIE Sensors + Imaging 2026</h3><div class="conference-place">Edinburgh, United Kingdom</div><p>Speaker at international conference. Topic: Digital Twins — Optimizing BIM-based software for enhanced virtual reality simulation based on Digital Twins.</p></article>
-                <article class="conference-card"><span class="conference-date">23–26 Jun 2026</span><h3>Road Safety & Simulation 2026</h3><div class="conference-place">Napoli, Italy</div><p>Speaker at the 10th International Road Safety & Simulation Conference. Topics: HMD-based driving simulator validation and driver–pedestrian interaction at urban crosswalks.</p></article>
-                <article class="conference-card"><span class="conference-date">15 May 2026</span><h3>PRIN 2022 ARCADE Closing Event</h3><div class="conference-place">Roma, Italy</div><p>Presentation on multi-perspective simulation in virtual reality within the ARCADE research project, with patronage from the Order of Engineers of Rome.</p></article>
-                <article class="conference-card"><span class="conference-date">03–08 May 2026</span><h3>EGU General Assembly 2026</h3><div class="conference-place">Vienna, Austria</div><p>Co-author of a scientific poster on multi-source non-destructive testing survey for digital modelling and reconstruction.</p></article>
-                <article class="conference-card"><span class="conference-date">15–19 Sep 2025</span><h3>SPIE Sensors + Imaging 2025</h3><div class="conference-place">Madrid, Spain</div><p>Speaker. Topic: Real-Time LiDAR Applications for Assessing the Safety of Vulnerable Road Users at Urban Intersections.</p></article>
-                <article class="conference-card"><span class="conference-date">19–20 Sep 2024</span><h3>AIIT TIS Roma 2024</h3><div class="conference-place">Roma, Italy</div><p>Speaker. Topic: A Novel Co-Simulation Platform for Driving Performance Evaluation of Various Road Users.</p></article>
-                <article class="conference-card"><span class="conference-date">06–08 Sep 2023</span><h3>Living and Walking in Cities 2023</h3><div class="conference-place">Brescia, Italy</div><p>Speaker. Topic: Distraction effects of manual texting and voice messaging when approaching pedestrian crossings on urban roads.</p></article>
+                <article class="conference-card"><span class="conference-date">14–17 Sep 2026</span><h3>SPIE Sensors + Imaging 2026</h3><div class="conference-place">Edinburgh, United Kingdom</div><p data-i18n="conf1">Speaker at international conference. Topic: Digital Twins — Optimizing BIM-based software for enhanced virtual reality simulation based on Digital Twins.</p></article>
+                <article class="conference-card"><span class="conference-date">23–26 Jun 2026</span><h3>Road Safety & Simulation 2026</h3><div class="conference-place">Napoli, Italy</div><p data-i18n="conf2">Speaker at the 10th International Road Safety & Simulation Conference. Topics: HMD-based driving simulator validation and driver–pedestrian interaction at urban crosswalks.</p></article>
+                <article class="conference-card"><span class="conference-date">15 May 2026</span><h3>PRIN 2022 ARCADE Closing Event</h3><div class="conference-place">Roma, Italy</div><p data-i18n="conf3">Presentation on multi-perspective simulation in virtual reality within the ARCADE research project, with patronage from the Order of Engineers of Rome.</p></article>
+                <article class="conference-card"><span class="conference-date">03–08 May 2026</span><h3>EGU General Assembly 2026</h3><div class="conference-place">Vienna, Austria</div><p data-i18n="conf4">Co-author of a scientific poster on multi-source non-destructive testing survey for digital modelling and reconstruction.</p></article>
+                <article class="conference-card"><span class="conference-date">15–19 Sep 2025</span><h3>SPIE Sensors + Imaging 2025</h3><div class="conference-place">Madrid, Spain</div><p data-i18n="conf5">Speaker. Topic: Real-Time LiDAR Applications for Assessing the Safety of Vulnerable Road Users at Urban Intersections.</p></article>
+                <article class="conference-card"><span class="conference-date">19–20 Sep 2024</span><h3>AIIT TIS Roma 2024</h3><div class="conference-place">Roma, Italy</div><p data-i18n="conf6">Speaker. Topic: A Novel Co-Simulation Platform for Driving Performance Evaluation of Various Road Users.</p></article>
+                <article class="conference-card"><span class="conference-date">06–08 Sep 2023</span><h3>Living and Walking in Cities 2023</h3><div class="conference-place">Brescia, Italy</div><p data-i18n="conf7">Speaker. Topic: Distraction effects of manual texting and voice messaging when approaching pedestrian crossings on urban roads.</p></article>
             </div>
         </section>
 
         <!--
-            
-        
-
-
-
-                    .publication-card:before {
-            counter-increment: pub;
-            content: counter(pub);
-            position: absolute;
-            left: 24px;
-            top: 24px;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(135deg,var(--navy),#2d75bd);
-            color: #ffffff;
-            font-weight: 800;
-            font-size: 14px
-        }
 
 
 
 
+
+                        .publication-card:before {
+                counter-increment: pub;
+                content: counter(pub);
+                position: absolute;
+                left: 24px;
+                top: 24px;
+                width: 34px;
+                height: 34px;
+                border-radius: 50%;
+                display: grid;
+                place-items: center;
+                background: linear-gradient(135deg,var(--navy),#2d75bd);
+                color: #ffffff;
+                font-weight: 800;
+                font-size: 14px
+            }
 
 
 
 
 
 
-        <section class="section">
-        <h2 class="section-title">Research & Conference Highlights</h2>
-        <p class="section-subtitle">A visual sequence of research activities, conference presentations and academic dissemination moments.</p>
 
-        <div class="publication-carousel" aria-label="Research and conference image carousel">
-            <div class="carousel-track">
-                <article class="mosaic-card tall"><img src="image/LWC.jpg" alt="LWC 2023"><div class="mosaic-caption">LWC 2023 - Brescia 06/09/2023 - 08/09/2023</div></article>
-                <article class="mosaic-card wide"><img src="image/TIS2024.png" alt="TIS 2024"><div class="mosaic-caption">TIS 2024 - Roma</div></article>-
-                <article class="mosaic-card tall"><img src="image/Spie1.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
-                <article class="mosaic-card tall"><img src="image/Spie2.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
-                <article class="mosaic-card"><img src="image/RSS1.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
-                <article class="mosaic-card"><img src="image/RSS2.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
-                <article class="mosaic-card wide"><img src="image/ARCADE.jpeg" alt="PRIN 2022 ARCADE"><div class="mosaic-caption">ARCADE Project Closing Event  - Roma 15/05/2026</div></article>
 
-                <article class="mosaic-card tall"><img src="image/LWC.jpg" alt="LWC 2023"><div class="mosaic-caption">LWC 2023 - Brescia 06/09/2023 - 08/09/2023</div></article>
-                <article class="mosaic-card wide"><img src="image/TIS2024.png" alt="TIS 2024"><div class="mosaic-caption">TIS 2024 - Roma</div></article>
-                <article class="mosaic-card tall"><img src="image/Spie1.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
-                <article class="mosaic-card tall"><img src="image/Spie2.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
-                <article class="mosaic-card"><img src="image/RSS1.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
-                <article class="mosaic-card"><img src="image/RSS2.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
-                <article class="mosaic-card wide"><img src="image/ARCADE.jpeg" alt="PRIN 2022 ARCADE"><div class="mosaic-caption">ARCADE Project Closing Event  - Roma 15/05/2026</div></article>
 
+
+            <section class="section">
+            <h2 class="section-title">Research & Conference Highlights</h2>
+            <p class="section-subtitle">A visual sequence of research activities, conference presentations and academic dissemination moments.</p>
+
+            <div class="publication-carousel" aria-label="Research and conference image carousel">
+                <div class="carousel-track">
+                    <article class="mosaic-card tall"><img src="image/LWC.jpg" alt="LWC 2023"><div class="mosaic-caption">LWC 2023 - Brescia 06/09/2023 - 08/09/2023</div></article>
+                    <article class="mosaic-card wide"><img src="image/TIS2024.png" alt="TIS 2024"><div class="mosaic-caption">TIS 2024 - Roma</div></article>-
+                    <article class="mosaic-card tall"><img src="image/Spie1.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
+                    <article class="mosaic-card tall"><img src="image/Spie2.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
+                    <article class="mosaic-card"><img src="image/RSS1.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
+                    <article class="mosaic-card"><img src="image/RSS2.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
+                    <article class="mosaic-card wide"><img src="image/ARCADE.jpeg" alt="PRIN 2022 ARCADE"><div class="mosaic-caption">ARCADE Project Closing Event  - Roma 15/05/2026</div></article>
+
+                    <article class="mosaic-card tall"><img src="image/LWC.jpg" alt="LWC 2023"><div class="mosaic-caption">LWC 2023 - Brescia 06/09/2023 - 08/09/2023</div></article>
+                    <article class="mosaic-card wide"><img src="image/TIS2024.png" alt="TIS 2024"><div class="mosaic-caption">TIS 2024 - Roma</div></article>
+                    <article class="mosaic-card tall"><img src="image/Spie1.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
+                    <article class="mosaic-card tall"><img src="image/Spie2.jpg" alt="SPIE 2025"><div class="mosaic-caption">SPIE 2025 - Madrid 15/09/2025 - 19/09/2025</div></article>
+                    <article class="mosaic-card"><img src="image/RSS1.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
+                    <article class="mosaic-card"><img src="image/RSS2.jpeg" alt="RSS 2026"><div class="mosaic-caption">RSS 2026 - Napoli 23/06/2026 - 26/06/2026</div></article>
+                    <article class="mosaic-card wide"><img src="image/ARCADE.jpeg" alt="PRIN 2022 ARCADE"><div class="mosaic-caption">ARCADE Project Closing Event  - Roma 15/05/2026</div></article>
+
+                </div>
             </div>
-        </div>
-    </section>-->
+        </section>-->
 
-        <section class="quote"><div class="quote-box"><p>Research as a bridge between human behaviour, digital technologies and safer infrastructure systems.</p></div></section>
+        <section class="quote"><div class="quote-box"><p data-i18n="quote">Research as a bridge between human behaviour, digital technologies and safer infrastructure systems.</p></div></section>
 
         <section class="back-top">
-            <h2>Continue Exploring</h2>
-            <p>Return to the top of the page or use the navigation menu to explore the remaining sections of the website.</p>
-            <button class="button button-primary" type="button" onclick="scrollToTop()">↑ Back to Top</button>
+            <h2 data-i18n="continueTitle">Continue Exploring</h2>
+            <p data-i18n="continueText">Return to the top of the page or use the navigation menu to explore the remaining sections of the website.</p>
+            <button class="button button-primary" type="button" onclick="scrollToTop()" data-i18n="backTopButton">↑ Back to Top</button>
         </section>
     </main>
 
-    <footer class="footer">© Andrea Vennarucci. All rights reserved.</footer>
+    <footer class="footer" data-i18n="footer">© Andrea Vennarucci. All rights reserved.</footer>
 
     <script>
+
+        let currentLanguage = localStorage.getItem("siteLanguage") || "en";
+
+        const translations = {
+            en: {
+                pageTitle: "Andrea Vennarucci - Scientific Publications",
+                brand: "Eng. Andrea Vennarucci",
+                navHome: "Home",
+                navAbout: "About Me",
+                navPortfolio: "Portfolio",
+                navPublications: "Publications",
+                navContact: "Contact",
+                heroTitle: "Scientific Publications",
+                heroEyebrow: "Research | Conferences | Scientific Dissemination",
+                heroSubtitle: "A research path focused on Virtual Reality, Road Safety, Immersive Simulation, Digital Twins and emerging technologies for safer mobility systems.",
+                researchTitle: "Research Profile",
+                researchLead: "Human behaviour, virtual environments and digital infrastructure systems as integrated tools for road safety research.",
+                researchP1: 'My research activity focuses on the analysis of the <span class="keyword">Human Factor</span> through advanced investigation and modelling methodologies. In particular, the study of <span class="keyword">User Behaviour</span> represents a central research field, aimed at understanding the decision-making, perceptual and operational dynamics that characterize the interaction between road users, vehicles and the road environment.',
+                researchP2: 'Within this framework, an additional research area concerns <span class="keyword">co-simulation in virtual environments</span>, with the objective of analysing complex systems in which multiple users interact simultaneously. Special attention is devoted to the mutual interference among different road users, a crucial aspect in understanding safety and risk-related phenomena, especially in interactions involving <span class="keyword">Vulnerable Road Users</span> such as pedestrians and motorcyclists.',
+                researchP3: 'At the same time, the research explores the potential offered by <span class="keyword">metaverse paradigms</span> and <span class="keyword">virtual reality technologies</span> for the development of highly immersive and high-fidelity simulation scenarios. These environments integrate data collected through field investigations in order to ensure a realistic and ecologically valid representation of behaviours and operational conditions observed in real-world contexts.',
+                researchP4: 'Finally, a further area of development concerns the application of <span class="keyword">Building Information Modelling</span>, particularly in relation to the implementation of <span class="keyword">Digital Twins</span>. The objective is to create advanced simulation environments capable of dynamically integrating and analysing heterogeneous information, thus supporting the study of mobility and road safety phenomena within virtual, augmented and immersive contexts.',
+                publicationsTitle: "Publications",
+                publicationsSubtitle: "Selected publications in journals, conference proceedings and scientific venues.",
+                conferencesTitle: "International Conferences & Scientific Dissemination",
+                conferencesSubtitle: "Scientific dissemination activities, conference presentations and research events.",
+                tagPreprint: "Preprint Not Peer Reviewed",
+                tagJournal: "Journal Article",
+                tagProceedings: "Proceedings",
+                tagConferencePaper: "Conference Paper",
+                tagMagazine: "Magazine Article",
+                tagConferenceLink: "Conference Link",
+                conf1: "Speaker at international conference. Topic: Digital Twins — Optimizing BIM-based software for enhanced virtual reality simulation based on Digital Twins.",
+                conf2: "Speaker at the 10th International Road Safety & Simulation Conference. Topics: HMD-based driving simulator validation and driver–pedestrian interaction at urban crosswalks.",
+                conf3: "Presentation on multi-perspective simulation in virtual reality within the ARCADE research project, with patronage from the Order of Engineers of Rome.",
+                conf4: "Co-author of a scientific poster on multi-source non-destructive testing survey for digital modelling and reconstruction.",
+                conf5: "Speaker. Topic: Real-Time LiDAR Applications for Assessing the Safety of Vulnerable Road Users at Urban Intersections.",
+                conf6: "Speaker. Topic: A Novel Co-Simulation Platform for Driving Performance Evaluation of Various Road Users.",
+                conf7: "Speaker. Topic: Distraction effects of manual texting and voice messaging when approaching pedestrian crossings on urban roads.",
+                quote: "Research as a bridge between human behaviour, digital technologies and safer infrastructure systems.",
+                continueTitle: "Continue Exploring",
+                continueText: "Return to the top of the page or use the navigation menu to explore the remaining sections of the website.",
+                backTopButton: "↑ Back to Top",
+                footer: "© Andrea Vennarucci. All rights reserved.",
+                publicationCta: "Read publication →"
+            },
+            it: {
+                pageTitle: "Andrea Vennarucci - Pubblicazioni scientifiche",
+                brand: "Ing. Andrea Vennarucci",
+                navHome: "Home",
+                navAbout: "Chi sono",
+                navPortfolio: "Portfolio",
+                navPublications: "Pubblicazioni",
+                navContact: "Contatti",
+                heroTitle: "Pubblicazioni scientifiche",
+                heroEyebrow: "Ricerca | Conferenze | Divulgazione scientifica",
+                heroSubtitle: "Un percorso di ricerca dedicato alla sicurezza stradale, alla simulazione immersiva, ai Digital Twin e alle tecnologie emergenti per sistemi di mobilità più sicuri.",
+                researchTitle: "Profilo di ricerca",
+                researchLead: "Comportamento umano, ambienti virtuali e sistemi infrastrutturali digitali come strumenti integrati per la ricerca sulla sicurezza stradale.",
+                researchP1: 'La mia attività di ricerca si concentra sull’analisi del <span class="keyword">fattore umano</span> mediante metodologie avanzate di indagine e modellazione. In particolare, lo studio del <span class="keyword">comportamento degli utenti</span> rappresenta un ambito centrale, finalizzato a comprendere le dinamiche decisionali, percettive e operative che caratterizzano l’interazione tra utenti della strada, veicoli e ambiente stradale.',
+                researchP2: 'In questo quadro, un ulteriore ambito di ricerca riguarda la <span class="keyword">co-simulazione in ambienti virtuali</span>, con l’obiettivo di analizzare sistemi complessi nei quali più utenti interagiscono simultaneamente. Particolare attenzione è rivolta alle interferenze reciproche tra differenti utenti della strada, soprattutto nelle interazioni che coinvolgono <span class="keyword">utenti vulnerabili</span> quali pedoni e motociclisti.',
+                researchP3: 'La ricerca esplora inoltre le potenzialità offerte dai <span class="keyword">paradigmi del metaverso</span> e dalle <span class="keyword">tecnologie di realtà virtuale</span> per lo sviluppo di scenari di simulazione altamente immersivi e ad elevata fedeltà. Questi ambienti integrano dati raccolti mediante indagini sul campo, al fine di garantire una rappresentazione realistica ed ecologicamente valida dei comportamenti e delle condizioni operative osservate nei contesti reali.',
+                researchP4: 'Un ulteriore ambito di sviluppo riguarda infine l’applicazione del <span class="keyword">Building Information Modelling</span>, con particolare riferimento all’implementazione dei <span class="keyword">Digital Twin</span>. L’obiettivo è creare ambienti di simulazione avanzati capaci di integrare e analizzare dinamicamente informazioni eterogenee, supportando lo studio dei fenomeni di mobilità e sicurezza stradale in contesti virtuali, aumentati e immersivi.',
+                publicationsTitle: "Pubblicazioni",
+                publicationsSubtitle: "Selezione di pubblicazioni su riviste e atti di convegni.",
+                conferencesTitle: "Conferenze internazionali e divulgazione scientifica",
+                conferencesSubtitle: "Attività di divulgazione scientifica, presentazioni a conferenze ed eventi di ricerca.",
+                tagPreprint: "Preprint non sottoposto a peer review",
+                tagJournal: "Articolo su rivista",
+                tagProceedings: "Atti di convegno",
+                tagConferencePaper: "Contributo a conferenza",
+                tagMagazine: "Articolo divulgativo",
+                tagConferenceLink: "Link alla conferenza",
+                conf1: "Relatore a conferenza internazionale. Tema: Digital Twins — Optimizing BIM-based software for enhanced virtual reality simulation based on Digital Twins.",
+                conf2: "Relatore alla 10th International Road Safety & Simulation Conference. Temi: validazione di un simulatore di guida basato su HMD e interazione conducente–pedone in corrispondenza degli attraversamenti urbani.",
+                conf3: "Presentazione sulla simulazione multiprospettica in realtà virtuale nell’ambito del progetto di ricerca ARCADE, con il patrocinio dell’Ordine degli Ingegneri di Roma.",
+                conf4: "Coautore di un poster scientifico su indagini non distruttive multi-sorgente per la modellazione e la ricostruzione digitale.",
+                conf5: "Relatore. Tema: Real-Time LiDAR Applications for Assessing the Safety of Vulnerable Road Users at Urban Intersections.",
+                conf6: "Relatore. Tema: A Novel Co-Simulation Platform for Driving Performance Evaluation of Various Road Users.",
+                conf7: "Relatore. Tema: Distraction effects of manual texting and voice messaging when approaching pedestrian crossings on urban roads.",
+                quote: "La ricerca come ponte tra comportamento umano, tecnologie digitali e sistemi infrastrutturali più sicuri.",
+                continueTitle: "Continua a esplorare",
+                continueText: "Torna all’inizio della pagina oppure utilizza il menu di navigazione per consultare le altre sezioni del sito.",
+                backTopButton: "↑ Torna all’inizio",
+                footer: "© Andrea Vennarucci. Tutti i diritti riservati.",
+                publicationCta: "Leggi la pubblicazione →"
+            }
+        };
+
+        function setLanguage(language) {
+            currentLanguage = translations[language] ? language : "en";
+            const dictionary = translations[currentLanguage];
+
+            document.documentElement.lang = currentLanguage;
+            document.title = dictionary.pageTitle;
+            document.documentElement.style.setProperty("--publication-cta", '"' + dictionary.publicationCta + '"');
+
+            document.querySelectorAll("[data-i18n]").forEach(function (element) {
+                const key = element.getAttribute("data-i18n");
+                if (dictionary[key] !== undefined) {
+                    element.textContent = dictionary[key];
+                }
+            });
+
+            document.querySelectorAll("[data-i18n-html]").forEach(function (element) {
+                const key = element.getAttribute("data-i18n-html");
+                if (dictionary[key] !== undefined) {
+                    element.innerHTML = dictionary[key];
+                }
+            });
+
+            document.querySelectorAll(".language-button").forEach(function (button) {
+                const active = button.dataset.lang === currentLanguage;
+                button.classList.toggle("active", active);
+                button.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+
+            localStorage.setItem("siteLanguage", currentLanguage);
+        }
+
+        setLanguage(currentLanguage);
+
         function toggleMenu() { document.querySelector('.nav-links').classList.toggle('open') }
         function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }) }
         function openPublication(url) { window.open(url, '_blank', 'noopener') }
