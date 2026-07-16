@@ -111,6 +111,50 @@
                         border-radius: 99px
                     }
 
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 4px;
+        }
+
+        .language-button {
+            width: 38px;
+            height: 34px;
+            padding: 0;
+            border: 1px solid rgba(10,31,68,.14);
+            border-radius: 10px;
+            background: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: .58;
+            overflow: hidden;
+            transition: opacity .2s ease, transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+        }
+
+            .language-button svg {
+                width: 28px;
+                height: 20px;
+                display: block;
+                border-radius: 3px;
+                box-shadow: 0 2px 6px rgba(10,31,68,.16);
+            }
+
+            .language-button:hover {
+                opacity: 1;
+                transform: translateY(-2px);
+                border-color: rgba(10,31,68,.34);
+            }
+
+            .language-button.active {
+                opacity: 1;
+                border-color: var(--gold);
+                box-shadow: 0 5px 14px rgba(10,31,68,.14);
+            }
+
         .menu-toggle {
             display: none;
             border: 0;
@@ -614,8 +658,35 @@
 <body>
     <header class="site-header">
         <nav class="nav" aria-label="Main navigation">
-            <a class="brand" href="index.html"><img src="image/Logo.png" alt="Andrea Vennarucci"><span>Eng. Andrea Vennarucci</span></a>
-            <div class="nav-links"><a href="index.html">Home</a><a href="AboutMe.html">About Me</a><a href="portfolio.html">Portfolio</a><a href="ScientificPublications.html">Publications</a><a class="active" href="Contact.html">Contact</a></div><button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
+            <a class="brand" href="index.html"><img src="image/Logo.png" alt="Andrea Vennarucci"><span data-i18n="brand">Eng. Andrea Vennarucci</span></a>
+            <div class="nav-links">
+                <a href="index.html" data-i18n="navHome">Home</a>
+                <a href="AboutMe.html" data-i18n="navAbout">About Me</a>
+                <a href="portfolio.html" data-i18n="navPortfolio">Portfolio</a>
+                <a href="ScientificPublications.html" data-i18n="navPublications">Publications</a>
+                <a class="active" href="Contact.html" data-i18n="navContact">Contact</a>
+            </div>
+            <div class="language-switcher" aria-label="Language selection">
+                <button class="language-button active" type="button" data-lang="en"
+                        onclick="setLanguage('en')" aria-label="English" title="English">
+                    <svg viewBox="0 0 60 36" aria-hidden="true">
+                        <rect width="60" height="36" fill="#012169"></rect>
+                        <path d="M0 0 L60 36 M60 0 L0 36" stroke="#ffffff" stroke-width="8"></path>
+                        <path d="M0 0 L60 36 M60 0 L0 36" stroke="#c8102e" stroke-width="4"></path>
+                        <path d="M30 0 V36 M0 18 H60" stroke="#ffffff" stroke-width="12"></path>
+                        <path d="M30 0 V36 M0 18 H60" stroke="#c8102e" stroke-width="7"></path>
+                    </svg>
+                </button>
+                <button class="language-button" type="button" data-lang="it"
+                        onclick="setLanguage('it')" aria-label="Italiano" title="Italiano">
+                    <svg viewBox="0 0 60 36" aria-hidden="true">
+                        <rect x="0" width="20" height="36" fill="#009246"></rect>
+                        <rect x="20" width="20" height="36" fill="#ffffff"></rect>
+                        <rect x="40" width="20" height="36" fill="#ce2b37"></rect>
+                    </svg>
+                </button>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
         </nav>
     </header>
     <main id="top">
@@ -624,68 +695,202 @@
             <div class="hero-overlay"></div>
             <div class="hero-inner">
                 <div class="hero-content">
-                    <h1>Contact</h1>
-                    <div class="eyebrow">Professional and Academic Collaborations | Enquiries</div>
-                    <p class="hero-subtitle">A dedicated space for contacts, professional collaborations, enquiries and scientific networking.</p>
+                    <h1 data-i18n="heroTitle">Contact</h1>
+                    <div class="eyebrow" data-i18n="heroEyebrow">Professional and Academic Collaborations | Enquiries</div>
+                    <p class="hero-subtitle" data-i18n="heroSubtitle">A dedicated space for contacts, professional collaborations, enquiries and scientific networking.</p>
                 </div>
             </div>
         </section>
         <section class="section">
-            <h2 class="section-title">Get in Touch</h2>
-            <p class="section-subtitle">Use the contact form for a structured message, or connect through institutional and professional channels.</p>
+            <h2 class="section-title" data-i18n="sectionTitle">Get in Touch</h2>
+            <p class="section-subtitle" data-i18n="sectionSubtitle">Use the contact form for a structured message, or connect through institutional and professional channels.</p>
             <div class="contact-grid">
                 <aside class="contact-panel">
-                    <h2>Contact Details</h2>
-                    <p>I am available for collaborations, research discussions, conference activities, scientific dissemination and professional exchanges</p>
-                    <div class="contact-item"><span class="contact-label">Email</span><a class="contact-value" href="mailto:info@andreavennarucci.com">info@andreavennarucci.com</a></div>
-                    <div class="contact-item"><span class="contact-label">Location</span><span class="contact-value">Rome, Italy</span></div>
-                    <div class="contact-item"><span class="contact-label">Research areas</span><span class="contact-value">Road Safety, Driving Simulation, BIM, Digital Twins, Virtual Reality</span></div>
-                    <div class="social-grid"><a class="social-button primary" href="mailto:info@andreavennarucci.com">Email</a><a class="social-button" href="https://www.linkedin.com/in/ing-andrea-vennarucci/" target="_blank" rel="noopener">LinkedIn</a><a class="social-button" href="https://scholar.google.com/citations?user=jmjvhggAAAAJ&hl=it" target="_blank" rel="noopener">Google Scholar</a><a class="social-button" href="https://orcid.org/0009-0002-5630-4807" target="_blank" rel="noopener">ORCID</a></div>
+                    <h2 data-i18n="detailsTitle">Contact Details</h2>
+                    <p data-i18n="detailsText">I am available for collaborations, research discussions, conference activities, scientific dissemination and professional exchanges</p>
+                    <div class="contact-item"><span class="contact-label" data-i18n="labelEmail">Email</span><a class="contact-value" href="mailto:info@andreavennarucci.com">info@andreavennarucci.com</a></div>
+                    <div class="contact-item"><span class="contact-label" data-i18n="labelLocation">Location</span><span class="contact-value" data-i18n="locationValue">Rome, Italy</span></div>
+                    <div class="contact-item"><span class="contact-label" data-i18n="labelResearch">Research areas</span><span class="contact-value" data-i18n="researchValue">Road Safety, Driving Simulation, BIM, Digital Twins, Virtual Reality</span></div>
+                    <div class="social-grid"><a class="social-button primary" href="mailto:info@andreavennarucci.com" data-i18n="emailButton">Email</a><a class="social-button" href="https://www.linkedin.com/in/ing-andrea-vennarucci/" target="_blank" rel="noopener">LinkedIn</a><a class="social-button" href="https://scholar.google.com/citations?user=jmjvhggAAAAJ&hl=it" target="_blank" rel="noopener">Google Scholar</a><a class="social-button" href="https://orcid.org/0009-0002-5630-4807" target="_blank" rel="noopener">ORCID</a></div>
                 </aside>
                 <section class="contact-form-card">
-                    <h2>Send a Message</h2>
-                    <p>
+                    <h2 data-i18n="formTitle">Send a Message</h2>
+                    <p data-i18n="formText">
                         Send a message for collaborations, academic activities
                         or professional enquiries.
                     </p>
                     <form id="contact-form">
                         <div class="form-grid">
-                            <div class="form-field"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required></div>
-                            <div class="form-field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="your.email@example.com" required></div>
-                            <div class="form-field full"><label for="subject">Subject</label><input id="subject" name="subject" type="text" placeholder="Message subject" required></div>
-                            <div class="form-field full"><label for="message">Message</label><textarea id="message" name="message" placeholder="Write your message here..." required></textarea></div>
-                        </div><button class="button button-primary" type="submit">Prepare Email</button>
-                        <div class="form-note">The message will open in your email client before sending.</div>
+                            <div class="form-field"><label for="name" data-i18n="nameLabel">Name</label><input id="name" name="name" type="text" placeholder="Your name" data-i18n-placeholder="namePlaceholder" required></div>
+                            <div class="form-field"><label for="email" data-i18n="emailLabel">Email</label><input id="email" name="email" type="email" placeholder="your.email@example.com" data-i18n-placeholder="emailPlaceholder" required></div>
+                            <div class="form-field full"><label for="subject" data-i18n="subjectLabel">Subject</label><input id="subject" name="subject" type="text" placeholder="Message subject" data-i18n-placeholder="subjectPlaceholder" required></div>
+                            <div class="form-field full"><label for="message" data-i18n="messageLabel">Message</label><textarea id="message" name="message" placeholder="Write your message here..." data-i18n-placeholder="messagePlaceholder" required></textarea></div>
+                        </div><button class="button button-primary" type="submit" data-i18n="prepareButton">Prepare Email</button>
+                        <div class="form-note" data-i18n="formNote">The message will open in your email client before sending.</div>
                     </form>
                 </section>
             </div>
             <div class="contact-cards">
                 <article class="info-card">
-                    <h3>Professional Collaborations</h3>
-                    <p>For collaborations related to road safety, virtual reality, human behaviour, microsimulation, digital infrastructure systems and asset management.</p>
+                    <h3 data-i18n="card1Title">Professional Collaborations</h3>
+                    <p data-i18n="card1Text">For collaborations related to road safety, virtual reality, human behaviour, microsimulation, digital infrastructure systems and asset management.</p>
                 </article>
                 <article class="info-card">
-                    <h3>Academic Activities</h3>
-                    <p>For conference invitations, seminars, lectures, teaching activities and scientific dissemination initiatives.</p>
+                    <h3 data-i18n="card2Title">Academic Activities</h3>
+                    <p data-i18n="card2Text">For conference invitations, seminars, lectures, teaching activities and scientific dissemination initiatives.</p>
                 </article>
                 <article class="info-card">
-                    <h3>Professional Enquiries</h3>
-                    <p>For engineering-related discussions involving infrastructure, safety, digital technologies and asset management.</p>
+                    <h3 data-i18n="card3Title">Professional Enquiries</h3>
+                    <p data-i18n="card3Text">For engineering-related discussions involving infrastructure, safety, digital technologies and asset management.</p>
                 </article>
             </div>
         </section>
         <section class="quote">
             <div class="quote-box">
-                <p>Scientific and professional exchange is often the starting point for meaningful research and engineering work.</p>
+                <p data-i18n="quote">Scientific and professional exchange is often the starting point for meaningful research and engineering work.</p>
             </div>
         </section>
         <section class="back-top">
-            <h2>Continue Exploring</h2>
-            <p>Return to the top of the page or use the navigation menu to explore the remaining sections of the website.</p><button class="button button-primary" type="button" onclick="scrollToTop()">↑ Back to Top</button>
+            <h2 data-i18n="continueTitle">Continue Exploring</h2>
+            <p data-i18n="continueText">Return to the top of the page or use the navigation menu to explore the remaining sections of the website.</p><button class="button button-primary" type="button" onclick="scrollToTop()" data-i18n="backTopButton">↑ Back to Top</button>
         </section>
     </main>
-    <footer class="footer">© Andrea Vennarucci. All rights reserved.</footer>
+    <footer class="footer" data-i18n="footer">© Andrea Vennarucci. All rights reserved.</footer>
     <script>
+
+        let currentLanguage = localStorage.getItem("siteLanguage") || "en";
+
+        const translations = {
+            en: {
+                pageTitle: "Andrea Vennarucci - Contact",
+                brand: "Eng. Andrea Vennarucci",
+                navHome: "Home",
+                navAbout: "About Me",
+                navPortfolio: "Portfolio",
+                navPublications: "Publications",
+                navContact: "Contact",
+                heroTitle: "Contact",
+                heroEyebrow: "Professional and Academic Collaborations | Enquiries",
+                heroSubtitle: "A dedicated space for contacts, professional collaborations, enquiries and scientific networking.",
+                sectionTitle: "Get in Touch",
+                sectionSubtitle: "Use the contact form for a structured message, or connect through institutional and professional channels.",
+                detailsTitle: "Contact Details",
+                detailsText: "I am available for collaborations, research discussions, conference activities, scientific dissemination and professional exchanges.",
+                labelEmail: "Email",
+                labelLocation: "Location",
+                locationValue: "Rome, Italy",
+                labelResearch: "Research areas",
+                researchValue: "Road Safety, Driving Simulation, BIM, Digital Twins, Virtual Reality",
+                emailButton: "Email",
+                formTitle: "Send a Message",
+                formText: "Send a message for collaborations, academic activities or professional enquiries.",
+                nameLabel: "Name",
+                emailLabel: "Email",
+                subjectLabel: "Subject",
+                messageLabel: "Message",
+                namePlaceholder: "Your name",
+                emailPlaceholder: "your.email@example.com",
+                subjectPlaceholder: "Message subject",
+                messagePlaceholder: "Write your message here...",
+                prepareButton: "Prepare Email",
+                formNote: "The message will open in your email client before sending.",
+                card1Title: "Professional Collaborations",
+                card1Text: "For collaborations related to road safety, virtual reality, human behaviour, microsimulation, digital infrastructure systems and asset management.",
+                card2Title: "Academic Activities",
+                card2Text: "For conference invitations, seminars, lectures, teaching activities and scientific dissemination initiatives.",
+                card3Title: "Professional Enquiries",
+                card3Text: "For engineering-related discussions involving infrastructure, safety, digital technologies and asset management.",
+                quote: "Scientific and professional exchange is often the starting point for meaningful research and engineering work.",
+                continueTitle: "Continue Exploring",
+                continueText: "Return to the top of the page or use the navigation menu to explore the remaining sections of the website.",
+                backTopButton: "↑ Back to Top",
+                footer: "© Andrea Vennarucci. All rights reserved.",
+                mailName: "Name",
+                mailEmail: "Email",
+                mailMessage: "Message"
+            },
+            it: {
+                pageTitle: "Andrea Vennarucci - Contatti",
+                brand: "Ing. Andrea Vennarucci",
+                navHome: "Home",
+                navAbout: "Chi sono",
+                navPortfolio: "Portfolio",
+                navPublications: "Pubblicazioni",
+                navContact: "Contatti",
+                heroTitle: "Contatti",
+                heroEyebrow: "Collaborazioni professionali e accademiche | Richieste",
+                heroSubtitle: "Uno spazio dedicato ai contatti, alle collaborazioni professionali, alle richieste e alle relazioni scientifiche.",
+                sectionTitle: "Entra in contatto",
+                sectionSubtitle: "Utilizza il modulo per inviare un messaggio strutturato oppure contattami attraverso i canali istituzionali e professionali.",
+                detailsTitle: "Informazioni di contatto",
+                detailsText: "Sono disponibile per collaborazioni e scambi professionali ai seguenti riferimenti.",
+                labelEmail: "Email",
+                labelLocation: "Sede",
+                locationValue: "Roma, Italia",
+                labelResearch: "Ambiti di ricerca",
+                researchValue: "Sicurezza stradale, simulazione di guida, BIM, Digital Twin, realtà virtuale",
+                emailButton: "Email",
+                formTitle: "Invia un messaggio",
+                formText: "Invia un messaggio per collaborazioni, attività accademiche o richieste professionali.",
+                nameLabel: "Nome",
+                emailLabel: "Email",
+                subjectLabel: "Oggetto",
+                messageLabel: "Messaggio",
+                namePlaceholder: "Il tuo nome",
+                emailPlaceholder: "tua.email@esempio.com",
+                subjectPlaceholder: "Oggetto del messaggio",
+                messagePlaceholder: "Scrivi qui il tuo messaggio...",
+                prepareButton: "Prepara l’email",
+                formNote: "Il messaggio verrà aperto nel tuo client di posta prima dell’invio.",
+                card1Title: "Collaborazioni professionali",
+                card1Text: "Per collaborazioni nei settori della sicurezza stradale, realtà virtuale, comportamento umano, microsimulazione, infrastrutture digitali e asset management.",
+                card2Title: "Attività accademiche",
+                card2Text: "Per conferenze, seminari, e iniziative di divulgazione scientifica.",
+                card3Title: "Richieste professionali",
+                card3Text: "Per confronti sulla attività professionale riguardanti infrastrutture viarie, sicurezza, tecnologie digitali e asset management.",
+                quote: "Lo scambio scientifico e professionale rappresenta spesso il punto di partenza per attività di ricerca e di ingegneria di grande valore.",
+                continueTitle: "Continua a esplorare",
+                continueText: "Torna all’inizio della pagina oppure utilizza il menu di navigazione per consultare le altre sezioni del sito.",
+                backTopButton: "↑ Torna all’inizio",
+                footer: "© Andrea Vennarucci. Tutti i diritti riservati.",
+                mailName: "Nome",
+                mailEmail: "Email",
+                mailMessage: "Messaggio"
+            }
+        };
+
+        function setLanguage(language) {
+            currentLanguage = translations[language] ? language : "en";
+            const dictionary = translations[currentLanguage];
+
+            document.documentElement.lang = currentLanguage;
+            document.title = dictionary.pageTitle;
+
+            document.querySelectorAll("[data-i18n]").forEach(function (element) {
+                const key = element.getAttribute("data-i18n");
+                if (dictionary[key] !== undefined) {
+                    element.textContent = dictionary[key];
+                }
+            });
+
+            document.querySelectorAll("[data-i18n-placeholder]").forEach(function (element) {
+                const key = element.getAttribute("data-i18n-placeholder");
+                if (dictionary[key] !== undefined) {
+                    element.setAttribute("placeholder", dictionary[key]);
+                }
+            });
+
+            document.querySelectorAll(".language-button").forEach(function (button) {
+                const active = button.dataset.lang === currentLanguage;
+                button.classList.toggle("active", active);
+                button.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+
+            localStorage.setItem("siteLanguage", currentLanguage);
+        }
+
+        setLanguage(currentLanguage);
+
         function toggleMenu() {
             document.querySelector('.nav-links').classList.toggle('open')
         }
@@ -707,7 +912,8 @@
             const email = document.getElementById('email').value.trim();
             const subject = document.getElementById('subject').value.trim();
             const message = document.getElementById('message').value.trim();
-            const body = 'Name: ' + encodeURIComponent(name) + '%0D%0AEmail: ' + encodeURIComponent(email) + '%0D%0A%0D%0AMessage:%0D%0A' + encodeURIComponent(message);
+            const dictionary = translations[currentLanguage];
+            const body = dictionary.mailName + ': ' + encodeURIComponent(name) + '%0D%0A' + dictionary.mailEmail + ': ' + encodeURIComponent(email) + '%0D%0A%0D%0A' + dictionary.mailMessage + ':%0D%0A' + encodeURIComponent(message);
             window.location.href = 'mailto:info@andreavennarucci.com?subject=' + encodeURIComponent(subject) + '&body=' + body;
         });
     </script>
