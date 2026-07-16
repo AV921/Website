@@ -117,6 +117,50 @@
                         border-radius: 99px;
                     }
 
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 4px;
+        }
+
+        .language-button {
+            width: 38px;
+            height: 34px;
+            padding: 0;
+            border: 1px solid rgba(10,31,68,.14);
+            border-radius: 10px;
+            background: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: .58;
+            overflow: hidden;
+            transition: opacity .2s ease, transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+        }
+
+            .language-button svg {
+                width: 28px;
+                height: 20px;
+                display: block;
+                border-radius: 3px;
+                box-shadow: 0 2px 6px rgba(10,31,68,.16);
+            }
+
+            .language-button:hover {
+                opacity: 1;
+                transform: translateY(-2px);
+                border-color: rgba(10,31,68,.34);
+            }
+
+            .language-button.active {
+                opacity: 1;
+                border-color: var(--gold);
+                box-shadow: 0 5px 14px rgba(10,31,68,.14);
+            }
+
         .menu-toggle {
             display: none;
             border: 0;
@@ -1181,22 +1225,44 @@
                      alt="Andrea Vennarucci"
                      style="width:42px;height:42px;object-fit:contain;">
 
-                <span>Eng. Andrea Vennarucci</span>
+                <span data-i18n="brand">Eng. Andrea Vennarucci</span>
 
             </a>
 
             <div class="nav-links">
 
-                <a href="index.html">Home</a>
+                <a href="index.html" data-i18n="navHome">Home</a>
 
-                <a class="active" href="AboutMe.html">About Me</a>
+                <a class="active" href="AboutMe.html" data-i18n="navAbout">About Me</a>
 
-                <a href="portfolio.html">Portfolio</a>
+                <a href="portfolio.html" data-i18n="navPortfolio">Portfolio</a>
 
-                <a href="ScientificPublications.html">Publications</a>
+                <a href="ScientificPublications.html" data-i18n="navPublications">Publications</a>
 
-                <a href="Contact.html">Contact</a>
+                <a href="Contact.html" data-i18n="navContact">Contact</a>
 
+            </div>
+
+
+            <div class="language-switcher" aria-label="Language selection">
+                <button class="language-button active" type="button" data-lang="en"
+                        onclick="setLanguage('en')" aria-label="English" title="English">
+                    <svg viewBox="0 0 60 36" aria-hidden="true">
+                        <rect width="60" height="36" fill="#012169"></rect>
+                        <path d="M0 0 L60 36 M60 0 L0 36" stroke="#ffffff" stroke-width="8"></path>
+                        <path d="M0 0 L60 36 M60 0 L0 36" stroke="#c8102e" stroke-width="4"></path>
+                        <path d="M30 0 V36 M0 18 H60" stroke="#ffffff" stroke-width="12"></path>
+                        <path d="M30 0 V36 M0 18 H60" stroke="#c8102e" stroke-width="7"></path>
+                    </svg>
+                </button>
+                <button class="language-button" type="button" data-lang="it"
+                        onclick="setLanguage('it')" aria-label="Italiano" title="Italiano">
+                    <svg viewBox="0 0 60 36" aria-hidden="true">
+                        <rect x="0" width="20" height="36" fill="#009246"></rect>
+                        <rect x="20" width="20" height="36" fill="#ffffff"></rect>
+                        <rect x="40" width="20" height="36" fill="#ce2b37"></rect>
+                    </svg>
+                </button>
             </div>
 
             <button class="menu-toggle"
@@ -1222,30 +1288,30 @@
                 <div class="hero-content">
                     <h1>Andrea Vennarucci</h1>
 
-                    <div class="eyebrow">Civil Engineer | Ph.D. Candidate | Road Safety Researcher</div>
-                    <p style="max-width:760px;margin:0 auto;color:#ffffff;font-size:16px;font-weight:500;text-shadow:0 4px 18px rgba(0,0,0,.65);">Civil Engineer specialised in road safety, fire safety engineering, and asset management.</p>
+                    <div class="eyebrow" data-i18n="heroEyebrow">Civil Engineer | Ph.D. Candidate | Road Safety Researcher</div>
+                    <p style="max-width:760px;margin:0 auto;color:#ffffff;font-size:16px;font-weight:500;text-shadow:0 4px 18px rgba(0,0,0,.65);" data-i18n="heroSubtitle">Civil Engineer specialised in road safety, fire safety engineering, and asset management.</p>
                     <div class="expertise-explorer">
 
                         <div class="expertise-tabs">
 
                             <button class="expertise-tab" type="button" onclick="openExpertiseModal('road')">
                                 <span class="expertise-icon">▥</span>
-                                <span>Road Safety</span>
+                                <span data-i18n="tabRoad">Road Safety</span>
                             </button>
 
                             <button class="expertise-tab" type="button" onclick="openExpertiseModal('fire')">
                                 <span class="expertise-icon">◈</span>
-                                <span>Fire Safety<br>Engineering</span>
+                                <span data-i18n-html="tabFire">Fire Safety<br>Engineering</span>
                             </button>
 
                             <button class="expertise-tab" type="button" onclick="openExpertiseModal('vr')">
                                 <span class="expertise-icon">▣</span>
-                                <span>Virtual<br>Reality</span>
+                                <span data-i18n-html="tabVr">Virtual<br>Reality</span>
                             </button>
 
                             <button class="expertise-tab" type="button" onclick="openExpertiseModal('bim')">
                                 <span class="expertise-icon">⬡</span>
-                                <span>Asset<br>Management</span>
+                                <span data-i18n-html="tabAsset">Asset<br>Management</span>
                             </button>
 
                         </div>
@@ -1258,43 +1324,43 @@
         <section class="section" id="about">
             <div class="profile-grid">
                 <aside class="profile-panel">
-                    <div class="section-kicker">About Me</div>
-                    <h2>Professional Profile</h2>
-                    <p>Research, engineering practice and institutional experience integrated within a single technical path.</p>
+                    <div class="section-kicker" data-i18n="aboutKicker">About Me</div>
+                    <h2 data-i18n="profileTitle">Professional Profile</h2>
+                    <p data-i18n="profileLead">Research, engineering practice and institutional experience integrated within a single technical path.</p>
                 </aside>
                 <div class="profile-copy">
-                    <p>
+                    <p data-i18n-html="profileP1">
                         Andrea Vennarucci is a <span class="keyword">Civil Engineer</span> and <span class="keyword">Ph.D. Candidate</span> whose professional and research activities are driven by a common objective:
                         improving <span class="keyword">safety</span> through engineering, scientific research and technological innovation.
                         His work combines engineering principles with advanced digital technologies to address complex challenges related to <span class="keyword">transportation systems</span>,
-                        <span class="keyword">critical infrastructure</span> and the <span class="keyword">built environment</span>, supporting the development of safer, smarter and more sustainable transportation and 
+                        <span class="keyword">critical infrastructure</span> and the <span class="keyword">built environment</span>, supporting the development of safer, smarter and more sustainable transportation and
                         infrastructure systems.
                     </p>
 
-                    <p>
+                    <p data-i18n-html="profileP2">
                         His multidisciplinary profile integrates <span class="keyword">transportation engineering</span>, <span class="keyword">road safety</span>, <span class="keyword">driving simulation</span>,
                         <span class="keyword">virtual reality</span>, <span class="keyword">Building Information Modelling (BIM)</span> and <span class="keyword">Asset Management</span>.
                         By combining experimental research, and immersive virtual environments, he applies advanced digital methodologies to  investigate human behaviour, evaluating safety-critical scenarios and
                         supporting evidence-based engineering decisions.
                     </p>
 
-                    <p>
-                        Alongside his recent academic research, his professional experience encompasses public service in <span class="keyword">fire safety</span>, <span class="keyword">risk management</span> and 
-                        <span class="keyword">emergency management</span>, as well as engineering practice in <span class="keyword">Asset Management</span>, <span class="keyword">Property Management</span> and 
-                        <span class="keyword">Facility Management</span>. These experiences have provided direct insight into the challenges associated with the protection of people, 
+                    <p data-i18n-html="profileP3">
+                        Alongside his recent academic research, his professional experience encompasses public service in <span class="keyword">fire safety</span>, <span class="keyword">risk management</span> and
+                        <span class="keyword">emergency management</span>, as well as engineering practice in <span class="keyword">Asset Management</span>, <span class="keyword">Property Management</span> and
+                        <span class="keyword">Facility Management</span>. These experiences have provided direct insight into the challenges associated with the protection of people,
                         infrastructure and strategic assets across both public and private sectors.
                     </p>
 
-                    <p>
-                        This combination of research, engineering practice and operational experience has shaped a multidisciplinary engineering perspective, 
+                    <p data-i18n-html="profileP4">
+                        This combination of research, engineering practice and operational experience has shaped a multidisciplinary engineering perspective,
                         where scientific knowledge, digital technologies and practical expertise converge to improve the <span class="keyword">safety</span>, <span class="keyword">resilience</span> and
                         <span class="keyword">efficiency</span> of complex systems.
                     </p>
 
-                    <p>
+                    <p data-i18n-html="profileP5">
                         His current interests extend across <span class="keyword">digital engineering</span>, <span class="keyword">intelligent infrastructure</span>, <span class="keyword">simulation technologies</span>,
                         <span class="keyword">digital asset management</span> and emerging computational approaches for safety assessment.
-                        Through an interdisciplinary vision that bridges engineering, technology and applied research, his work contributes to research and engineering activities focused on the development of resilient, 
+                        Through an interdisciplinary vision that bridges engineering, technology and applied research, his work contributes to research and engineering activities focused on the development of resilient,
                         human-centred and digitally enabled infrastructure systems.
                     </p>
 
@@ -1304,7 +1370,7 @@
 
         <section class="quote">
             <div class="quote-box">
-                <p>Transforming complex mobility challenges into innovative and data driven engineering solutions.</p>
+                <p data-i18n="quote">Transforming complex mobility challenges into innovative and data driven engineering solutions.</p>
             </div>
         </section>
 
@@ -1395,7 +1461,7 @@
                     }
 
                         .card::after {
-                            content: "Click to explore →";
+                            content: var(--journey-hint, "Click to explore →");
                             position: absolute;
                             bottom: 4px;
                             right: 14px;
@@ -1537,8 +1603,7 @@
                         color: #071b3a;
                         font-weight: 600;
                         text-align: justify;
-                        text-justify:inter-word;
-                       
+                        text-justify: inter-word;
                     }
 
                     @media (max-width: 900px) {
@@ -1670,8 +1735,8 @@
                     }
                 </style>
 
-                <div class="journey-title">Professional Journey</div>
-                <div class="journey-subtitle">
+                <div class="journey-title" data-i18n="journeyTitle">Professional Journey</div>
+                <div class="journey-subtitle" data-i18n-html="journeySubtitle">
                     An overview of my academic and professional journey<br>
                     combining education, research and engineering practice.
                 </div>
@@ -1681,68 +1746,68 @@
                     <div class="journey-item">
                         <div class="dot"></div>
                         <div class="card" onclick="openJourneyModal('modal-bachelor')">
-                            <div class="date date-academic">ACADEMIC</div>
-                            <div class="role">Bachelor's Degree<br>in Civil Engineering</div>
-                            <div class="detail">University of Roma Tre</div>
+                            <div class="date date-academic" data-i18n="tagAcademic">ACADEMIC</div>
+                            <div class="role" data-i18n-html="journeyBachelor">Bachelor's Degree<br>in Civil Engineering</div>
+                            <div class="detail" data-i18n-html="romaTre">University of Roma Tre</div>
                         </div>
                     </div>
 
                     <div class="journey-item">
                         <div class="dot"></div>
                         <div class="card" onclick="openJourneyModal('modal-master')">
-                            <div class="date date-academic">ACADEMIC</div>
-                            <div class="role">Master's Degree<br>in Civil Engineering</div>
-                            <div class="detail italic">Transportation Infrastructure</div>
-                            <div class="detail">University of Roma Tre</div>
+                            <div class="date date-academic" data-i18n="tagAcademic">ACADEMIC</div>
+                            <div class="role" data-i18n-html="journeyMaster">Master's Degree<br>in Civil Engineering</div>
+                            <div class="detail italic" data-i18n-html="transportInfrastructure">Transportation Infrastructure</div>
+                            <div class="detail" data-i18n="romaTre">University of Roma Tre</div>
                         </div>
                     </div>
 
                     <div class="journey-item">
                         <div class="dot"></div>
                         <div class="card" onclick="openJourneyModal('modal-ferservizi')">
-                            <div class="date date-professional">PROFESSIONAL</div>
-                            <div class="role">Asset Management Specialist</div>
-                            <div class="detail">Ferservizi S.p.A. - Ferrovie dello Stato Italiane S.p.A. Group</div>
+                            <div class="date date-professional" data-i18n="tagProfessional">PROFESSIONAL</div>
+                            <div class="role" data-i18n-html="journeyFerservizi">Asset Management Specialist</div>
+                            <div class="detail" data-i18n="ferserviziGroup">Ferservizi S.p.A. - Ferrovie dello Stato Italiane S.p.A. Group</div>
                         </div>
                     </div>
 
                     <div class="journey-item">
                         <div class="dot"></div>
                         <div class="card" onclick="openJourneyModal('modal-bim')">
-                            <div class="date date-academic">POSTGRADUATE</div>
-                            <div class="role">Post Graduate<br>in BIM Manager</div>
-                            <div class="detail italic">Master di II livello</div>
-                            <div class="detail">Politecnico di Milano <br><em>Scuola Master F.lli Pesenti</em></div>
+                            <div class="date date-academic" data-i18n="tagPostgraduate">POSTGRADUATE</div>
+                            <div class="role" data-i18n-html="journeyBim">Post Graduate<br>in BIM Manager</div>
+                            <div class="detail italic" data-i18n="secondLevelMaster">Master di II livello</div>
+                            <div class="detail" data-i18n-html="polimiSchool">Politecnico di Milano <br><em>Scuola Master F.lli Pesenti</em></div>
                         </div>
                     </div>
 
                     <div class="journey-item">
                         <div class="dot"></div>
                         <div class="card" onclick="openJourneyModal('modal-cnvvf')">
-                            <div class="date date-professional">PROFESSIONAL</div>
-                            <div class="role">Technical Officer</div>
-                            <div class="detail"><em>Italian Public Administration</em></div>
-                            <div class="detail">Fire Safety Engineering</div>
+                            <div class="date date-professional" data-i18n="tagProfessional">PROFESSIONAL</div>
+                            <div class="role" data-i18n-html="journeyOfficer">Technical Officer</div>
+                            <div class="detail" data-i18n-html="italianPublicAdministration"><em>Italian Public Administration</em></div>
+                            <div class="detail" data-i18n-html="fireSafetyEngineering">Fire Safety Engineering</div>
                         </div>
                     </div>
 
                     <div class="journey-item">
                         <div class="dot"></div>
                         <div class="card" onclick="openJourneyModal('modal-phd')">
-                            <div class="date date-academic">RESEARCH</div>
-                            <div class="role">Ph.D. Candidate<br>in Civil Engineering</div>
-                            <div class="detail italic">Road Safety & Driving Simulation Researcher</div>
-                            <div class="detail">University of Roma Tre</div>
+                            <div class="date date-academic" data-i18n="tagResearch">RESEARCH</div>
+                            <div class="role" data-i18n-html="journeyPhd">Ph.D. Candidate<br>in Civil Engineering</div>
+                            <div class="detail italic" data-i18n-html="roadResearcher">Road Safety & Driving Simulation Researcher</div>
+                            <div class="detail" data-i18n="romaTre">University of Roma Tre</div>
                         </div>
                     </div>
 
                     <div class="journey-item">
                         <div class="dot"></div>
                         <div class="card" onclick="openJourneyModal('modal-hasselt')">
-                            <div class="date date-academic">INTERNATIONAL</div>
-                            <div class="role">International Visiting Researcher</div>
-                            <div class="detail">Transportation Research Institute</div>
-                            <div class="detail">Hasselt University</div>
+                            <div class="date date-academic" data-i18n="tagInternational">INTERNATIONAL</div>
+                            <div class="role" data-i18n-html="journeyVisiting">International Visiting Researcher</div>
+                            <div class="detail" data-i18n-html="transportInstitute">Transportation Research Institute</div>
+                            <div class="detail" data-i18n-html="hasseltUniversity">Hasselt University</div>
                             <div class="detail">IMOB</div>
                         </div>
                     </div>
@@ -1752,16 +1817,16 @@
                 <div id="modal-bachelor" class="journey-modal">
                     <div class="journey-modal-content">
                         <span class="journey-modal-close" onclick="closeJourneyModal('modal-bachelor')">&times;</span>
-                        <div class="modal-tag">Academic Path</div>
-                        <div class="modal-title">Bachelor's Degree in Civil Engineering</div>
-                        <div class="modal-text">
+                        <div class="modal-tag" data-i18n="modalBachelorTag">Academic Path</div>
+                        <div class="modal-title" data-i18n="modalBachelorTitle">Bachelor's Degree in Civil Engineering</div>
+                        <div class="modal-text" data-i18n-html="modalBachelorMeta">
                             <strong>Institution:</strong> University of Roma Tre<br>
                             <strong>Field:</strong> Civil Engineering
-                            <div class="modal-placeholder">
-                                Bachelor's Degree in Civil Engineering, providing a comprehensive education in structural engineering, geotechnics, hydraulics, 
-                                transportation engineering, road and railway infrastructure, surveying, construction materials, and infrastructure design, establishing 
-                                the multidisciplinary foundation for advanced studies in transportation systems and digital engineering.
-                            </div>
+                        </div>
+                        <div class="modal-placeholder" data-i18n="modalBachelorText">
+                            Bachelor's Degree in Civil Engineering, providing a comprehensive education in structural engineering, geotechnics, hydraulics,
+                            transportation engineering, road and railway infrastructure, surveying, construction materials, and infrastructure design, establishing
+                            the multidisciplinary foundation for advanced studies in transportation systems and digital engineering.
                         </div>
                     </div>
                 </div>
@@ -1769,16 +1834,16 @@
                 <div id="modal-master" class="journey-modal">
                     <div class="journey-modal-content">
                         <span class="journey-modal-close" onclick="closeJourneyModal('modal-master')">&times;</span>
-                        <div class="modal-tag">Academic Path</div>
-                        <div class="modal-title">Master's Degree in Civil Engineering</div>
-                        <div class="modal-text">
+                        <div class="modal-tag" data-i18n="modalMasterTag">Academic Path</div>
+                        <div class="modal-title" data-i18n="modalMasterTitle">Master's Degree in Civil Engineering</div>
+                        <div class="modal-text" data-i18n-html="modalMasterMeta">
                             <strong>Institution:</strong> University of Roma Tre<br>
                             <strong>Specialisation:</strong> Transportation Infrastructure
-                            <div class="modal-placeholder">
-                                Master's Degree in Civil Engineering, specializing in transportation engineering through advanced studies in traffic engineering, 
-                                transport planning, road infrastructure design, pavement engineering, road safety, intelligent transportation systems, and simulation-based 
-                                transportation analysis.
-                            </div>
+                        </div>
+                        <div class="modal-placeholder" data-i18n="modalMasterText">
+                            Master's Degree in Civil Engineering, specializing in transportation engineering through advanced studies in traffic engineering,
+                            transport planning, road infrastructure design, pavement engineering, road safety, intelligent transportation systems, and simulation-based
+                            transportation analysis.
                         </div>
                     </div>
                 </div>
@@ -1786,15 +1851,17 @@
                 <div id="modal-ferservizi" class="journey-modal">
                     <div class="journey-modal-content">
                         <span class="journey-modal-close" onclick="closeJourneyModal('modal-ferservizi')">&times;</span>
-                        <div class="modal-tag">Professional Experience</div>
-                        <div class="modal-title">Asset Management Specialist</div>
-                        <div class="modal-text">
+                        <div class="modal-tag" data-i18n="modalFsTag">Professional Experience</div>
+                        <div class="modal-title" data-i18n="modalFsTitle">Asset Management Specialist</div>
+                        <div class="modal-text" data-i18n-html="modalFsMeta">
                             <strong>Area:</strong> Asset Management<br>
                             <strong>Context:</strong> Major National Infrastructure Group
-                            <div class="modal-placeholder">Professional experience in Asset Management within the FS Italiane Group, gaining expertise in 
-                            Property and Facility Management through the technical and administrative management of corporate real estate assets. Activities included real estate due diligence 
-                            of major railway station complexes in Rome, support for property valuation and disposal processes, analysis of technical documentation, and the application of Building 
-                            Information Modelling (BIM) methodologies to improve the digital management and lifecycle of the real estate portfolio.</div>
+                        </div>
+                        <div class="modal-placeholder" data-i18n="modalFsText">
+                            Professional experience in Asset Management within the FS Italiane Group, gaining expertise in
+                            Property and Facility Management through the technical and administrative management of corporate real estate assets. Activities included real estate due diligence
+                            of major railway station complexes in Rome, support for property valuation and disposal processes, analysis of technical documentation, and the application of Building
+                            Information Modelling (BIM) methodologies to improve the digital management and lifecycle of the real estate portfolio.
                         </div>
                     </div>
                 </div>
@@ -1802,16 +1869,16 @@
                 <div id="modal-bim" class="journey-modal">
                     <div class="journey-modal-content">
                         <span class="journey-modal-close" onclick="closeJourneyModal('modal-bim')">&times;</span>
-                        <div class="modal-tag">Postgraduate Education</div>
-                        <div class="modal-title">Post Graduate in BIM Manager</div>
-                        <div class="modal-text">
+                        <div class="modal-tag" data-i18n="modalBimTag">Postgraduate Education</div>
+                        <div class="modal-title" data-i18n="modalBimTitle">Post Graduate in BIM Manager</div>
+                        <div class="modal-text" data-i18n-html="modalBimMeta">
                             <strong>Institution:</strong> Politecnico di Milano<br>
                             <strong>Programme:</strong> Master di II livello
-                            <div class="modal-placeholder">
-                                Postgraduate specialization in Building Information Modelling (BIM) and Digital Twin methodologies, pursued concurrently 
-                                with professional experience within the FS Italiane Group as part of a continuous professional 
-                                development path aimed at advancing digital approaches to Asset, Property, and Facility Management.
-                            </div>
+                        </div>
+                        <div class="modal-placeholder" data-i18n="modalBimText">
+                            Postgraduate specialization in Building Information Modelling (BIM) and Digital Twin methodologies, pursued concurrently
+                            with professional experience within the FS Italiane Group as part of a continuous professional
+                            development path aimed at advancing digital approaches to Asset, Property, and Facility Management.
                         </div>
                     </div>
                 </div>
@@ -1819,14 +1886,16 @@
                 <div id="modal-cnvvf" class="journey-modal">
                     <div class="journey-modal-content">
                         <span class="journey-modal-close" onclick="closeJourneyModal('modal-cnvvf')">&times;</span>
-                        <div class="modal-tag">Public Service</div>
-                        <div class="modal-title">Technical Officer</div>
-                        <div class="modal-text">
+                        <div class="modal-tag" data-i18n="modalFireTag">Public Service</div>
+                        <div class="modal-title" data-i18n="modalFireTitle">Technical Officer</div>
+                        <div class="modal-text" data-i18n-html="modalFireMeta">
                             <strong>Area:</strong> Italian Public Administration<br>
                             <strong>Field:</strong> Fire Safety Engineering
-                            <div class="modal-placeholder">Technical activities within the Italian National Fire and Rescue Service, focusing on fire safety engineering, 
-                            industrial risk assessment, Integrated Environmental 
-                            Authorization (AIA) procedures, and the application of Building Information Modelling (BIM) to fire prevention and technical safety.</div>
+                        </div>
+                        <div class="modal-placeholder" data-i18n="modalFireText">
+                            Technical activities within the Italian National Fire and Rescue Service, focusing on fire safety engineering,
+                            industrial risk assessment, Integrated Environmental
+                            Authorization (AIA) procedures, and the application of Building Information Modelling (BIM) to fire prevention and technical safety.
                         </div>
                     </div>
                 </div>
@@ -1834,14 +1903,16 @@
                 <div id="modal-phd" class="journey-modal">
                     <div class="journey-modal-content">
                         <span class="journey-modal-close" onclick="closeJourneyModal('modal-phd')">&times;</span>
-                        <div class="modal-tag">Doctoral Research</div>
-                        <div class="modal-title">Ph.D. Candidate in Civil Engineering</div>
-                        <div class="modal-text">
+                        <div class="modal-tag" data-i18n="modalPhdTag">Doctoral Research</div>
+                        <div class="modal-title" data-i18n="modalPhdTitle">Ph.D. Candidate in Civil Engineering</div>
+                        <div class="modal-text" data-i18n-html="modalPhdMeta">
                             <strong>Institution:</strong> University of Roma Tre<br>
                             <strong>Research Area:</strong> Road Safety & Driving Simulation
-                            <div class="modal-placeholder">Research in road safety, human factors, driving simulation, and virtual reality, 
-                            combining experimental research and advanced simulation technologies to investigate human behaviour and support 
-                            the development of safer transportation systems.</div>
+                        </div>
+                        <div class="modal-placeholder" data-i18n="modalPhdText">
+                            Research in road safety, human factors, driving simulation, and virtual reality,
+                            combining experimental research and advanced simulation technologies to investigate human behaviour and support
+                            the development of safer transportation systems.
                         </div>
                     </div>
                 </div>
@@ -1849,14 +1920,16 @@
                 <div id="modal-hasselt" class="journey-modal">
                     <div class="journey-modal-content">
                         <span class="journey-modal-close" onclick="closeJourneyModal('modal-hasselt')">&times;</span>
-                        <div class="modal-tag">International Research</div>
-                        <div class="modal-title">International Visiting Researcher</div>
-                        <div class="modal-text">
+                        <div class="modal-tag" data-i18n="modalHasseltTag">International Research</div>
+                        <div class="modal-title" data-i18n="modalHasseltTitle">International Visiting Researcher</div>
+                        <div class="modal-text" data-i18n-html="modalHasseltMeta">
                             <strong>Institution:</strong> Transportation Research Institute, Hasselt University<br>
                             <strong>Research Centre:</strong> Instituut voor Mobiliteit – IMOB<br>
                             <strong>Location:</strong> Hasselt, Belgium
-                            <div class="modal-placeholder">International research collaboration aimed at developing AI-driven and BIM-enabled digital methodologies for transportation safety, 
-                            integrating traffic simulation, virtual environments, and intelligent transportation systems.</div>
+                        </div>
+                        <div class="modal-placeholder" data-i18n="modalHasseltText">
+                            International research collaboration aimed at developing AI-driven and BIM-enabled digital methodologies for transportation safety,
+                            integrating traffic simulation, virtual environments, and intelligent transportation systems.
                         </div>
                     </div>
                 </div>
@@ -1880,37 +1953,62 @@
                     });
 
                     const expertiseData = {
-                        road: {
-                            tag: "Area of Expertise",
-                            title: "Road Safety",
-                            text: "Academic and research expertise in road safety engineering, focusing on road infrastructure safety, transportation safety assessment and the identification of safety-critical issues affecting the entire road network. Particular attention is devoted to vulnerable road users and to the development of engineering methodologies supporting safer, more resilient and sustainable transportation systems.sis of road user behaviour, traffic interactions and safety-critical scenarios through data-driven and simulation-based approaches.",
-                            details: ["Safety Analysis", "Traffic Simulation", "User Behaviour", "Human Factors"]
+                        en: {
+                            road: {
+                                tag: "Area of Expertise",
+                                title: "Road Safety",
+                                text: "Academic and research expertise in road safety engineering, focusing on road infrastructure safety, transportation safety assessment and the identification of safety-critical issues affecting the entire road network. Particular attention is devoted to vulnerable road users and to the development of engineering methodologies supporting safer, more resilient and sustainable transportation systems through data-driven and simulation-based approaches.",
+                                details: ["Safety Analysis", "Traffic Simulation", "User Behaviour", "Human Factors"]
+                            },
+                            fire: {
+                                tag: "Area of Expertise",
+                                title: "Fire Safety Engineering",
+                                text: "Expertise in fire safety engineering encompassing fire prevention, fire risk assessment, regulatory compliance and the safety evaluation of buildings and complex infrastructures. Professional experience integrates operational emergency management with engineering approaches to fire protection and life safety.",
+                                details: ["Fire Prevention", "Risk Assessment", "Emergency Management", "Regulatory Compliance"]
+                            },
+                            vr: {
+                                tag: "Area of Expertise",
+                                title: "Virtual Reality",
+                                text: "Expertise in virtual reality, immersive simulation and software development, including the design and implementation of interactive virtual environments, driving simulators, multi-user experiences and metaverse applications. Activities encompass real-time programming, system integration, co-simulation and the development of advanced digital platforms for engineering, research and professional training.",
+                                details: ["Driving Simulation", "Immersive Environments", "Unity Development", "Co-simulation"]
+                            },
+                            bim: {
+                                tag: "Area of Expertise",
+                                title: "Asset Management",
+                                text: "Professional expertise in asset management, technical due diligence and real estate engineering, developed through the technical management and enhancement of large property portfolios. Activities include building condition assessment, technical support for high-value real estate transactions, and the application of BIM methodologies and Digital Twin technologies for property and facility management.",
+                                details: ["Facility Management", "Due Diligence", "Property Management", "BIM & Digital Twins"]
+                            }
                         },
-
-                        fire: {
-                            tag: "Area of Expertise",
-                            title: "Fire Safety Engineering",
-                            text: "Expertise in fire safety engineering encompassing fire prevention, fire risk assessment, regulatory compliance and the safety evaluation of buildings and complex infrastructures. Professional experience integrates operational emergency management with engineering approaches to fire protection and life safety.",
-                            details: ["Fire Prevention", "Risk Assessment", "Emergency Management", "Regulatory Compliance"]
-                        },
-
-                        vr: {
-                            tag: "Area of Expertise",
-                            title: "Virtual Reality",
-                            text: "Expertise in virtual reality, immersive simulation and software development, including the design and implementation of interactive virtual environments, driving simulators, multi-user experiences and metaverse applications. Activities encompass real-time programming, system integration, co-simulation and the development of advanced digital platforms for engineering, research and professional training.",
-                            details: ["Driving Simulation", "Immersive Environments", "Unity Development", "Co-simulation"]
-                        },
-
-                        bim: {
-                            tag: "Area of Expertise",
-                            title: "Asset Management",
-                            text: "Professional expertise in asset management, technical due diligence and real estate engineering, developed through the technical management and enhancement of large property portfolios. Activities include building condition assessment, technical support for high-value real estate transactions, and the application of BIM methodologies and Digital Twin technologies for property and facility management.",
-                            details: ["Facility Management", "Due Diligence", "Property Management", "BIM & Digital Twins"]
+                        it: {
+                            road: {
+                                tag: "Area di competenza",
+                                title: "Sicurezza stradale",
+                                text: "Competenze accademiche e di ricerca nell’ingegneria della sicurezza stradale, con particolare attenzione alla sicurezza delle infrastrutture viarie, alla valutazione dei sistemi di trasporto e all’individuazione delle criticità che interessano la rete stradale. L’attività si concentra sugli utenti vulnerabili e sullo sviluppo di metodologie ingegneristiche, basate sui dati e sulla simulazione, per sistemi di trasporto più sicuri, resilienti e sostenibili.",
+                                details: ["Analisi di sicurezza", "Simulazione di guida", "Comportamento degli utenti", "Fattori umani"]
+                            },
+                            fire: {
+                                tag: "Area di competenza",
+                                title: "Sicurezza antincendio",
+                                text: "Competenze in prevenzione incendi, valutazione del rischio, conformità normativa e analisi della sicurezza di edifici e infrastrutture complesse. L’esperienza professionale integra la gestione operativa delle emergenze con approcci ingegneristici alla protezione antincendio e alla salvaguardia delle persone.",
+                                details: ["Prevenzione incendi", "Valutazione del rischio", "Gestione delle emergenze", "Conformità normativa"]
+                            },
+                            vr: {
+                                tag: "Area di competenza",
+                                title: "Realtà virtuale",
+                                text: "Competenze in realtà virtuale, simulazione immersiva e sviluppo software, comprendenti la progettazione di ambienti virtuali interattivi, simulatori di guida, esperienze multiutente e applicazioni nel metaverso. Le attività includono programmazione in tempo reale, integrazione di sistemi, co-simulazione e sviluppo di piattaforme digitali avanzate per ricerca, ingegneria e formazione.",
+                                details: ["Simulazione di guida", "Ambienti immersivi", "Sviluppo Unity", "Co-simulazione"]
+                            },
+                            bim: {
+                                tag: "Area di competenza",
+                                title: "Asset Management",
+                                text: "Competenze professionali nell’asset management, nella due diligence tecnica e nell’ingegneria immobiliare, sviluppate attraverso la gestione tecnica e la valorizzazione di ampi patrimoni. Le attività comprendono la valutazione delle condizioni degli immobili, il supporto tecnico a operazioni immobiliari di rilievo e l’applicazione del BIM e dei Digital Twin al property e facility management.",
+                                details: ["Facility Management", "Due Diligence", "Property Management", "BIM e Digital Twin"]
+                            }
                         }
                     };
 
                     function openExpertiseModal(type) {
-                        const data = expertiseData[type];
+                        const data = expertiseData[currentLanguage][type];
                         const modal = document.getElementById("expertise-modal");
 
                         document.getElementById("expertise-modal-tag").textContent = data.tag;
@@ -2083,19 +2181,19 @@
                 }
             </style>
 
-            <div class="activities-title">Research, Academic Activities & Awards</div>
+            <div class="activities-title" data-i18n="activitiesTitle">Research, Academic Activities & Awards</div>
 
-            <div class="activities-subtitle">
+            <div class="activities-subtitle" data-i18n="activitiesSubtitle">
                 Academic appointments, research projects and scientific recognition.
             </div>
 
             <div class="activities-grid">
                 <div class="activity-card">
-                    <div class="activity-tag">Academic Appointment</div>
+                    <div class="activity-tag" data-i18n="activityTag1">Academic Appointment</div>
 
-                    <div class="activity-title">Cultore della Materia</div>
+                    <div class="activity-title" data-i18n="activityTitle1">Cultore della Materia</div>
 
-                    <div class="activity-text">
+                    <div class="activity-text" data-i18n-html="activityBody1">
                         Teaching Assistant for courses within the SSD CEAR-03/A
                         Roads, Railways and Airports.
                         <br><br>
@@ -2108,31 +2206,31 @@
                 </div>
 
                 <div class="activity-card">
-                    <div class="activity-tag">Research Project</div>
+                    <div class="activity-tag" data-i18n="activityTag2">Research Project</div>
 
-                    <div class="activity-title">PRIN 2022 – ARCADE</div>
+                    <div class="activity-title" data-i18n="activityTitle2">PRIN 2022 – ARCADE</div>
 
-                    <div class="activity-text">
+                    <div class="activity-text" data-i18n-html="activityBody2">
                         Research activity focused on the reduction of crash risk involving vulnerable road users through interdisciplinary methodologies and advanced safety analysis.
                         <br><br>
                         <a class="button button"
                            href="https://arcade-project3.webnode.it/"
                            target="_blank"
-                           rel="noopener">
+                           rel="noopener" data-i18n="visitProject">
                             Visit Project Website
                         </a>
                     </div>
                 </div>
 
                 <div class="activity-card">
-                    <div class="activity-tag">National Award</div>
+                    <div class="activity-tag" data-i18n="activityTag3">Award</div>
 
-                    <div class="activity-title">Road Safety Research Award</div>
+                    <div class="activity-title" data-i18n="activityTitle3">Road Safety Research Award</div>
 
-                    <div class="activity-text">
-                        National award for research in road safety and immersive simulation technologies.
+                    <div class="activity-text" data-i18n-html="activityBody3">
+                        Award for research in road safety and immersive simulation technologies.
                         <br><br>
-                        <a class="button button" href="portfolio.html#road-safety-award">
+                        <a class="button button" href="portfolio.html#road-safety-award" data-i18n="viewProject">
                             View Project
                         </a>
                     </div>
@@ -2145,9 +2243,9 @@
         <section class="section cv-section" id="cv">
             <div class="cv-card">
                 <div class="cv-info">
-                    <h2>Executive Profile</h2>
-                    <p>A compact visual overview of research interests, skills, professional background and selected portfolio highlights.</p>
-                    <button class="button" type="button" onclick="openCvModal()">Open executive profile</button>
+                    <h2 data-i18n="cvTitle">Executive Profile</h2>
+                    <p data-i18n="cvText">A compact visual overview of research interests, skills, professional background and selected portfolio highlights.</p>
+                    <button class="button" type="button" onclick="openCvModal()" data-i18n="cvButton">Open executive profile</button>
                 </div>
 
                 <div class="cv-image">
@@ -2165,14 +2263,14 @@
         </div>
 
         <section class="contact-section">
-            <h2>Let's Build the Future Together</h2>
+            <h2 data-i18n="contactTitle">Let&#39;s Build the Future Together</h2>
 
-            <p>
+            <p data-i18n="contactText">
                 Whether you are interested in research collaboration, engineering consultancy
                 or innovative digital solutions, I would be pleased to discuss new ideas and opportunities.
             </p>
 
-            <a class="button button-primary" href="Contact.html">
+            <a class="button button-primary" href="Contact.html" data-i18n="contactButton">
                 Contact Me
             </a>
         </section>
@@ -2200,10 +2298,214 @@
 
     </main>
 
-    <footer class="footer">© Andrea Vennarucci. All rights reserved.</footer>
+    <footer class="footer" data-i18n="footer">© Andrea Vennarucci. All rights reserved.</footer>
 
 
     <script>
+
+        let currentLanguage = localStorage.getItem("siteLanguage") || "en";
+
+        const translations = {
+            en: {
+                pageTitle: "Andrea Vennarucci - About Me",
+                brand: "Eng. Andrea Vennarucci",
+                navHome: "Home", navAbout: "About Me", navPortfolio: "Portfolio",
+                navPublications: "Publications", navContact: "Contact",
+                heroEyebrow: "Civil Engineer | Ph.D. Candidate | Road Safety Researcher",
+                heroSubtitle: "Civil Engineer specialised in road safety, fire safety engineering, and asset management.",
+                tabRoad: "Road Safety", tabFire: "Fire Safety<br>Engineering",
+                tabVr: "Virtual<br>Reality", tabAsset: "Asset<br>Management",
+                aboutKicker: "About Me", profileTitle: "Professional Profile",
+                profileLead: "Research, engineering practice and institutional experience integrated within a single technical path.",
+                profileP1: 'Andrea Vennarucci is a <span class="keyword">Civil Engineer</span> and <span class="keyword">Ph.D. Candidate</span> whose professional and research activities are driven by a common objective: improving <span class="keyword">safety</span> through engineering, scientific research and technological innovation. His work combines engineering principles with advanced digital technologies to address complex challenges related to <span class="keyword">transportation systems</span>, <span class="keyword">critical infrastructure</span> and the <span class="keyword">built environment</span>, supporting the development of safer, smarter and more sustainable transportation and infrastructure systems.',
+                profileP2: 'His multidisciplinary profile integrates <span class="keyword">transportation engineering</span>, <span class="keyword">road safety</span>, <span class="keyword">driving simulation</span>, <span class="keyword">virtual reality</span>, <span class="keyword">Building Information Modelling (BIM)</span> and <span class="keyword">Asset Management</span>. By combining experimental research and immersive virtual environments, he applies advanced digital methodologies to investigate human behaviour, evaluate safety-critical scenarios and support evidence-based engineering decisions.',
+                profileP3: 'Alongside his academic research, his professional experience encompasses public service in <span class="keyword">fire safety</span>, <span class="keyword">risk management</span> and <span class="keyword">emergency management</span>, as well as engineering practice in <span class="keyword">Asset Management</span>, <span class="keyword">Property Management</span> and <span class="keyword">Facility Management</span>. These experiences have provided direct insight into the challenges associated with protecting people, infrastructure and strategic assets across both public and private sectors.',
+                profileP4: 'This combination of research, engineering practice and operational experience has shaped a multidisciplinary engineering perspective, where scientific knowledge, digital technologies and practical expertise converge to improve the <span class="keyword">safety</span>, <span class="keyword">resilience</span> and <span class="keyword">efficiency</span> of complex systems.',
+                profileP5: 'His interests extend across <span class="keyword">digital engineering</span>, <span class="keyword">intelligent infrastructure</span>, <span class="keyword">simulation technologies</span>, <span class="keyword">digital asset management</span> and emerging computational approaches for safety assessment. Through an interdisciplinary vision bridging engineering, technology and applied research, his work contributes to the development of resilient, human-centred and digitally enabled infrastructure systems.',
+                quote: "Transforming complex mobility challenges into innovative and data-driven engineering solutions.",
+                journeyTitle: "Professional Journey",
+                journeySubtitle: "An overview of my academic and professional journey<br>combining education, research and engineering practice.",
+                tagAcademic: "ACADEMIC", tagProfessional: "PROFESSIONAL", tagPostgraduate: "POSTGRADUATE",
+                tagResearch: "RESEARCH", tagInternational: "INTERNATIONAL",
+                journeyBachelor: "Bachelor's Degree<br>in Civil Engineering",
+                journeyMaster: "Master's Degree<br>in Civil Engineering",
+                journeyFerservizi: "Asset Management Specialist",
+                journeyBim: "Post Graduate<br>in BIM Manager",
+                journeyOfficer: "Technical Officer",
+                journeyPhd: "Ph.D. Candidate<br>in Civil Engineering",
+                journeyVisiting: "International Visiting Researcher",
+                romaTre: "University of Roma Tre", transportInfrastructure: "Transportation Infrastructure",
+                roadResearcher: "Road Safety & Driving Simulation Researcher",
+                transportInstitute: "Transportation Research Institute", hasseltUniversity: "Hasselt University",
+                fireSafetyEngineering: "Fire Safety Engineering",
+                ferserviziGroup: "Ferservizi S.p.A. – FS Italiane Group",
+                secondLevelMaster: "Second-level University Master",
+                polimiSchool: "Politecnico di Milano<br><em>F.lli Pesenti Master School</em>",
+                italianPublicAdministration: "<em>Italian Public Administration</em>",
+                activitiesTitle: "Research, Academic Activities & Awards",
+                activitiesSubtitle: "Academic appointments, research projects and scientific recognition.",
+                activityTag1: "Academic Appointment", activityTitle1: "Cultore della Materia",
+                activityTag2: "Research Project", activityTitle2: "PRIN 2022 – ARCADE",
+                activityTag3: "Award", activityTitle3: "Road Safety Research Award",
+                visitProject: "Visit Project Website", viewProject: "View Project",
+
+                journeyHint: "Click to explore →",
+                modalBachelorTag: "Academic Path",
+                modalBachelorTitle: "Bachelor's Degree in Civil Engineering",
+                modalBachelorMeta: "<strong>Institution:</strong> University of Roma Tre<br><strong>Field:</strong> Civil Engineering",
+                modalBachelorText: "Bachelor's Degree in Civil Engineering, providing a comprehensive education in structural engineering, geotechnics, hydraulics, transportation engineering, road and railway infrastructure, surveying, construction materials and infrastructure design, establishing the multidisciplinary foundation for advanced studies in transportation systems and digital engineering.",
+                modalMasterTag: "Academic Path",
+                modalMasterTitle: "Master's Degree in Civil Engineering",
+                modalMasterMeta: "<strong>Institution:</strong> University of Roma Tre<br><strong>Specialisation:</strong> Transportation Infrastructure",
+                modalMasterText: "Master's Degree in Civil Engineering, specialising in transportation engineering through advanced studies in traffic engineering, transport planning, road infrastructure design, pavement engineering, road safety, intelligent transportation systems and simulation-based transportation analysis.",
+                modalFsTag: "Professional Experience",
+                modalFsTitle: "Asset Management Specialist",
+                modalFsMeta: "<strong>Area:</strong> Asset Management<br><strong>Context:</strong> Major National Infrastructure Group",
+                modalFsText: "Professional experience in Asset Management within the FS Italiane Group, with activities in Property and Facility Management, technical and administrative management of corporate real estate assets, real estate due diligence of major railway station complexes in Rome, property valuation and disposal processes, technical documentation analysis and BIM-based digital management of the real estate portfolio.",
+                modalBimTag: "Postgraduate Education",
+                modalBimTitle: "Post Graduate in BIM Manager",
+                modalBimMeta: "<strong>Institution:</strong> Politecnico di Milano<br><strong>Programme:</strong> Master di II livello",
+                modalBimText: "Postgraduate specialisation in Building Information Modelling and Digital Twin methodologies, pursued concurrently with professional experience within the FS Italiane Group to advance digital approaches to Asset, Property and Facility Management.",
+                modalFireTag: "Public Service",
+                modalFireTitle: "Technical Officer",
+                modalFireMeta: "<strong>Area:</strong> Italian Public Administration<br><strong>Field:</strong> Fire Safety Engineering",
+                modalFireText: "Technical activities within the Italian National Fire and Rescue Service, focusing on fire safety engineering, industrial risk assessment, Integrated Environmental Authorisation procedures and the application of BIM to fire prevention and technical safety.",
+                modalPhdTag: "Doctoral Research",
+                modalPhdTitle: "Ph.D. Candidate in Civil Engineering",
+                modalPhdMeta: "<strong>Institution:</strong> University of Roma Tre<br><strong>Research Area:</strong> Road Safety & Driving Simulation",
+                modalPhdText: "Research in road safety, human factors, driving simulation and virtual reality, combining experimental research and advanced simulation technologies to investigate human behaviour and support the development of safer transportation systems.",
+                modalHasseltTag: "International Research",
+                modalHasseltTitle: "International Visiting Researcher",
+                modalHasseltMeta: "<strong>Institution:</strong> Transportation Research Institute, Hasselt University<br><strong>Research Centre:</strong> Instituut voor Mobiliteit – IMOB<br><strong>Location:</strong> Hasselt, Belgium",
+                modalHasseltText: "International research collaboration aimed at developing AI-driven and BIM-enabled digital methodologies for transportation safety, integrating traffic simulation, virtual environments and intelligent transportation systems.",
+                activityBody1: "Teaching Assistant for courses within SSD CEAR-03/A, Roads, Railways and Airports.<br><br>Department of Civil Engineering, Computer Science and Aeronautical Technologies.<br>Roma Tre University.<br><br><strong>2024–2026</strong>",
+                activityBody2: 'Research activity focused on reducing crash risk involving vulnerable road users through interdisciplinary methodologies and advanced safety analysis.<br><br><a class="button button" href="https://arcade-project3.webnode.it/" target="_blank" rel="noopener" data-i18n="visitProject">Visit Project Website</a>',
+                activityBody3: 'Award for research in road safety and immersive simulation technologies.<br><br><a class="button button" href="portfolio.html#road-safety-award" data-i18n="viewProject">View Project</a>',
+                cvTitle: "Executive Profile",
+                cvText: "A compact visual overview of research interests, skills, professional background and selected portfolio highlights.",
+                cvButton: "Open executive profile",
+                contactTitle: "Contact",
+                contactText: "Whether you are interested in research collaboration, engineering consultancy or innovative digital solutions, I would be pleased to discuss new ideas and opportunities.",
+                contactButton: "Contact Me",
+                footer: "© Andrea Vennarucci. All rights reserved."
+            },
+            it: {
+                pageTitle: "Andrea Vennarucci - Chi sono",
+                brand: "Ing. Andrea Vennarucci",
+                navHome: "Home", navAbout: "Chi sono", navPortfolio: "Portfolio",
+                navPublications: "Pubblicazioni", navContact: "Contatti",
+                heroEyebrow: "Ingegnere civile | Dottorando di ricerca | Ricercatore in sicurezza stradale",
+                heroSubtitle: "Ingegnere civile specializzato in sicurezza stradale, sicurezza antincendio e asset management.",
+                tabRoad: "Sicurezza stradale", tabFire: "Sicurezza<br>antincendio",
+                tabVr: "Realtà<br>virtuale", tabAsset: "Asset<br>Management",
+                aboutKicker: "Chi sono", profileTitle: "Profilo professionale",
+                profileLead: "Ricerca, pratica professionale ed esperienza istituzionale integrate in un unico percorso tecnico.",
+                profileP1: 'Andrea Vennarucci è <span class="keyword">ingegnere civile</span> e <span class="keyword">dottorando di ricerca</span>. Le sue attività professionali e scientifiche sono orientate a un obiettivo comune: migliorare la <span class="keyword">sicurezza</span> attraverso l’ingegneria, la ricerca e l’innovazione tecnologica. Il suo lavoro integra principi ingegneristici e tecnologie digitali avanzate per affrontare problemi complessi relativi ai <span class="keyword">sistemi di trasporto</span>, alle <span class="keyword">infrastrutture critiche</span> e all’<span class="keyword">ambiente costruito</span>, contribuendo allo sviluppo di sistemi infrastrutturali più sicuri, intelligenti e sostenibili.',
+                profileP2: 'Il suo profilo multidisciplinare integra <span class="keyword">ingegneria delle infrastrutture viarie</span>, <span class="keyword">sicurezza stradale</span>, <span class="keyword">simulazione di guida</span>, <span class="keyword">realtà virtuale</span>, <span class="keyword">Building Information Modelling (BIM)</span> e <span class="keyword">Asset Management</span>. Attraverso la ricerca sperimentale e gli ambienti virtuali immersivi applica metodologie digitali avanzate allo studio del comportamento umano, alla valutazione degli scenari critici e al supporto delle decisioni ingegneristiche basate su evidenze.',
+                profileP3: 'Accanto alla ricerca accademica, l’esperienza professionale comprende il servizio pubblico nei settori della <span class="keyword">sicurezza antincendio</span>, della <span class="keyword">gestione del rischio</span> e della <span class="keyword">gestione delle emergenze</span>, oltre alla pratica professionale nel settore privato nell’ambito dell’<span class="keyword">Asset Management</span>, del <span class="keyword">Property Management</span> e del <span class="keyword">Facility Management</span>. Queste esperienze hanno consentito di acquisire una conoscenza diretta delle problematiche connesse alla protezione delle persone, delle infrastrutture e degli asset strategici nei settori pubblico e privato.',
+                profileP4: 'La combinazione tra ricerca, pratica ingegneristica ed esperienza operativa ha definito una prospettiva multidisciplinare nella quale conoscenza scientifica, tecnologie digitali e competenze professionali convergono per migliorare la <span class="keyword">sicurezza</span>, la <span class="keyword">resilienza</span> e l’<span class="keyword">efficienza</span> dei sistemi complessi.',
+                profileP5: 'I suoi interessi comprendono l’<span class="keyword">ingegneria digitale</span>, le <span class="keyword">infrastrutture intelligenti</span>, le <span class="keyword">tecnologie di simulazione</span>, la <span class="keyword">gestione digitale degli asset</span> e gli approcci computazionali emergenti per la valutazione della sicurezza. Attraverso una visione interdisciplinare che collega ingegneria, tecnologia e ricerca applicata, il suo lavoro contribuisce allo sviluppo di infrastrutture resilienti, centrate sull’essere umano e digitalmente integrate.',
+                quote: "Trasformare le complesse sfide della mobilità in soluzioni ingegneristiche innovative e basate sui dati.",
+                journeyTitle: "Percorso professionale",
+                journeySubtitle: "Una panoramica del mio percorso accademico e professionale<br>tra formazione, ricerca e pratica ingegneristica.",
+                tagAcademic: "FORMAZIONE", tagProfessional: "PROFESSIONE", tagPostgraduate: "POST-LAUREA",
+                tagResearch: "RICERCA", tagInternational: "INTERNAZIONALE",
+                journeyBachelor: "Laurea triennale<br>in Ingegneria civile",
+                journeyMaster: "Laurea magistrale<br>in Ingegneria delle Infrastrutture Viarie e Trasporti",
+                journeyFerservizi: "Asset Management Specialist",
+                journeyBim: "Master di II livello<br>in BIM Manager",
+                journeyOfficer: "Funzionario tecnico",
+                journeyPhd: "Dottorato di ricerca<br>in Ingegneria civile",
+                journeyVisiting: "Visiting Researcher internazionale",
+                romaTre: "Università degli Studi Roma Tre", transportInfrastructure: "Infrastrutture Viarie",
+                roadResearcher: "Ricerca in sicurezza stradale e simulazione di guida",
+                transportInstitute: "Istituto di ricerca sui trasporti", hasseltUniversity: "Università di Hasselt",
+                fireSafetyEngineering: "Sicurezza antincendio",
+                ferserviziGroup: "Ferservizi S.p.A. – Gruppo FS Italiane",
+                secondLevelMaster: "Master universitario di II livello",
+                polimiSchool: "Politecnico di Milano<br><em>Scuola Master F.lli Pesenti</em>",
+                italianPublicAdministration: "<em>Pubblica amministrazione italiana</em>",
+                activitiesTitle: "Ricerca, attività accademiche e riconoscimenti",
+                activitiesSubtitle: "Incarichi accademici, progetti di ricerca e riconoscimenti scientifici.",
+                activityTag1: "Incarico accademico", activityTitle1: "Cultore della materia",
+                activityTag2: "Progetto di ricerca", activityTitle2: "PRIN 2022 – ARCADE",
+                activityTag3: "Premio", activityTitle3: "Premio per Studi sulla Sicurezza Stradale Alcol-Droga Correlata",
+                visitProject: "Visita il sito del progetto", viewProject: "Visualizza il progetto",
+
+                journeyHint: "Clicca per approfondire →",
+                modalBachelorTag: "Percorso accademico",
+                modalBachelorTitle: "Laurea triennale in Ingegneria civile",
+                modalBachelorMeta: "<strong>Istituzione:</strong> Università degli Studi Roma Tre<br><strong>Ambito:</strong> Ingegneria civile",
+                modalBachelorText: "Laurea triennale in Ingegneria civile con una formazione multidisciplinare in strutture, geotecnica, idraulica, trasporti, infrastrutture stradali e ferroviarie, topografia, materiali da costruzione e progettazione delle infrastrutture, quale base per gli studi avanzati nei sistemi di trasporto e nell’ingegneria digitale.",
+                modalMasterTag: "Percorso accademico",
+                modalMasterTitle: "Laurea magistrale in Ingegneria civile",
+                modalMasterMeta: "<strong>Istituzione:</strong> Università degli Studi Roma Tre<br><strong>Specializzazione:</strong> Infrastrutture di trasporto",
+                modalMasterText: "Laurea magistrale in Ingegneria civile con specializzazione nelle infrastrutture di trasporto, attraverso studi avanzati di ingegneria del traffico, pianificazione dei trasporti, progettazione stradale, pavimentazioni, sicurezza stradale, sistemi di trasporto intelligenti e analisi mediante simulazione.",
+                modalFsTag: "Esperienza professionale",
+                modalFsTitle: "Specialista Asset Management",
+                modalFsMeta: "<strong>Area:</strong> Asset Management<br><strong>Contesto:</strong> Primario gruppo infrastrutturale nazionale",
+                modalFsText: "Esperienza professionale nell’Asset Management del Gruppo FS Italiane, con attività di Property e Facility Management, gestione tecnica e amministrativa del patrimonio immobiliare, due diligence di importanti complessi ferroviari di Roma, supporto alla valorizzazione e alla vendita degli immobili, analisi della documentazione tecnica e applicazione del BIM alla gestione digitale del patrimonio.",
+                modalBimTag: "Formazione post-laurea",
+                modalBimTitle: "Master di II livello in BIM Manager",
+                modalBimMeta: "<strong>Istituzione:</strong> Politecnico di Milano<br><strong>Programma:</strong> Master di II livello",
+                modalBimText: "Specializzazione post-laurea nel Building Information Modelling e nelle metodologie Digital Twin, svolta contemporaneamente all’esperienza professionale nel Gruppo FS Italiane per sviluppare approcci digitali avanzati all’Asset, Property e Facility Management.",
+                modalFireTag: "Servizio pubblico",
+                modalFireTitle: "Funzionario tecnico",
+                modalFireMeta: "<strong>Area:</strong> Pubblica amministrazione italiana<br><strong>Ambito:</strong> Sicurezza antincendio",
+                modalFireText: "Attività tecniche nel Corpo nazionale dei Vigili del Fuoco nei settori della prevenzione incendi, della valutazione del rischio industriale, delle procedure di Autorizzazione Integrata Ambientale e dell’applicazione del BIM alla prevenzione e alla sicurezza tecnica.",
+                modalPhdTag: "Ricerca dottorale",
+                modalPhdTitle: "Dottorando di ricerca in Ingegneria civile",
+                modalPhdMeta: "<strong>Istituzione:</strong> Università degli Studi Roma Tre<br><strong>Area di ricerca:</strong> Sicurezza stradale e simulazione di guida",
+                modalPhdText: "Ricerca nei settori della sicurezza stradale, dei fattori umani, della simulazione di guida e della realtà virtuale, integrando ricerca sperimentale e tecnologie avanzate di simulazione per studiare il comportamento umano e contribuire allo sviluppo di sistemi di trasporto più sicuri.",
+                modalHasseltTag: "Ricerca internazionale",
+                modalHasseltTitle: "Visiting Researcher internazionale",
+                modalHasseltMeta: "<strong>Istituzione:</strong> Transportation Research Institute, Hasselt University<br><strong>Centro di ricerca:</strong> Instituut voor Mobiliteit – IMOB<br><strong>Luogo:</strong> Hasselt, Belgio",
+                modalHasseltText: "Collaborazione internazionale finalizzata allo sviluppo di metodologie digitali per la sicurezza dei trasporti basate su intelligenza artificiale e BIM, integrando simulazione del traffico, ambienti virtuali e sistemi di trasporto intelligenti.",
+                activityBody1: "Cultore della materia per gli insegnamenti del SSD CEAR-03/A, Strade, Ferrovie e Aeroporti.<br><br>Dipartimento di Ingegneria Civile, Informatica e delle Tecnologie Aeronautiche.<br>Università degli Studi Roma Tre.<br><br><strong>2024–2026</strong>",
+                activityBody2: 'Attività di ricerca finalizzata alla riduzione del rischio di incidente per gli utenti vulnerabili della strada mediante metodologie interdisciplinari e analisi avanzate della sicurezza.<br><br><a class="button button" href="https://arcade-project3.webnode.it/" target="_blank" rel="noopener" data-i18n="visitProject">Visita il sito del progetto</a>',
+                activityBody3: 'Conferito da Università degli Studi Roma Tre nell’ambito del progetto “Contro alcol e droga per guidare sicuri” promosso e finanziato dalla Presidenza del Consiglio dei Ministri - Dipartimento per le politiche antidroga.<br><br><a class="button button" href="portfolio.html#road-safety-award" data-i18n="viewProject">Visualizza il progetto</a>',
+                cvTitle: "Profilo sintetico",
+                cvText: "Una sintesi visuale degli interessi di ricerca, delle competenze, del percorso professionale e dei principali progetti.",
+                cvButton: "Apri il profilo sintetico",
+                contactTitle: "Contatti",
+                contactText: "Per collaborazioni scientifiche, consulenze ingegneristiche o progetti di innovazione digitale, sono disponibile a valutare nuove idee e opportunità.",
+                contactButton: "Contattami",
+                footer: "© Andrea Vennarucci. Tutti i diritti riservati."
+            }
+        };
+
+        function setLanguage(language) {
+            currentLanguage = translations[language] ? language : "en";
+            const dictionary = translations[currentLanguage];
+
+            document.documentElement.lang = currentLanguage;
+            document.title = dictionary.pageTitle;
+            document.documentElement.style.setProperty("--journey-hint", '"' + dictionary.journeyHint + '"');
+
+            document.querySelectorAll("[data-i18n]").forEach(function (element) {
+                const key = element.getAttribute("data-i18n");
+                if (dictionary[key] !== undefined) element.textContent = dictionary[key];
+            });
+
+            document.querySelectorAll("[data-i18n-html]").forEach(function (element) {
+                const key = element.getAttribute("data-i18n-html");
+                if (dictionary[key] !== undefined) element.innerHTML = dictionary[key];
+            });
+
+            document.querySelectorAll(".language-button").forEach(function (button) {
+                const active = button.dataset.lang === currentLanguage;
+                button.classList.toggle("active", active);
+                button.setAttribute("aria-pressed", active ? "true" : "false");
+            });
+
+            localStorage.setItem("siteLanguage", currentLanguage);
+
+            const openExpertise = document.querySelector(".expertise-modal.open");
+            if (openExpertise) closeExpertiseModal();
+        }
+
+        setLanguage(currentLanguage);
+
         const heroImage = document.querySelector(".hero-image");
 
         window.addEventListener("scroll", function () {
