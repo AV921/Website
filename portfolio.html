@@ -1191,7 +1191,7 @@
                     </div>
                 </article>
 
-                <article class="project-card">
+                <article class="project-card" id="road-safety-award">
                     <button class="project-header" type="button" aria-expanded="false">
                         <img class="project-thumb" src="image/drug.png" alt="Driving Co-Simulation project">
                         <div class="project-summary">
@@ -1639,6 +1639,45 @@
             }
         }
 
+        function closeAllProjects(exceptCard) {
+            document.querySelectorAll(".project-card.open").forEach(function (openCard) {
+                if (openCard === exceptCard) {
+                    return;
+                }
+
+                const openHeader = openCard.querySelector(".project-header");
+                const openContent = openCard.querySelector(".project-content");
+
+                openCard.classList.remove("open");
+                openHeader.setAttribute("aria-expanded", "false");
+                openContent.style.maxHeight = null;
+            });
+        }
+
+        function keepProjectHeaderAtTop(card, duration) {
+            const projectHeader = card.querySelector(".project-header");
+            const siteHeader = document.querySelector(".site-header");
+            const fixedHeaderHeight = siteHeader ? siteHeader.offsetHeight : 0;
+            const topGap = 12;
+            const targetTop = fixedHeaderHeight + topGap;
+            const startTime = performance.now();
+
+            function correctPosition(now) {
+                const currentTop = projectHeader.getBoundingClientRect().top;
+                const difference = currentTop - targetTop;
+
+                if (Math.abs(difference) > 1) {
+                    window.scrollBy(0, difference);
+                }
+
+                if (now - startTime < duration) {
+                    requestAnimationFrame(correctPosition);
+                }
+            }
+
+            requestAnimationFrame(correctPosition);
+        }
+
         document.querySelectorAll(".project-card").forEach(function (card) {
             const header = card.querySelector(".project-header");
             const content = card.querySelector(".project-content");
@@ -1646,15 +1685,21 @@
             header.addEventListener("click", function () {
                 const isOpen = card.classList.contains("open");
 
+                closeAllProjects(card);
+
                 if (isOpen) {
                     card.classList.remove("open");
                     header.setAttribute("aria-expanded", "false");
                     content.style.maxHeight = null;
-                } else {
-                    card.classList.add("open");
-                    header.setAttribute("aria-expanded", "true");
-                    content.style.maxHeight = content.scrollHeight + "px";
+                    return;
                 }
+
+                card.classList.add("open");
+                header.setAttribute("aria-expanded", "true");
+                content.style.maxHeight = content.scrollHeight + "px";
+
+                /* Mantiene il titolo sotto l'header mentre la scheda precedente si chiude. */
+                keepProjectHeaderAtTop(card, 650);
             });
         });
 
@@ -1663,6 +1708,34 @@
                 content.style.maxHeight = content.scrollHeight + "px";
             });
         });
+
+        function openProjectFromHash() {
+            if (!window.location.hash) {
+                return;
+            }
+
+            const card = document.querySelector(window.location.hash);
+
+            if (!card || !card.classList.contains("project-card")) {
+                return;
+            }
+
+            const header = card.querySelector(".project-header");
+            const content = card.querySelector(".project-content");
+
+            closeAllProjects(card);
+
+            card.classList.add("open");
+            header.setAttribute("aria-expanded", "true");
+            content.style.maxHeight = content.scrollHeight + "px";
+
+            setTimeout(function () {
+                keepProjectHeaderAtTop(card, 650);
+            }, 40);
+        }
+
+        window.addEventListener("load", openProjectFromHash);
+        window.addEventListener("hashchange", openProjectFromHash);
     </script>
 </body>
 </html>
