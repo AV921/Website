@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Books, writings and personal reflections by Andrea Vennarucci.">
+
+    <title>Beyond Engineering | Andrea Vennarucci</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --background: #f3f0e9;
+            --background-light: #faf8f3;
+            --text: #171612;
+            --text-soft: #625f58;
+            --line: rgba(23, 22, 18, 0.17);
+            --accent: #8c7452;
+            --accent-light: #b9a484;
+            --dark: #1b1a17;
+            --light: #f4f0e8;
+            --max-width: 1320px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--background);
+            color: var(--text);
+            font-family: "Manrope", Arial, sans-serif;
+            font-weight: 300;
+            line-height: 1.75;
+            text-rendering: optimizeLegibility;
+        }
+
+            body::before {
+                content: "";
+                position: fixed;
+                inset: 0;
+                z-index: 9999;
+                pointer-events: none;
+                opacity: 0.12;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.16'/%3E%3C/svg%3E");
+                mix-blend-mode: multiply;
+            }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        h1,
+        h2,
+        h3,
+        blockquote {
+            font-family: "Cormorant Garamond", Georgia, serif;
+        }
+
+        .contenitore {
+            width: min(calc(100% - 72px), var(--max-width));
+            margin: 0 auto;
+        }
+
+        .etichetta {
+            margin: 0;
+            color: var(--accent);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+        }
+
+        .linea {
+            width: 100%;
+            height: 1px;
+            background: var(--line);
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+        }
+
+        .navigazione {
+            min-height: 108px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .firma {
+            justify-self: start;
+            text-decoration: none;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        .titolo-pagina {
+            justify-self: center;
+            color: var(--text-soft);
+            font-size: 0.67rem;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+        }
+
+        .azioni-navigazione {
+            justify-self: end;
+            display: flex;
+            align-items: center;
+            gap: 34px;
+        }
+
+        .ritorno {
+            position: relative;
+            padding-bottom: 5px;
+            text-decoration: none;
+            color: var(--text-soft);
+            font-size: 0.67rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+            .ritorno::after {
+                content: "";
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 1px;
+                background: var(--accent);
+                transform: scaleX(0);
+                transform-origin: right;
+                transition: transform 0.4s ease;
+            }
+
+            .ritorno:hover::after {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+
+        .selettore-lingua {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            position: relative;
+        }
+
+        .lingua {
+            position: relative;
+            padding: 4px 0 7px;
+            border: 0;
+            background: transparent;
+            color: rgba(23, 22, 18, 0.38);
+            cursor: pointer;
+            font-size: 0.64rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            transition: color 0.35s ease, opacity 0.35s ease;
+        }
+
+            .lingua::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: calc(100% - 0.16em);
+                height: 1px;
+                background: var(--accent);
+                transform: scaleX(0);
+                transform-origin: center;
+                transition: transform 0.35s ease;
+            }
+
+            .lingua:hover {
+                color: var(--text);
+            }
+
+            .lingua.attiva {
+                color: var(--text);
+            }
+
+                .lingua.attiva::after {
+                    transform: scaleX(1);
+                }
+
+        .separatore-lingua {
+            width: 1px;
+            height: 13px;
+            background: var(--line);
+            transform: rotate(15deg);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 180px 0 84px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::after {
+                content: "AV";
+                position: absolute;
+                right: -0.04em;
+                bottom: -0.34em;
+                color: rgba(23, 22, 18, 0.025);
+                font-family: "Cormorant Garamond", Georgia, serif;
+                font-size: clamp(18rem, 42vw, 42rem);
+                line-height: 1;
+                pointer-events: none;
+            }
+
+        .hero-layout {
+            width: 100%;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-indice {
+            padding-bottom: 14px;
+        }
+
+            .hero-indice span {
+                display: block;
+                margin-top: 18px;
+                color: var(--text-soft);
+                font-size: 0.78rem;
+                letter-spacing: 0.05em;
+            }
+
+        .hero-contenuto {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            margin: 0;
+            max-width: 1000px;
+            font-size: clamp(5rem, 10.4vw, 10.5rem);
+            font-weight: 400;
+            letter-spacing: -0.055em;
+            line-height: 0.77;
+        }
+
+            .hero h1 em {
+                display: block;
+                margin-left: 14%;
+                color: var(--accent);
+                font-weight: 400;
+            }
+
+        .hero-introduzione {
+            max-width: 620px;
+            margin: 64px auto 0;
+            color: var(--text-soft);
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+            .hero-introduzione::before {
+                content: "";
+                display: block;
+                width: 72px;
+                height: 1px;
+                margin-bottom: 28px;
+                background: var(--accent);
+            }
+
+        .sezione {
+            padding: 150px 0;
+        }
+
+        .intestazione-sezione {
+            display: grid;
+            grid-template-columns: 0.35fr 1.65fr;
+            gap: 70px;
+            margin-bottom: 92px;
+        }
+
+        .numero-sezione {
+            color: var(--text-soft);
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.35rem;
+            font-style: italic;
+        }
+
+        .titolo-sezione h2 {
+            margin: 0;
+            max-width: 820px;
+            font-size: clamp(3.4rem, 6vw, 6.3rem);
+            font-weight: 400;
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+        }
+
+        .titolo-sezione p {
+            max-width: 570px;
+            margin: 34px 0 0;
+            color: var(--text-soft);
+        }
+
+        .libro {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: clamp(70px, 9vw, 150px);
+            align-items: center;
+        }
+
+        .copertina-area {
+            position: relative;
+            padding-left: 12%;
+        }
+
+        .copertina-numero {
+            position: absolute;
+            top: 9%;
+            left: 0;
+            color: var(--accent);
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-style: italic;
+            line-height: 1;
+            z-index: 2;
+        }
+
+        .copertina {
+            position: relative;
+            max-width: 440px;
+            margin-left: auto;
+        }
+
+            .copertina::before {
+                content: "";
+                position: absolute;
+                inset: 22px -22px -22px 22px;
+                border: 1px solid var(--accent);
+                opacity: 0.32;
+                z-index: -1;
+            }
+
+            .copertina img {
+                width: 100%;
+                aspect-ratio: 2 / 3;
+                object-fit: cover;
+                background: #d8d4cb;
+                box-shadow: 0 32px 80px rgba(40, 34, 24, 0.14);
+                transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.8s ease;
+            }
+
+            .copertina:hover img {
+                transform: translateY(-8px);
+                box-shadow: 0 42px 100px rgba(40, 34, 24, 0.19);
+            }
+
+
+        .book-language-note {
+            position: absolute;
+            top: 18px;
+            right: -24px;
+            z-index: 4;
+            display: none;
+            color: #b3261e;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(1rem, 1.55vw, 1.35rem);
+            font-weight: 600;
+            font-style: italic;
+            letter-spacing: 0.015em;
+            line-height: 1.05;
+            white-space: nowrap;
+            transform: rotate(11deg);
+            transform-origin: center;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
+            pointer-events: none;
+        }
+
+        html[lang="en"] .book-language-note {
+            display: block;
+        }
+
+        .contenuto-libro {
+            max-width: 640px;
+        }
+
+            .contenuto-libro h3 {
+                margin: 22px 0 0;
+                font-size: clamp(3rem, 5.6vw, 5.8rem);
+                font-weight: 400;
+                letter-spacing: -0.04em;
+                line-height: 0.94;
+            }
+
+        .metadati {
+            display: block;
+            max-width: 620px;
+            margin: 34px 0 0;
+            color: var(--text-soft);
+            font-size: 0.84rem;
+            line-height: 1.8;
+            letter-spacing: 0.035em;
+            text-transform: none;
+        }
+
+        .descrizione-libro {
+            margin-top: 54px;
+            color: var(--text-soft);
+            font-size: 1rem;
+            line-height: 1.95;
+            text-align: justify;
+        }
+
+            .descrizione-libro p {
+                margin: 0 0 24px;
+            }
+
+        .azioni {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 34px;
+            margin-top: 48px;
+        }
+
+        .azione {
+            position: relative;
+            padding-bottom: 7px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.74rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+            .azione::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                background: var(--accent);
+                transform-origin: left;
+                transition: transform 0.35s ease;
+            }
+
+            .azione:hover::after {
+                transform: scaleX(0.45);
+            }
+
+        .manifesto {
+            padding: 170px 0;
+            background: var(--dark);
+            color: var(--light);
+        }
+
+        .manifesto-layout {
+            display: grid;
+            grid-template-columns: 0.45fr 1.55fr;
+            gap: 80px;
+        }
+
+        .manifesto .etichetta {
+            color: var(--accent-light);
+        }
+
+        .manifesto blockquote {
+            margin: 0;
+            max-width: 940px;
+            font-size: clamp(3rem, 5.7vw, 6rem);
+            font-weight: 400;
+            letter-spacing: -0.04em;
+            line-height: 1.02;
+        }
+
+            .manifesto blockquote em {
+                color: var(--accent-light);
+                font-weight: 400;
+            }
+
+        .manifesto-autore {
+            margin-top: 52px;
+            color: rgba(244, 240, 232, 0.58);
+            font-size: 0.74rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .interessi {
+            padding: 160px 0;
+            background: var(--background-light);
+        }
+
+        .lista-interessi {
+            border-top: 1px solid var(--line);
+        }
+
+        .interesse {
+            display: grid;
+            grid-template-columns: 0.25fr 0.75fr 1fr;
+            gap: 40px;
+            align-items: center;
+            min-height: 170px;
+            border-bottom: 1px solid var(--line);
+            transition: padding-left 0.45s ease, background 0.45s ease;
+        }
+
+            .interesse:hover {
+                padding-left: 24px;
+                background: rgba(140, 116, 82, 0.035);
+            }
+
+        .interesse-numero {
+            color: var(--accent);
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.4rem;
+            font-style: italic;
+        }
+
+        .interesse h3 {
+            margin: 0;
+            font-size: clamp(2rem, 3vw, 3.2rem);
+            font-weight: 400;
+            letter-spacing: -0.025em;
+        }
+
+        .interesse p {
+            max-width: 490px;
+            margin: 0;
+            color: var(--text-soft);
+            font-size: 0.94rem;
+        }
+
+        .prospettiva {
+            padding: 170px 0;
+        }
+
+        .prospettiva-layout {
+            display: grid;
+            grid-template-columns: 0.75fr 1.25fr;
+            gap: clamp(70px, 10vw, 160px);
+            align-items: start;
+        }
+
+        .prospettiva-titolo {
+            position: sticky;
+            top: 80px;
+        }
+
+        .prospettiva h2 {
+            margin: 28px 0 0;
+            font-size: clamp(3.4rem, 5.6vw, 5.8rem);
+            font-weight: 400;
+            letter-spacing: -0.045em;
+            line-height: 0.98;
+        }
+
+        .prospettiva-testo {
+            color: var(--text-soft);
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(1.5rem, 2.3vw, 2.15rem);
+            line-height: 1.55;
+        }
+
+            .prospettiva-testo p {
+                margin: 0 0 42px;
+            }
+
+                .prospettiva-testo p:first-child::first-letter {
+                    float: left;
+                    margin: 9px 12px 0 0;
+                    color: var(--accent);
+                    font-size: 5.2rem;
+                    line-height: 0.72;
+                }
+
+        .estratto {
+            padding: 170px 0;
+            background: #ded8cd;
+        }
+
+        .estratto-layout {
+            display: grid;
+            grid-template-columns: 0.4fr 1.6fr;
+            gap: 80px;
+        }
+
+        .estratto blockquote {
+            margin: 0;
+            max-width: 880px;
+            font-size: clamp(1.6rem, 2.6vw, 2.8rem);
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: -0.035em;
+            line-height: 1.08;
+        }
+
+        .estratto-fonte {
+            margin-top: 48px;
+            color: var(--text-soft);
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        footer {
+            padding: 46px 0;
+            background: var(--dark);
+            color: rgba(244, 240, 232, 0.58);
+        }
+
+        .footer-contenuto {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            font-size: 0.67rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+            .footer-contenuto a {
+                text-decoration: none;
+                color: var(--light);
+            }
+
+        .apparizione {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+
+            .apparizione.visibile {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        @media (max-width: 960px) {
+            .contenitore {
+                width: min(calc(100% - 40px), var(--max-width));
+            }
+
+            .navigazione {
+                grid-template-columns: 1fr auto;
+            }
+
+            .titolo-pagina {
+                display: none;
+            }
+
+            .azioni-navigazione {
+                gap: 24px;
+            }
+
+            .hero-layout,
+            .intestazione-sezione,
+            .manifesto-layout,
+            .estratto-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-indice,
+            .numero-sezione {
+                display: none;
+            }
+
+            .hero h1 em {
+                margin-left: 0;
+            }
+
+            .hero-introduzione {
+                margin-left: 0;
+            }
+
+            .libro {
+                grid-template-columns: 1fr;
+            }
+
+            .copertina-area {
+                max-width: 520px;
+                padding-left: 10%;
+            }
+
+            .contenuto-libro {
+                margin-left: 12%;
+            }
+
+            .interesse {
+                grid-template-columns: 0.2fr 0.8fr;
+                padding: 32px 0;
+            }
+
+                .interesse p {
+                    grid-column: 2;
+                }
+
+            .prospettiva-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .prospettiva-titolo {
+                position: static;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .contenitore {
+                width: min(calc(100% - 28px), var(--max-width));
+            }
+
+            .navigazione {
+                min-height: 88px;
+            }
+
+            .firma {
+                font-size: 1.13rem;
+            }
+
+            .ritorno {
+                display: none;
+            }
+
+            .azioni-navigazione {
+                gap: 0;
+            }
+
+            .lingua {
+                font-size: 0.61rem;
+            }
+
+            .hero {
+                min-height: 88vh;
+                padding: 140px 0 58px;
+            }
+
+                .hero h1 {
+                    font-size: clamp(4.2rem, 22vw, 6.2rem);
+                }
+
+            .hero-introduzione {
+                margin-top: 48px;
+            }
+
+            .sezione,
+            .interessi,
+            .prospettiva,
+            .estratto,
+            .manifesto {
+                padding: 100px 0;
+            }
+
+            .intestazione-sezione {
+                margin-bottom: 62px;
+            }
+
+            .copertina-area {
+                max-width: 360px;
+                padding-left: 8%;
+            }
+
+            .contenuto-libro {
+                margin-left: 0;
+            }
+
+            .book-language-note {
+                top: 14px;
+                right: -16px;
+                font-size: 1rem;
+                transform: rotate(9deg);
+            }
+
+            .contenuto-libro h3 {
+                font-size: 3.4rem;
+            }
+
+            .interesse {
+                grid-template-columns: 42px 1fr;
+                gap: 14px;
+            }
+
+            .footer-contenuto {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="contenitore navigazione">
+
+            <a href="www.andreavennarucci.com" class="firma">
+                Andrea Vennarucci
+            </a>
+
+            <span class="titolo-pagina"
+                  data-i18n="navPageTitle">
+                Writings and personal projects
+            </span>
+
+            <div class="azioni-navigazione">
+
+                <a href="www.andreavennarucci.com"
+                   class="ritorno"
+                   data-i18n="navReturn">
+                    Academic website
+                </a>
+
+                <div class="selettore-lingua"
+                     aria-label="Language selector">
+                    <button type="button"
+                            class="lingua"
+                            data-language="it"
+                            aria-label="Italiano">
+                        IT
+                    </button>
+
+                    <span class="separatore-lingua"></span>
+
+                    <button type="button"
+                            class="lingua"
+                            data-language="en"
+                            aria-label="English">
+                        EN
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="contenitore hero-layout">
+
+                <div class="hero-contenuto">
+
+                    <h1>
+                        <span data-i18n="heroTitleFirst">
+                            Beyond
+                        </span>
+
+                        <em data-i18n="heroTitleSecond">
+                            Engineering
+                        </em>
+                    </h1>
+
+                    <p class="hero-introduzione"
+                       data-i18n="heroText">
+                        A space devoted to the interests that accompany my
+                        scientific and professional work: literature, philosophy,
+                        writing and the relationship between knowledge and human
+                        experience.
+                    </p>
+
+                </div>
+
+            </div>
+        </section>
+
+        <div class="contenitore">
+            <div class="linea"></div>
+        </div>
+
+        <section class="sezione" id="book">
+            <div class="contenitore">
+
+                <div class="intestazione-sezione apparizione">
+
+                    <span class="numero-sezione"
+                          data-i18n="sezione1">
+                    </span>
+
+                    <div class="titolo-sezione">
+
+                        <p class="etichetta"
+                           data-i18n="bookSectionLabel">
+                            Selected work
+                        </p>
+
+                        <h2 data-i18n="bookSectionTitle">
+                            A different form of inquiry
+                        </h2>
+
+                        <p data-i18n="bookSectionText">
+                            Writing allows certain questions to be explored beyond
+                            the boundaries of technical and scientific language.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <article class="libro apparizione">
+
+                    <div class="copertina-area">
+
+                        <span class="copertina-numero">
+                            01
+                        </span>
+
+                        <div class="copertina">
+                            <img src="image/Copertinalibro.jpg"
+                                 alt="Cover of La fisica delle cose create"
+                                 data-i18n-alt="bookCoverAlt">
+                            <span class="book-language-note" aria-hidden="true">
+                                Available in Italian only
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="contenuto-libro">
+
+                        <p class="etichetta"
+                           data-i18n="bookCategory">
+                            Poetry and reflections
+                        </p>
+
+                        <h3>
+                            La fisica delle cose create
+                        </h3>
+
+
+                        <div class="metadati">
+                            <span>
+                                Edizioni Dialoghi (©Utterson s.r.l.),
+                                Collana Glifi,
+                                I edizione:
+                                Settembre 2026,<br />
+                                ISBN 978-88-9279-722-2.<br />
+                                ©Utterson s.r.l., Viterbo, 2026.<br /><br />
+                            </span>
+
+                            <span data-i18n="bookType">
+                                Poetry collection
+                            </span>
+                        </div>
+
+                        <div class="descrizione-libro">
+
+                            <p data-i18n="bookDescriptionFirst">
+                                La fisica delle cose create is a collection of poems
+                                and reflections exploring the relationship between
+                                scientific knowledge, existence, uncertainty and the
+                                human need to give meaning to reality.
+                            </p>
+
+                            <p data-i18n="bookDescriptionSecond">
+                                The work brings together the perspective of an engineer
+                                and researcher with a more intimate and literary form
+                                of observation. Physics becomes not only a discipline,
+                                but also a language through which memory, identity,
+                                time and creation can be examined.
+                            </p>
+
+                        </div>
+
+                        <div class="azioni">
+
+                            <a class="azione"
+                               href="https://www.edizionidialoghi.it/negozio/La-fisica-delle-cose-create-p862675518"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               data-i18n="discoverBook">
+                                Discover the book
+                            </a>
+
+                            <!-- <a class="azione"
+                               href="#excerpt"
+                               data-i18n="readExcerpt">
+                                Read an excerpt
+                            </a>
+                               -->
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+        </section>
+
+        <section class="manifesto">
+
+            <div class="contenitore manifesto-layout apparizione">
+
+                <div>
+                    <p class="etichetta"
+                       data-i18n="manifestoLabel">
+                        A personal perspective
+                    </p>
+                </div>
+
+                <div>
+
+                    <blockquote>
+                        <span data-i18n="manifestoFirst">
+                            Science seeks to describe the structure of reality.
+                        </span>
+
+                        <span data-i18n="manifestoSecond">
+                            Writing asks what that reality
+                        </span>
+
+                        <em data-i18n="manifestoEmphasis">
+                            means to us.
+                        </em>
+                    </blockquote>
+
+                    <p class="manifesto-autore">
+                        Andrea Vennarucci
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="interessi" id="interests">
+            <div class="contenitore">
+
+                <div class="intestazione-sezione apparizione">
+
+                    <span class="numero-sezione"
+                          data-i18n="sezione2">
+                    </span>
+
+                    <div class="titolo-sezione">
+
+                        <p class="etichetta"
+                           data-i18n="interestsLabel">
+                            Fields of interest
+                        </p>
+
+                        <h2 data-i18n="interestsTitle">
+                            Other forms of exploration
+                        </h2>
+
+                    </div>
+
+                </div>
+
+                <div class="lista-interessi apparizione">
+
+                    <article class="interesse">
+
+                        <span class="interesse-numero">
+                            01
+                        </span>
+
+                        <h3 data-i18n="literatureTitle">
+                            Literature
+                        </h3>
+
+                        <p data-i18n="literatureText">
+                            Poetry and narrative writing as instruments for observing
+                            experience, memory and personal identity.
+                        </p>
+
+                    </article>
+
+                    <article class="interesse">
+
+                        <span class="interesse-numero">
+                            02
+                        </span>
+
+                        <h3 data-i18n="philosophyTitle">
+                            Philosophy of science
+                        </h3>
+
+                        <p data-i18n="philosophyText">
+                            Reflection on scientific knowledge, uncertainty, method
+                            and the boundaries between measurement and interpretation.
+                        </p>
+
+                    </article>
+
+                    <article class="interesse">
+
+                        <span class="interesse-numero">
+                            03
+                        </span>
+
+                        <h3 data-i18n="communicationTitle">
+                            Science communication
+                        </h3>
+
+                        <p data-i18n="communicationText">
+                            The search for accessible and meaningful ways of
+                            communicating complex ideas beyond specialist environments.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="prospettiva" id="perspective">
+            <div class="contenitore prospettiva-layout">
+
+                <div class="prospettiva-titolo apparizione">
+
+                    <p class="etichetta"
+                       data-i18n="perspectiveLabel">
+                        Perspective
+                    </p>
+
+                    <h2 data-i18n="perspectiveTitle">
+                        Knowledge is never only technical
+                    </h2>
+
+                </div>
+
+                <div class="prospettiva-testo apparizione">
+
+                    <p data-i18n="perspectiveTextFirst">
+                        My academic and professional path is grounded in
+                        engineering, transportation research, digital simulation
+                        and road safety. At the same time, I have always considered
+                        scientific knowledge part of a broader process of
+                        understanding.
+                    </p>
+
+                    <p data-i18n="perspectiveTextSecond">
+                        Research provides methods for describing phenomena,
+                        testing hypotheses and constructing reliable models.
+                        Literature and philosophy approach other dimensions of
+                        the same reality: the meaning attributed to experience,
+                        the limits of language and the way individuals interpret
+                        uncertainty and change.
+                    </p>
+
+                    <p data-i18n="perspectiveTextThird">
+                        These projects do not replace or compete with my scientific
+                        work. They represent another perspective from which I
+                        examine the relationship between human beings, knowledge
+                        and the world they attempt to understand.
+                    </p>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="estratto" id="excerpt">
+            <div class="contenitore estratto-layout apparizione">
+
+                <div>
+                    <p class="etichetta"
+                       data-i18n="excerptLabel">
+                        From the book
+                    </p>
+                </div>
+
+                <div>
+
+                    <blockquote>
+                        ...<br /> Andranno in eterno le sorti degli inermi...  <br />che mansueti hanno lasciato alla vita solo l’ultimo respiro... <br />tu resta feroce, nelle tue fredde notti... <br />incalza, e infuria con tutte le tue forze...<br />...
+                    </blockquote>
+
+                    <p class="estratto-fonte">
+                        La fisica delle cose create
+                    </p>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="contenitore footer-contenuto">
+
+            <span>
+                <span id="anno"></span> Andrea Vennarucci
+            </span>
+
+            <a href="index.html"
+               data-i18n="footerReturn">
+                Return to the academic website
+            </a>
+
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                pageTitle:
+                    "Beyond Engineering | Andrea Vennarucci",
+
+                pageDescription:
+                    "Books, writings and personal reflections by Andrea Vennarucci.",
+
+                navPageTitle:
+                    "Writings and personal projects",
+
+                navReturn:
+                    "Main website",
+
+                heroLabel:
+                    "Personal archive",
+
+                heroIndex:
+                    "Literature, thought and writing",
+
+                heroTitleFirst:
+                    "Beyond",
+
+                heroTitleSecond:
+                    "Engineering",
+
+                heroText:
+                    "A space devoted to the interests that accompany my scientific and professional work: literature, philosophy, writing and the relationship between knowledge and human experience.",
+
+                bookSectionLabel:
+                    "Selected work",
+
+                bookSectionTitle:
+                    "A different form of inquiry",
+
+                bookSectionText:
+                    "Writing allows certain questions to be explored beyond the boundaries of technical and scientific language.",
+
+                bookCoverAlt:
+                    "Cover of the book La fisica delle cose create",
+
+                bookCategory:
+                    "Poetry and reflections",
+
+                bookType:
+                    "Poetry collection",
+
+                bookDescriptionFirst:
+                    "La fisica delle cose create is founded on the idea that there are dimensions of reality that science cannot yet describe simply because it lacks the tools to do so, and that these dimensions therefore belong to the realm of individual discovery. Just as physics seeks the laws that govern the universe, these pages search for those that shape love, time, memory, sorrow, consciousness, and hope. Not to oppose poetry to scientific knowledge, but to stand alongside it, where the language of equations gives way to the inner experience of the human being. Each poem is an attempt to contemplate existence as part of a single universal order, in which the beating of a heart, the silence of a night, the motion of the stars, and the passage of time all belong to the same invisible fabric.The result is a journey through love, loss, freedom, faith, death, and beauty, offering no definitive answers, but holding firmly to one conviction: that understanding the world also means seeking to understand what we are not yet able to measure.",
+
+                bookDescriptionSecond:
+                    "The work brings together the perspective of an engineer and researcher with a more intimate and literary form of observation. Physics becomes not only a discipline, but also a language through which memory, identity, time and creation can be examined.",
+
+                discoverBook:
+                    "Discover the book",
+
+                readExcerpt:
+                    "Read an excerpt",
+
+                manifestoLabel:
+                    "A personal perspective",
+
+                manifestoFirst:
+                    "Science seeks to describe the structure of reality.",
+
+                manifestoSecond:
+                    "Poetry asks what that reality",
+
+                manifestoEmphasis:
+                    "means to us.",
+
+                interestsLabel:
+                    "Fields of interest",
+
+                interestsTitle:
+                    "Other forms of exploration",
+
+                literatureTitle:
+                    "Essays and Poetry",
+
+                literatureText:
+                    "Essay writing and poetry as ways of exploring human experience, memory, identity, and giving shape to thought through words.",
+
+                philosophyTitle:
+                    "Philosophy of science",
+
+                philosophyText:
+                    "Reflection on scientific knowledge, uncertainty, method and the boundaries between measurement and interpretation.",
+
+                communicationTitle:
+                    "Science communication",
+
+                communicationText:
+                    "The search for accessible and meaningful ways of communicating complex ideas beyond specialist environments.",
+
+                perspectiveLabel:
+                    "Perspective",
+
+                perspectiveTitle:
+                    "Knowledge is never only technical",
+
+                perspectiveTextFirst:
+                    "My academic and professional path is grounded in engineering, transportation research, digital simulation and road safety. At the same time, I have always considered scientific knowledge part of a broader process of understanding.",
+
+                perspectiveTextSecond:
+                    "Research provides methods for describing phenomena, testing hypotheses and constructing reliable models. Literature and philosophy approach other dimensions of the same reality: the meaning attributed to experience, the limits of language and the way individuals interpret uncertainty and change.",
+
+                perspectiveTextThird:
+                    "These projects do not replace or compete with my scientific work. They represent another perspective from which I examine the relationship between human beings, knowledge and the world they attempt to understand.",
+
+                excerptLabel:
+                    "From the book",
+
+                footerReturn:
+                    "Back to main site",
+
+                sezione1:
+                    "Section I",
+
+                sezione2:
+                    "Section II",
+            },
+
+            it: {
+                pageTitle:
+                    "Oltre l'Ingegneria | Andrea Vennarucci",
+
+                pageDescription:
+                    "Libri, scritti e riflessioni personali di Andrea Vennarucci.",
+
+                navPageTitle:
+                    "Scritti e progetti personali",
+
+                navReturn:
+                    "Sito principale",
+
+                heroLabel:
+                    "Archivio personale",
+
+                heroIndex:
+                    "Letteratura, pensiero e scrittura",
+
+                heroTitleFirst:
+                    "Oltre",
+
+                heroTitleSecond:
+                    "l'Ingegneria",
+
+                heroText:
+                    "Uno spazio dedicato agli interessi che accompagnano il mio lavoro scientifico e professionale: la letteratura, la filosofia, la scrittura e il rapporto tra conoscenza ed esperienza umana.",
+
+                bookSectionLabel:
+                    "Opera selezionata",
+
+                bookSectionTitle:
+                    "Una diversa forma di ricerca",
+
+                bookSectionText:
+                    "La scrittura consente di esplorare alcune domande oltre i confini del linguaggio tecnico e scientifico.",
+
+                bookCoverAlt:
+                    "Copertina del libro La fisica delle cose create",
+
+                bookCategory:
+                    "Poesia e riflessioni",
+
+                bookType:
+                    "Raccolta poetica",
+
+                bookDescriptionFirst:
+                    "La fisica delle cose create nasce dall’idea che esistano territori della realtà che la scienza non può descrivere per mancanza di strumenti e che, proprio per questo, appartengono alla scoperta individuale. Così come la fisica ricerca le leggi che regolano l’Universo, queste pagine cercano quelle che governano l’amore, il tempo, la memoria, il dolore, la coscienza e la speranza. Non per opporre la poesia alla conoscenza scientifica, ma per affiancarla, là dove il linguaggio delle formule lascia spazio all’esperienza interiore dell’uomo. Ogni componimento rappresenta un tentativo di osservare l’esistenza come parte di un unico ordine universale, in cui il battito di un cuore, il silenzio di una notte, il moto delle stelle e il trascorrere del tempo appartengono alla stessa trama invisibile. Ne emerge un viaggio che attraversa l’amore, la perdita, la libertà, la fede, la morte e la bellezza, senza offrire risposte, ma coltivando una convinzione: comprendere il mondo significa anche comprendere ciò che ancora non siamo in grado di misurare. ",
+
+                bookDescriptionSecond:
+                    "L'opera unisce la prospettiva dell'ingegnere e del ricercatore a una forma di osservazione più intima e letteraria. La fisica diviene non soltanto una disciplina, ma anche un linguaggio attraverso il quale interrogare la memoria, l'identità, il tempo e la creazione.",
+
+                discoverBook:
+                    "Scopri il libro",
+
+                readExcerpt:
+                    "Leggi un estratto",
+
+                manifestoLabel:
+                    "Una prospettiva personale",
+
+                manifestoFirst:
+                    "La scienza ci accompagna verso l’ordine invisibile dell’universo.",
+
+                manifestoSecond:
+                    "La poesia ci accompagna verso l’ordine",
+
+                manifestoEmphasis:
+                    "fragile e incompleto dell’esperienza.",
+
+                interestsLabel:
+                    "Ambiti di interesse",
+
+                interestsTitle:
+                    "Altre forme di esplorazione",
+
+                literatureTitle:
+                    "Saggistica e poesia",
+
+                literatureText:
+                    "La scrittura saggistica e la poesia come strumenti per comprendere e raccontare l'esperienza umana, la memoria, l'identità e il rapporto con il mondo.",
+
+                philosophyTitle:
+                    "Filosofia della scienza",
+
+                philosophyText:
+                    "Una riflessione sulla conoscenza scientifica, sull'incertezza, sul metodo e sui confini tra misurazione e interpretazione.",
+
+                communicationTitle:
+                    "Comunicazione scientifica",
+
+                communicationText:
+                    "La ricerca di modalità accessibili e significative per comunicare idee complesse anche al di fuori degli ambienti specialistici.",
+
+                perspectiveLabel:
+                    "Prospettiva",
+
+                perspectiveTitle:
+                    "La conoscenza non è mai soltanto tecnica",
+
+                perspectiveTextFirst:
+                    "Il mio percorso accademico e professionale è fondato sull'ingegneria, sulla ricerca nel settore della sicurezza stradale, sulla simulazione digitale e sulla realtà virtuale. Al tempo stesso, ho sempre considerato la conoscenza scientifica come parte di un processo più ampio di comprensione.",
+
+                perspectiveTextSecond:
+                    "La ricerca fornisce metodi per descrivere i fenomeni, verificare ipotesi e costruire modelli affidabili. La letteratura e la filosofia affrontano altre dimensioni della stessa realtà: il significato attribuito all'esperienza, i limiti del linguaggio e il modo in cui gli individui interpretano l'incertezza e il cambiamento.",
+
+                perspectiveTextThird:
+                    "Questi progetti non sostituiscono né competono con il mio lavoro scientifico. Rappresentano un'altra prospettiva attraverso la quale osservo il rapporto tra gli esseri umani, la conoscenza e il mondo che tentano di comprendere.",
+
+                excerptLabel:
+                    "Dal libro",
+
+                footerReturn:
+                    "Torna al sito principale",
+
+                sezione1:
+                    "Sezione I",
+
+                sezione2:
+                    "Sezione II",
+            }
+        };
+
+        const languageButtons =
+            document.querySelectorAll(".lingua");
+
+        const metaDescription =
+            document.querySelector('meta[name="description"]');
+
+        function setLanguage(language) {
+            const selectedTranslations =
+                translations[language];
+
+            if (!selectedTranslations) {
+                return;
+            }
+
+            document.documentElement.lang = language;
+            document.title = selectedTranslations.pageTitle;
+
+            if (metaDescription) {
+                metaDescription.setAttribute(
+                    "content",
+                    selectedTranslations.pageDescription
+                );
+            }
+
+            document
+                .querySelectorAll("[data-i18n]")
+                .forEach((element) => {
+                    const key =
+                        element.getAttribute("data-i18n");
+
+                    if (selectedTranslations[key] !== undefined) {
+                        element.textContent =
+                            selectedTranslations[key];
+                    }
+                });
+
+            document
+                .querySelectorAll("[data-i18n-alt]")
+                .forEach((element) => {
+                    const key =
+                        element.getAttribute("data-i18n-alt");
+
+                    if (selectedTranslations[key] !== undefined) {
+                        element.setAttribute(
+                            "alt",
+                            selectedTranslations[key]
+                        );
+                    }
+                });
+
+            languageButtons.forEach((button) => {
+                const isActive =
+                    button.dataset.language === language;
+
+                button.classList.toggle(
+                    "attiva",
+                    isActive
+                );
+
+                button.setAttribute(
+                    "aria-pressed",
+                    String(isActive)
+                );
+            });
+
+            localStorage.setItem(
+                "siteLanguage",
+                language
+            );
+        }
+
+        languageButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                setLanguage(button.dataset.language);
+            });
+        });
+
+        const savedLanguage =
+            localStorage.getItem("siteLanguage");
+
+        const browserLanguage =
+            navigator.language
+                .toLowerCase()
+                .startsWith("it")
+                ? "it"
+                : "en";
+
+        const initialLanguage =
+            savedLanguage || browserLanguage;
+
+        setLanguage(initialLanguage);
+
+        const yearElement =
+            document.getElementById("anno");
+
+        if (yearElement) {
+            yearElement.textContent =
+                new Date().getFullYear();
+        }
+
+        const animatedElements =
+            document.querySelectorAll(".apparizione");
+
+        const observer =
+            new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add(
+                                "visibile"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+                        }
+                    });
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+        animatedElements.forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
+
+</body>
+</html>
