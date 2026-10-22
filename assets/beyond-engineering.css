@@ -455,6 +455,68 @@
                 transform: scaleX(0.45);
             }
 
+        .purchase-options {
+            position: relative;
+            align-self: flex-start;
+            width: 230px;
+            max-width: 100%;
+            z-index: 5;
+        }
+
+        .purchase-options summary {
+            display: flex;
+            width: fit-content;
+            align-items: center;
+            gap: 12px;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        .purchase-options summary::-webkit-details-marker { display: none; }
+        .purchase-chevron { transition: transform 0.2s ease; }
+        .purchase-options[open] .purchase-chevron { transform: rotate(180deg); }
+
+        .purchase-links {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 230px;
+            margin: 0;
+            padding: 12px 8px 8px;
+            list-style: none;
+            background: var(--background-light);
+            border: 1px solid var(--line);
+            box-shadow: 0 14px 30px rgba(23, 22, 18, 0.12);
+        }
+
+        .purchase-links a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            min-height: 46px;
+            padding: 10px 14px;
+            color: var(--text);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .purchase-links a:hover,
+        .purchase-links a:focus-visible { background: var(--background); }
+        .purchase-links a span { color: var(--accent); }
+
+        @media (max-width: 650px) {
+            .purchase-links {
+                position: static;
+                width: min(230px, calc(100vw - 72px));
+                margin-top: 12px;
+            }
+        }
+
         .manifesto {
             padding: 170px 0;
             background: var(--dark);
@@ -789,4 +851,3 @@
                 flex-direction: column;
             }
         }
-

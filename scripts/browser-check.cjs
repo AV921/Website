@@ -50,6 +50,27 @@ const server = http.createServer((req, res) => {
                     await page.goto(`${base}/${file}#road-safety-award`);
                     assert.equal(await page.locator('#road-safety-award .project-content').getAttribute('inert'), null);
                 }
+                if (file === 'beyond-engineering.html') {
+                    const options = page.locator('.purchase-options');
+                    const trigger = options.locator('summary');
+                    const shops = options.locator('a');
+                    assert.deepEqual(await shops.evaluateAll(links => links.map(a => new URL(a.href).hostname)),
+                        ['www.amazon.it', 'www.lafeltrinelli.it', 'www.ibs.it']);
+                    await trigger.hover();
+                    assert.equal(await options.evaluate(el => el.open), true);
+                    await shops.last().hover();
+                    assert.equal(await shops.last().isVisible(), true);
+                    await page.mouse.move(0, 0);
+                    assert.equal(await options.evaluate(el => el.open), false);
+                    await trigger.focus();
+                    await page.keyboard.press('Enter');
+                    await page.keyboard.press('Tab');
+                    assert.equal(await shops.first().evaluate(el => el === document.activeElement), true);
+                    await page.keyboard.press('Escape');
+                    assert.equal(await options.evaluate(el => el.open), false);
+                    assert.equal(await trigger.evaluate(el => el === document.activeElement), true);
+                    await page.keyboard.press('Enter');
+                }
                 if (file !== 'beyond-engineering.html') assert.equal(await page.locator('.hero-image').evaluate(el => getComputedStyle(el).transform), 'none');
                 await page.screenshot({ path: path.join(root, 'test-results', `${file}-${width}.png`), fullPage: true });
                 console.log(`PASS: ${file}, ${width}px`);
@@ -57,10 +78,20 @@ const server = http.createServer((req, res) => {
             assert.deepEqual(errors, []);
             await context.close();
         }
+        const touchContext = await browser.newContext({ hasTouch: true, isMobile: true, viewport: { width: 390, height: 844 } });
+        const touchPage = await touchContext.newPage();
+        await touchPage.goto(`${base}/beyond-engineering.html`);
+        await touchPage.locator('.purchase-options summary').tap();
+        assert.equal(await touchPage.locator('.purchase-links a').last().isVisible(), true);
+        await touchPage.locator('.purchase-options summary').tap();
+        assert.equal(await touchPage.locator('.purchase-options').evaluate(el => el.open), false);
+        await touchContext.close();
         const context = await browser.newContext({ javaScriptEnabled: false });
         const page = await context.newPage();
         await page.goto(`${base}/beyond-engineering.html`);
         assert.equal(await page.locator('.apparizione').first().evaluate(el => getComputedStyle(el).opacity), '1');
+        await page.locator('.purchase-options summary').click();
+        assert.equal(await page.locator('.purchase-links a').last().isVisible(), true);
         await context.close();
     } finally {
         if (browser) await browser.close();
