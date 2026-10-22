@@ -458,11 +458,14 @@
         .purchase-options {
             position: relative;
             align-self: flex-start;
+            width: 230px;
+            max-width: 100%;
             z-index: 5;
         }
 
         .purchase-options summary {
             display: flex;
+            width: fit-content;
             align-items: center;
             gap: 12px;
             list-style: none;
