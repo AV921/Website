@@ -25,4 +25,3 @@ document.querySelectorAll('.purchase-options').forEach(options => {
         if (!options.contains(event.target)) options.open = false;
     });
 });
-
