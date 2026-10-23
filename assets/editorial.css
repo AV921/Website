@@ -126,10 +126,14 @@ body.editorial .detail { color: var(--muted); font-size: 13px; line-height: 1.7;
 body.editorial .activities-grid { gap: 32px; }
 body.editorial .activities-section .activity-card { min-height: 0; padding: 26px 0; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: none; box-shadow: none; transform: none; }
 body.editorial .activity-tag { background: none; color: var(--accent); padding: 0; border-radius: 0; font-size: 10px; letter-spacing: .13em; }
-body.editorial .activity-title { font-size: 29px; line-height: 1.2; }
+body.editorial .activity-title { font: 400 29px/1.2 'Libre Caslon Display',Georgia,serif; color: var(--ink); }
 body.editorial .activity-text { font-size: 14px; line-height: 1.8; color: var(--muted); }
 body.editorial .cv-card { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; border-top: 1px solid var(--line); padding-top: 56px; }
 body.editorial .cv-image img { border-radius: 0; box-shadow: none; }
+body.editorial .cv-info { padding: 0; }
+body.editorial .cv-info p { color: var(--muted); }
+body.editorial .social-button.primary { background: transparent; color: var(--accent); }
+body.editorial .project-meta { border-color: var(--line); }
 body.editorial .intro-card { max-width: 1000px; }
 body.editorial .intro-tags { justify-content: flex-start; }
 body.editorial :where(.tag,.intro-tag) { background: transparent; border: 1px solid var(--line); border-radius: 0; color: var(--muted); padding: 5px 10px; font-size: 11px; box-shadow: none; }

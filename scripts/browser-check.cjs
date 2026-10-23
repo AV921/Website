@@ -74,6 +74,8 @@ const server = http.createServer((req, res) => {
                     await page.keyboard.press('Enter');
                 }
                 if (file !== 'beyond-engineering.html') assert.equal(await page.locator('.hero-image').evaluate(el => getComputedStyle(el).transform), 'none');
+                await page.evaluate(() => { document.activeElement?.blur(); window.scrollTo(0, 0); });
+                await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
                 await page.screenshot({ path: path.join(root, 'test-results', `${file}-${width}.png`), fullPage: true });
                 const preview = await page.screenshot({ type: 'jpeg', quality: 30, fullPage: width === 1440 });
                 console.log(`PREVIEW_${file}_${width}:` + preview.toString('base64'));
