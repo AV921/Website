@@ -6,6 +6,8 @@
     };
     function sync() {
         const lang = document.documentElement.lang === 'it' ? 'it' : 'en';
+        const brand = document.querySelector('.brand [data-i18n="brand"]');
+        if (brand) brand.textContent = `${lang === 'it' ? 'Ing.' : 'Eng.'} Andrea Vennarucci`;
         document.querySelectorAll('[data-editorial-i18n]').forEach(el => {
             const text = labels[lang][el.dataset.editorialI18n];
             if (text) el.textContent = text;

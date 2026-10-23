@@ -77,8 +77,6 @@ const server = http.createServer((req, res) => {
                 await page.evaluate(() => { document.activeElement?.blur(); window.scrollTo(0, 0); });
                 await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
                 await page.screenshot({ path: path.join(root, 'test-results', `${file}-${width}.png`), fullPage: true });
-                const preview = await page.screenshot({ type: 'jpeg', quality: 30, fullPage: width === 1440 });
-                console.log(`PREVIEW_${file}_${width}:` + preview.toString('base64'));
                 console.log(`PASS: ${file}, ${width}px`);
             }
             assert.deepEqual(errors, []);
