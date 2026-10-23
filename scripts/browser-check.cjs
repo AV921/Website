@@ -31,10 +31,12 @@ const server = http.createServer((req, res) => {
             page.on('response', response => { if (response.url().startsWith(base) && response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
             for (const file of files) {
                 await page.goto(`${base}/${file}`);
+                assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `English layout overflows: ${file} at ${width}`);
                 await page.getByRole('button', { name: 'Italiano', exact: true }).click();
                 assert.equal(await page.locator('html').getAttribute('lang'), 'it');
+                assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `Italian layout overflows: ${file} at ${width}`);
                 assert.equal(await page.locator('meta[property="og:locale"]').getAttribute('content'), 'it_IT');
-                if (width === 390 && file !== 'beyond-engineering.html') {
+                if (width === 390) {
                     const menu = page.locator('.menu-toggle');
                     await menu.click();
                     assert.equal(await menu.getAttribute('aria-expanded'), 'true');
@@ -72,6 +74,8 @@ const server = http.createServer((req, res) => {
                     await page.keyboard.press('Enter');
                 }
                 if (file !== 'beyond-engineering.html') assert.equal(await page.locator('.hero-image').evaluate(el => getComputedStyle(el).transform), 'none');
+                await page.evaluate(() => { document.activeElement?.blur(); window.scrollTo(0, 0); });
+                await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
                 await page.screenshot({ path: path.join(root, 'test-results', `${file}-${width}.png`), fullPage: true });
                 console.log(`PASS: ${file}, ${width}px`);
             }

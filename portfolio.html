@@ -1,105 +1,84 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrea Vennarucci - Portfolio</title>
-    <meta name="description" content="Explore Andrea Vennarucci’s projects in driving simulation, virtual reality, BIM, digital twins and road safety engineering." data-en="Explore Andrea Vennarucci’s projects in driving simulation, virtual reality, BIM, digital twins and road safety engineering." data-it="Esplora i progetti di Andrea Vennarucci su simulazione di guida, realtà virtuale, BIM, digital twin e sicurezza stradale.">
-    <link rel="canonical" href="https://andreavennarucci.com/portfolio.html">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Andrea Vennarucci">
-    <meta property="og:title" content="Andrea Vennarucci - Portfolio">
-    <meta property="og:description" content="Explore Andrea Vennarucci’s projects in driving simulation, virtual reality, BIM, digital twins and road safety engineering.">
-    <meta property="og:url" content="https://andreavennarucci.com/portfolio.html">
-    <meta property="og:locale" content="en_GB">
-    <meta property="og:image" content="https://andreavennarucci.com/image/social-preview.jpg">
-    <meta property="og:image:alt" content="Andrea Vennarucci — Civil engineering and research">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <script src="assets/site.js"></script>
-    <link rel="stylesheet" href="assets/portfolio.css">
-    <link rel="stylesheet" href="assets/site.css">
-</head>
-
-<body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <header class="site-header">
-        <nav class="nav" aria-label="Main navigation">
-            <a class="brand" href="index.html">
-                <img src="image/Logo-84.webp" alt="Andrea Vennarucci" width="1254" height="1254" decoding="async" srcset="image/Logo-84.webp 84w, image/Logo-180.webp 180w" sizes="42px">
-                <span data-i18n="brand">Eng. Andrea Vennarucci</span>
-            </a>
-
-            <div class="nav-links" id="navigation">
-                <a href="/" data-i18n="navHome">Home</a>
-                <a href="AboutMe.html" data-i18n="navAbout">About Me</a>
-                <a class="active" href="portfolio.html" data-i18n="navPortfolio">Portfolio</a>
-                <a href="ScientificPublications.html" data-i18n="navPublications">Publications</a>
-                <a href="Contact.html" data-i18n="navContact">Contact</a>
-            </div>
-
-
-            <div class="language-switcher" aria-label="Language selection">
-                <button class="language-button active" type="button" data-lang="en"
-                        onclick="setLanguage('en')" aria-label="English" title="English">
-                    <svg viewBox="0 0 60 36" aria-hidden="true">
-                        <rect width="60" height="36" fill="#012169"></rect>
-                        <path d="M0 0 L60 36 M60 0 L0 36" stroke="#ffffff" stroke-width="8"></path>
-                        <path d="M0 0 L60 36 M60 0 L0 36" stroke="#c8102e" stroke-width="4"></path>
-                        <path d="M30 0 V36 M0 18 H60" stroke="#ffffff" stroke-width="12"></path>
-                        <path d="M30 0 V36 M0 18 H60" stroke="#c8102e" stroke-width="7"></path>
-                    </svg>
-                </button>
-                <button class="language-button" type="button" data-lang="it"
-                        onclick="setLanguage('it')" aria-label="Italiano" title="Italiano">
-                    <svg viewBox="0 0 60 36" aria-hidden="true">
-                        <rect x="0" width="20" height="36" fill="#009246"></rect>
-                        <rect x="20" width="20" height="36" fill="#ffffff"></rect>
-                        <rect x="40" width="20" height="36" fill="#ce2b37"></rect>
-                    </svg>
-                </button>
-            </div>
-
-            <button class="menu-toggle" type="button" aria-controls="navigation" aria-expanded="false" onclick="toggleMenu()" aria-label="Toggle navigation">☰</button>
-        </nav>
-    </header>
-
-    <main id="top" tabindex="-1">
-        <span id="main-content" tabindex="-1"></span>
-        <section class="hero">
-            <img class="hero-image" src="image/HeaderHome-1600.webp" alt="Andrea Vennarucci portfolio header" width="1983" height="793" decoding="async" fetchpriority="high" srcset="image/HeaderHome-480.webp 480w, image/HeaderHome-960.webp 960w, image/HeaderHome-1600.webp 1600w" sizes="100vw">
-            <div class="hero-overlay"></div>
-
-            <div class="hero-inner">
-                <div class="hero-content">
-                    <h1>Portfolio</h1>
-                    <div class="eyebrow" data-i18n="heroEyebrow">Engineering Practice | Research Projects | Digital Innovation</div>
-                    <p class="hero-subtitle" data-i18n="heroSubtitle">A selection of projects connecting infrastructure engineering, road safety, virtual reality, digital twins, fire safety and data-driven methods.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="portfolio-intro">
-                <aside class="portfolio-side">
-                    <h2 data-i18n="portfolioTitle">Project Portfolio</h2>
-                    <p data-i18n="portfolioLead">Research, engineering and software development activities developed across academic, institutional and professional contexts.</p>
-                </aside>
-
-                <div class="portfolio-copy">
-                    <p data-i18n-html="introP1">This portfolio presents projects located at the intersection of <span class="keyword">civil engineering</span>, <span class="keyword">transportation safety</span>, <span class="keyword">digital technologies</span> and <span class="keyword">public service</span>. The aim is to show not only research outputs, but also the practical and technical path that connects infrastructure management, simulation, fire safety engineering and innovation.</p>
-                    <p data-i18n-html="introP2">The projects are organised as expandable cards. Each card provides a concise overview and can be opened to explore objectives, methods, technologies and outcomes.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="projects">
-            <h2 class="section-title" data-i18n="selectedTitle">Selected Projects</h2>
-            <p class="section-subtitle" data-i18n="selectedSubtitle">Click on each project card to open or close the detailed project sheet.</p>
-
-            <!-- ============================================================
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Andrea Vennarucci - Portfolio</title>
+<meta content="Explore Andrea Vennarucci’s projects in driving simulation, virtual reality, BIM, digital twins and road safety engineering." data-en="Explore Andrea Vennarucci’s projects in driving simulation, virtual reality, BIM, digital twins and road safety engineering." data-it="Esplora i progetti di Andrea Vennarucci su simulazione di guida, realtà virtuale, BIM, digital twin e sicurezza stradale." name="description"/>
+<link href="https://andreavennarucci.com/portfolio.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Andrea Vennarucci" property="og:site_name"/>
+<meta content="Andrea Vennarucci - Portfolio" property="og:title"/>
+<meta content="Explore Andrea Vennarucci’s projects in driving simulation, virtual reality, BIM, digital twins and road safety engineering." property="og:description"/>
+<meta content="https://andreavennarucci.com/portfolio.html" property="og:url"/>
+<meta content="en_GB" property="og:locale"/>
+<meta content="https://andreavennarucci.com/image/social-preview.jpg" property="og:image"/>
+<meta content="Andrea Vennarucci — Civil engineering and research" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<script src="assets/site.js?v=editorial-1"></script>
+<link href="assets/portfolio.css?v=editorial-1" rel="stylesheet"/>
+<link href="assets/site.css?v=editorial-1" rel="stylesheet"/>
+<link href="assets/editorial.css?v=editorial-1" rel="stylesheet"/><script defer="" src="assets/editorial.js?v=editorial-1"></script></head>
+<body class="editorial page-portfolio">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+<nav aria-label="Main navigation" class="nav">
+<a class="brand" href="index.html">
+<img alt="Andrea Vennarucci" decoding="async" height="1254" sizes="42px" src="image/Logo-84.webp" srcset="image/Logo-84.webp 84w, image/Logo-180.webp 180w" style="width:42px;height:42px;object-fit:contain;" width="1254"/>
+<span data-i18n="brand">Eng. Andrea Vennarucci</span>
+</a>
+<div class="nav-links" id="navigation">
+<a class="" data-editorial-i18n="navHome" data-i18n="navHome" href="/">Home</a>
+<a class="" data-editorial-i18n="navAbout" data-i18n="navAbout" href="AboutMe.html">About Me</a>
+<a aria-current="page" class="active" data-editorial-i18n="navPortfolio" data-i18n="navPortfolio" href="portfolio.html">Portfolio</a>
+<a class="" data-editorial-i18n="navPublications" data-i18n="navPublications" href="ScientificPublications.html">Publications</a>
+<a class="" data-editorial-i18n="navContact" data-i18n="navContact" href="Contact.html">Contact</a>
+<a class="nav-poetry" data-editorial-i18n="navPoetry" data-i18n="navPoetry" href="beyond-engineering.html">
+                    Beyond Engineering
+                </a>
+</div>
+<div aria-label="Language selection" class="language-switcher">
+<button aria-label="English" class="language-button active" data-lang="en" onclick="setLanguage('en')" title="English" type="button">EN</button>
+<button aria-label="Italiano" class="language-button" data-lang="it" onclick="setLanguage('it')" title="Italiano" type="button">IT</button>
+</div>
+<button aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation" class="menu-toggle" onclick="toggleMenu()" type="button">
+                ☰
+            </button>
+</nav>
+</header>
+<main id="top" tabindex="-1">
+<span id="main-content" tabindex="-1"></span>
+<section class="hero">
+<img alt="Immersive driving simulation" class="hero-image" decoding="async" fetchpriority="high" height="640" sizes="(max-width: 860px) 100vw, 40vw" src="image/cosimulazione-960.webp" srcset="image/cosimulazione-960.webp 960w" width="960"/>
+<div class="hero-overlay"></div>
+<div class="hero-inner">
+<div class="hero-content">
+<h1>Portfolio</h1>
+<div class="eyebrow" data-i18n="heroEyebrow">Engineering Practice | Research Projects | Digital Innovation</div>
+<p class="hero-subtitle" data-i18n="heroSubtitle">A selection of projects connecting infrastructure engineering, road safety, virtual reality, digital twins, fire safety and data-driven methods.</p>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="portfolio-intro">
+<aside class="portfolio-side">
+<h2 data-i18n="portfolioTitle">Project Portfolio</h2>
+<p data-i18n="portfolioLead">Research, engineering and software development activities developed across academic, institutional and professional contexts.</p>
+</aside>
+<div class="portfolio-copy">
+<p data-i18n-html="introP1">This portfolio presents projects located at the intersection of <span class="keyword">civil engineering</span>, <span class="keyword">transportation safety</span>, <span class="keyword">digital technologies</span> and <span class="keyword">public service</span>. The aim is to show not only research outputs, but also the practical and technical path that connects infrastructure management, simulation, fire safety engineering and innovation.</p>
+<p data-i18n-html="introP2">The projects are organised as expandable cards. Each card provides a concise overview and can be opened to explore objectives, methods, technologies and outcomes.</p>
+</div>
+</div>
+</section>
+<section class="section" id="projects">
+<h2 class="section-title" data-i18n="selectedTitle">Selected Projects</h2>
+<p class="section-subtitle" data-i18n="selectedSubtitle">Click on each project card to open or close the detailed project sheet.</p>
+<!-- ============================================================
             INIZIO ELENCO PROGETTI
             Per aggiungere un nuovo progetto:
             1) Copia un intero blocco <!-- ============================================================
@@ -111,208 +90,181 @@
             2) Incollalo sotto l'ultimo progetto
             3) Cambia immagini, testi e chiavi data-i18n
             ============================================================ -->
-            <div class="projects-list">
-                <article class="project-card">
-                    <button class="project-header" type="button" aria-expanded="false">
-                        <img class="project-thumb" src="image/Cosimu-480.webp" alt="Driving Co-Simulation project" width="1254" height="1254" decoding="async" loading="lazy" srcset="image/Cosimu-480.webp 480w, image/Cosimu-960.webp 960w, image/Cosimu-1254.webp 1254w" sizes="160px">
-                        <div class="project-summary">
-                            <h3 data-i18n="proj1Title">Driving Multi-Users Simulation in Virtual Reality Environment</h3>
-                            <p data-i18n="proj1Summary">Development of immersive driving simulation environments for road safety studies, human behaviour analysis and interaction among different road users.</p>
-                        </div>
-                        <span class="project-toggle">⌄</span>
-                    </button>
-
-                    <div class="project-content" inert>
-                        <div class="project-inner">
-                            <div class="project-layout">
-                                <img class="project-main-image" src="image/cosimulazione-1536.webp" alt="Driving Co-Simulation environment" width="1536" height="1024" decoding="async" loading="lazy" srcset="image/cosimulazione-480.webp 480w, image/cosimulazione-960.webp 960w, image/cosimulazione-1536.webp 1536w" sizes="(max-width: 860px) 100vw, 1160px">
-
-                                <div class="project-details">
-                                    <h4 data-i18n="projectOverview">Project overview</h4>
-                                    <p data-i18n="proj1Overview">Development of a co-simulation architecture (Calvi et al., 2025) based on synchronized virtual environments in which multiple users and intelligent agents can interact simultaneously. This platform enables the study of complex mobility dynamics, mutual interference processes, and behavioural interactions between different categories of road users within immersive and high-fidelity simulation ecosystems. The system integrates virtual reality technologies, network synchronization, behavioural data acquisition, and real-time interaction modelling.</p>
-
-                                    <div class="project-meta-grid">
-                                        <div class="project-meta">
-                                            <strong data-i18n="mainFocus">Main focus</strong>
-                                            <span data-i18n="metaRoadSafety">Road safety, driver behaviour, immersive simulation.</span>
-                                        </div>
-
-                                        <div class="project-meta">
-                                            <strong data-i18n="roleLabel">Role</strong>
-                                            <span data-i18n="metaScenarioRole">Scenario development, system integration, experimental setup.</span>
-                                        </div>
-                                    </div>
-
-                                    <h4 data-i18n="technologies">Technologies</h4>
-                                    <div class="badge-list">
-                                        <span class="badge">BIM Authoring</span>
-                                        <span class="badge">Digital Twins</span>
-                                        <span class="badge">Unity</span>
-                                        <span class="badge">Virtual Reality</span>
-                                        <span class="badge">Driving Simulation</span>
-                                        <span class="badge">C#</span>
-                                        <span class="badge">Human Factors</span>
-                                        <span class="badge">Users Behaviour</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h4 data-i18n="hmdTitle">Head-Mounted Display (HMD) Simulators</h4>
-                            <p data-i18n="proj1HmdIntro">To establish a shared simulation environment, three highly immersive simulation platforms were developed. Together, they enable the investigation of the behaviour of different road users in both collaborative multi-user virtual environments and standalone simulation scenarios, providing a versatile framework for the study of human behaviour, traffic interactions and road safety.</p>
-
-
-                            <div class="project-features">
-                                <div class="feature">
-                                    <h5 data-i18n="featureDriveTitle">HMD Driving Simulator</h5>
-
-                                    <p data-i18n="proj1Feature1">
+<div class="projects-list">
+<article class="project-card">
+<button aria-expanded="false" class="project-header" type="button">
+<img alt="Driving Co-Simulation project" class="project-thumb" decoding="async" height="1254" loading="lazy" sizes="160px" src="image/Cosimu-480.webp" srcset="image/Cosimu-480.webp 480w, image/Cosimu-960.webp 960w, image/Cosimu-1254.webp 1254w" width="1254"/>
+<div class="project-summary">
+<h3 data-i18n="proj1Title">Driving Multi-Users Simulation in Virtual Reality Environment</h3>
+<p data-i18n="proj1Summary">Development of immersive driving simulation environments for road safety studies, human behaviour analysis and interaction among different road users.</p>
+</div>
+<span class="project-toggle">⌄</span>
+</button>
+<div class="project-content" inert="">
+<div class="project-inner">
+<div class="project-layout">
+<img alt="Driving Co-Simulation environment" class="project-main-image" decoding="async" height="1024" loading="lazy" sizes="(max-width: 860px) 100vw, 1160px" src="image/cosimulazione-1536.webp" srcset="image/cosimulazione-480.webp 480w, image/cosimulazione-960.webp 960w, image/cosimulazione-1536.webp 1536w" width="1536"/>
+<div class="project-details">
+<h4 data-i18n="projectOverview">Project overview</h4>
+<p data-i18n="proj1Overview">Development of a co-simulation architecture (Calvi et al., 2025) based on synchronized virtual environments in which multiple users and intelligent agents can interact simultaneously. This platform enables the study of complex mobility dynamics, mutual interference processes, and behavioural interactions between different categories of road users within immersive and high-fidelity simulation ecosystems. The system integrates virtual reality technologies, network synchronization, behavioural data acquisition, and real-time interaction modelling.</p>
+<div class="project-meta-grid">
+<div class="project-meta">
+<strong data-i18n="mainFocus">Main focus</strong>
+<span data-i18n="metaRoadSafety">Road safety, driver behaviour, immersive simulation.</span>
+</div>
+<div class="project-meta">
+<strong data-i18n="roleLabel">Role</strong>
+<span data-i18n="metaScenarioRole">Scenario development, system integration, experimental setup.</span>
+</div>
+</div>
+<h4 data-i18n="technologies">Technologies</h4>
+<div class="badge-list">
+<span class="badge">BIM Authoring</span>
+<span class="badge">Digital Twins</span>
+<span class="badge">Unity</span>
+<span class="badge">Virtual Reality</span>
+<span class="badge">Driving Simulation</span>
+<span class="badge">C#</span>
+<span class="badge">Human Factors</span>
+<span class="badge">Users Behaviour</span>
+</div>
+</div>
+</div>
+<h4 data-i18n="hmdTitle">Head-Mounted Display (HMD) Simulators</h4>
+<p data-i18n="proj1HmdIntro">To establish a shared simulation environment, three highly immersive simulation platforms were developed. Together, they enable the investigation of the behaviour of different road users in both collaborative multi-user virtual environments and standalone simulation scenarios, providing a versatile framework for the study of human behaviour, traffic interactions and road safety.</p>
+<div class="project-features">
+<div class="feature">
+<h5 data-i18n="featureDriveTitle">HMD Driving Simulator</h5>
+<p data-i18n="proj1Feature1">
                                         Development of a car driving simulation platform focused on the study of driver behaviour, human factors, and transportation safety. The simulator allows the recreation of controlled and repeatable experimental scenarios in which driving performance, decision-making processes, and interaction mechanisms between users, vehicles, and infrastructure systems can be analysed through immersive and data-driven methodologies.
                                     </p>
-                                </div>
-
-                                <div class="feature">
-                                    <h5 data-i18n="featureMotoTitle">HMD Motorcyclist Simualtor</h5>
-
-                                    <p data-i18n="proj1Feature2">
+</div>
+<div class="feature">
+<h5 data-i18n="featureMotoTitle">HMD Motorcyclist Simualtor</h5>
+<p data-i18n="proj1Feature2">
                                         Development of an immersive motorcycle riding simulator designed for the analysis of rider behaviour, risk perception, and interaction dynamics within complex traffic scenarios. The simulator integrates physical riding controls with virtual environments developed through advanced simulation technologies, enabling the investigation of behavioural responses under different road safety conditions, including interactions with vulnerable road users and critical traffic situations.
                                     </p>
-                                </div>
-
-                                <div class="feature">
-                                    <h5 data-i18n="featurePedTitle">HMD Pedestrian Simulator</h5>
-
-                                    <p data-i18n="proj1Feature3">
+</div>
+<div class="feature">
+<h5 data-i18n="featurePedTitle">HMD Pedestrian Simulator</h5>
+<p data-i18n="proj1Feature3">
                                         Development of an immersive pedestrian simulation platform aimed at analysing pedestrian behaviour, crossing decision-making processes, and interaction dynamics within urban traffic environments. The simulator enables the study of user perception, gap acceptance behaviour, and safety-related responses under controlled and repeatable experimental conditions. By integrating virtual reality technologies, behavioural data collection, and realistic traffic scenarios, the platform supports the investigation of interactions between pedestrians, vehicles, and surrounding infrastructure systems within highly immersive environments.
                                     </p>
-                                </div>
-
-                            </div>
-
-                            <div class="related-publications-block">
-                                <h4 class="related-publications-title"
-                                    data-i18n="relatedPublications">
+</div>
+</div>
+<div class="related-publications-block">
+<h4 class="related-publications-title" data-i18n="relatedPublications">
                                     Related Scientific Publications
                                 </h4>
-                                <p class="related-publications-subtitle" data-i18n="relatedSubtitle">Scientific outputs connected to this project area.</p>
-                                <div class="related-publications-list">
-                                    <article class="publication-card" onclick="openPublication('https://doi.org/10.1016/j.trpro.2025.06.088')" onkeydown="publicationKeyOpen(event,'https://doi.org/10.1016/j.trpro.2025.06.088')" role="link" tabindex="0">
-                                        <h3>A Novel Co-Simulation Platform for Driving Performance Evaluation of Various Road Users</h3>
-                                        <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2025). Transportation Research Procedia, 90, 710–717.</p>
-                                        <div class="publication-meta">
-                                            <span class="tag" data-i18n="tagProceedings">Proceedings</span>
-                                            <span class="doi">10.1016/j.trpro.2025.06.088</span>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-
-                <!-- ============================================================
+<p class="related-publications-subtitle" data-i18n="relatedSubtitle">Scientific outputs connected to this project area.</p>
+<div class="related-publications-list">
+<article class="publication-card" onclick="openPublication('https://doi.org/10.1016/j.trpro.2025.06.088')" onkeydown="publicationKeyOpen(event,'https://doi.org/10.1016/j.trpro.2025.06.088')" role="link" tabindex="0">
+<h3>A Novel Co-Simulation Platform for Driving Performance Evaluation of Various Road Users</h3>
+<p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2025). Transportation Research Procedia, 90, 710–717.</p>
+<div class="publication-meta">
+<span class="tag" data-i18n="tagProceedings">Proceedings</span>
+<span class="doi">10.1016/j.trpro.2025.06.088</span>
+</div>
+</article>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- ============================================================
                 PROGETTO 2
                 Copia da qui...
                 ...
                 fino al relativo </article>
                 per creare un nuovo progetto.
                 ============================================================ -->
-                <article class="project-card" id="bim-sumo-unity">
-                    <button class="project-header" type="button" aria-expanded="false">
-                        <img class="project-thumb" src="image/Micro-480.webp" alt="BIM SUMO Unity simulation framework" width="1254" height="1254" decoding="async" loading="lazy" srcset="image/Micro-480.webp 480w, image/Micro-960.webp 960w, image/Micro-1254.webp 1254w" sizes="160px">
-                        <div class="project-summary">
-                            <div class="pipeline-visual-title" data-i18n-html="proj2TitleVisual">
-                                <span class="pipeline-faded">BIM – to – SUMO</span>
-                                <span class="pipeline-main">BIM – to – Unity &amp; SUMO – to – Unity <em>Pipeline Integration</em></span>
-                            </div>
-                            <p class="pipeline-visual-subtitle" data-i18n="proj2Summary">
+<article class="project-card" id="bim-sumo-unity">
+<button aria-expanded="false" class="project-header" type="button">
+<img alt="BIM SUMO Unity simulation framework" class="project-thumb" decoding="async" height="1254" loading="lazy" sizes="160px" src="image/Micro-480.webp" srcset="image/Micro-480.webp 480w, image/Micro-960.webp 960w, image/Micro-1254.webp 1254w" width="1254"/>
+<div class="project-summary">
+<div class="pipeline-visual-title" data-i18n-html="proj2TitleVisual">
+<span class="pipeline-faded">BIM – to – SUMO</span>
+<span class="pipeline-main">BIM – to – Unity &amp; SUMO – to – Unity <em>Pipeline Integration</em></span>
+</div>
+<p class="pipeline-visual-subtitle" data-i18n="proj2Summary">
                                 A common-source workflow for traffic simulation, interactive visualisation and human-in-the-loop virtual reality simulation.
                             </p>
-                        </div>
-                        <span class="project-toggle">⌄</span>
-                    </button>
-
-                    <div class="project-content" inert>
-                        <div class="project-inner">
-                            <div class="ongoing-notice">
-                                <div class="ongoing-pulse"></div>
-                                <div>
-                                    <h4 data-i18n="proj2StatusTitle">Working Proof of Concept</h4>
-                                    <p data-i18n="proj2StatusText">The complete proof of concept has been implemented and successfully tested. Current activities focus on validation, performance optimisation and consolidation of the BIM conversion workflow.</p>
-                                </div>
-                            </div>
-
-                            <div class="project-layout">
-                                <img class="project-main-image" src="image/BIMto-1041.webp" alt="BIM SUMO Unity digital workflow" width="1041" height="669" decoding="async" loading="lazy" srcset="image/BIMto-480.webp 480w, image/BIMto-960.webp 960w, image/BIMto-1041.webp 1041w" sizes="(max-width: 860px) 100vw, 1160px">
-
-                                <div class="project-details">
-                                    <h4 data-i18n="projectOverview">Project overview</h4>
-                                    <p data-i18n="proj2Overview">The project develops a common-source digital workflow connecting BIM-based road information, traffic microsimulation and immersive visualisation. The resulting environments support coordinated traffic representation and human-in-the-loop interaction within a shared simulation framework.</p>
-
-                                    <div class="project-meta-grid">
-                                        <div class="project-meta">
-                                            <strong data-i18n="mainFocus">Main focus</strong>
-                                            <span data-i18n="proj2Focus">BIM interoperability, traffic microsimulation, immersive simulation and human-in-the-loop interaction.</span>
-                                        </div>
-                                        <div class="project-meta">
-                                            <strong data-i18n="roleLabel">Role</strong>
-                                            <span data-i18n="proj2Role">Workflow conception, software integration and proof-of-concept development.</span>
-                                        </div>
-                                    </div>
-
-                                    <h4 data-i18n="technologies">Technologies</h4>
-                                    <div class="badge-list">
-                                        <span class="badge">BIM</span>
-                                        <span class="badge">SUMO</span>
-                                        <span class="badge">Unity</span>
-                                        <span class="badge">Traffic Microsimulation</span>
-                                        <span class="badge">Virtual Reality</span>
-                                        <span class="badge">Human-in-the-Loop</span>
-                                        <span class="badge">Digital Integration</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="project-features">
-                                <div class="feature">
-                                    <h5 data-i18n="proj2Feature1Title">BIM Conversion</h5>
-                                    <p data-i18n="proj2Feature1Text">A shared BIM-based source supports the preparation of coherent geometric environments for the different simulation platforms.</p>
-                                </div>
-                                <div class="feature">
-                                    <h5 data-i18n="proj2Feature2Title">SUMO Network Generation</h5>
-                                    <p data-i18n="proj2Feature2Text">The road network is adapted for microscopic traffic simulation while maintaining compatibility with the original infrastructure representation.</p>
-                                </div>
-                                <div class="feature">
-                                    <h5 data-i18n="proj2Feature3Title">Bidirectional Simulation</h5>
-                                    <p data-i18n="proj2Feature3Text">Traffic simulation and interactive visualisation are connected to support synchronized human-in-the-loop applications.</p>
-                                </div>
-                            </div>
-
-                            <div class="related-publications-block">
-                                <h4 class="related-publications-title" data-i18n="proj2FigureTitle">Pipeline Overview</h4>
-                                <p class="related-publications-subtitle" data-i18n="proj2FigureCaption">Overview of the BIM–SUMO–Unity digital workflow developed during the visiting research period at Hasselt University.</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="project-card" id="road-safety-award">
-                    <button class="project-header" type="button" aria-expanded="false">
-                        <img class="project-thumb" src="image/drug-480.webp" alt="Driving Co-Simulation project" width="626" height="626" decoding="async" loading="lazy" srcset="image/drug-480.webp 480w, image/drug-626.webp 626w" sizes="160px">
-                        <div class="project-summary">
-                            <h3 data-i18n="proj3Title">Immersive VR Platform for Simulating Alcohol and Drug Impairment</h3>
-                            <p data-i18n="proj3Summary">First Prize Winner – Road Safety Research Award on Alcohol and Drug Impairment. </p>
-                        </div>
-                        <span class="project-toggle">⌄</span>
-                    </button>
-
-                    <div class="project-content" inert>
-                        <div class="project-inner">
-                            <div class="project-layout">
-                                <img class="project-main-image" src="image/drugandother-627.webp" alt="Driving Co-Simulation environment" width="627" height="417" decoding="async" loading="lazy" srcset="image/drugandother-480.webp 480w, image/drugandother-627.webp 627w" sizes="(max-width: 860px) 100vw, 1160px">
-
-                                <div class="project-details">
-                                    <h4 data-i18n="projectOverview">Project overview</h4>
-                                    <p data-i18n="proj3Overview">
+</div>
+<span class="project-toggle">⌄</span>
+</button>
+<div class="project-content" inert="">
+<div class="project-inner">
+<div class="ongoing-notice">
+<div class="ongoing-pulse"></div>
+<div>
+<h4 data-i18n="proj2StatusTitle">Working Proof of Concept</h4>
+<p data-i18n="proj2StatusText">The complete proof of concept has been implemented and successfully tested. Current activities focus on validation, performance optimisation and consolidation of the BIM conversion workflow.</p>
+</div>
+</div>
+<div class="project-layout">
+<img alt="BIM SUMO Unity digital workflow" class="project-main-image" decoding="async" height="669" loading="lazy" sizes="(max-width: 860px) 100vw, 1160px" src="image/BIMto-1041.webp" srcset="image/BIMto-480.webp 480w, image/BIMto-960.webp 960w, image/BIMto-1041.webp 1041w" width="1041"/>
+<div class="project-details">
+<h4 data-i18n="projectOverview">Project overview</h4>
+<p data-i18n="proj2Overview">The project develops a common-source digital workflow connecting BIM-based road information, traffic microsimulation and immersive visualisation. The resulting environments support coordinated traffic representation and human-in-the-loop interaction within a shared simulation framework.</p>
+<div class="project-meta-grid">
+<div class="project-meta">
+<strong data-i18n="mainFocus">Main focus</strong>
+<span data-i18n="proj2Focus">BIM interoperability, traffic microsimulation, immersive simulation and human-in-the-loop interaction.</span>
+</div>
+<div class="project-meta">
+<strong data-i18n="roleLabel">Role</strong>
+<span data-i18n="proj2Role">Workflow conception, software integration and proof-of-concept development.</span>
+</div>
+</div>
+<h4 data-i18n="technologies">Technologies</h4>
+<div class="badge-list">
+<span class="badge">BIM</span>
+<span class="badge">SUMO</span>
+<span class="badge">Unity</span>
+<span class="badge">Traffic Microsimulation</span>
+<span class="badge">Virtual Reality</span>
+<span class="badge">Human-in-the-Loop</span>
+<span class="badge">Digital Integration</span>
+</div>
+</div>
+</div>
+<div class="project-features">
+<div class="feature">
+<h5 data-i18n="proj2Feature1Title">BIM Conversion</h5>
+<p data-i18n="proj2Feature1Text">A shared BIM-based source supports the preparation of coherent geometric environments for the different simulation platforms.</p>
+</div>
+<div class="feature">
+<h5 data-i18n="proj2Feature2Title">SUMO Network Generation</h5>
+<p data-i18n="proj2Feature2Text">The road network is adapted for microscopic traffic simulation while maintaining compatibility with the original infrastructure representation.</p>
+</div>
+<div class="feature">
+<h5 data-i18n="proj2Feature3Title">Bidirectional Simulation</h5>
+<p data-i18n="proj2Feature3Text">Traffic simulation and interactive visualisation are connected to support synchronized human-in-the-loop applications.</p>
+</div>
+</div>
+<div class="related-publications-block">
+<h4 class="related-publications-title" data-i18n="proj2FigureTitle">Pipeline Overview</h4>
+<p class="related-publications-subtitle" data-i18n="proj2FigureCaption">Overview of the BIM–SUMO–Unity digital workflow developed during the visiting research period at Hasselt University.</p>
+</div>
+</div>
+</div>
+</article>
+<article class="project-card" id="road-safety-award">
+<button aria-expanded="false" class="project-header" type="button">
+<img alt="Driving Co-Simulation project" class="project-thumb" decoding="async" height="626" loading="lazy" sizes="160px" src="image/drug-480.webp" srcset="image/drug-480.webp 480w, image/drug-626.webp 626w" width="626"/>
+<div class="project-summary">
+<h3 data-i18n="proj3Title">Immersive VR Platform for Simulating Alcohol and Drug Impairment</h3>
+<p data-i18n="proj3Summary">First Prize Winner – Road Safety Research Award on Alcohol and Drug Impairment. </p>
+</div>
+<span class="project-toggle">⌄</span>
+</button>
+<div class="project-content" inert="">
+<div class="project-inner">
+<div class="project-layout">
+<img alt="Driving Co-Simulation environment" class="project-main-image" decoding="async" height="417" loading="lazy" sizes="(max-width: 860px) 100vw, 1160px" src="image/drugandother-627.webp" srcset="image/drugandother-480.webp 480w, image/drugandother-627.webp 627w" width="627"/>
+<div class="project-details">
+<h4 data-i18n="projectOverview">Project overview</h4>
+<p data-i18n="proj3Overview">
                                         Research and development project focused on the design and implementation of an immersive Virtual Reality framework for the simulation
                                         of perceptual, cognitive and motor impairments induced by psychoactive substances. The project involved the analysis of scientific
                                         literature concerning alcohol, cannabis (THC) and hallucinogenic substances, the identification of reproducible behavioural and
@@ -320,211 +272,175 @@
                                         designed to support education and awareness activities related to road safety, enabling the safe reproduction of altered states
                                         through Virtual Reality technologies and interactive simulation environments.
                                     </p>
-
-                                    <div class="project-meta-grid">
-                                        <div class="project-meta">
-                                            <strong data-i18n="mainFocus">Main focus</strong>
-                                            <span data-i18n="metaRoadSafety">Road safety, driver behaviour, immersive simulation.</span>
-                                        </div>
-
-                                        <div class="project-meta">
-                                            <strong data-i18n="roleLabel">Role</strong>
-                                            <span data-i18n="metaScenarioRole">Scenario development, system integration, experimental setup.</span>
-                                        </div>
-                                    </div>
-
-                                    <h4 data-i18n="technologies">Technologies</h4>
-                                    <div class="badge-list">
-                                        <span class="badge">Unity</span>
-                                        <span class="badge">Virtual Reality</span>
-                                        <span class="badge">Driving Simulation</span>
-                                        <span class="badge">C#</span>
-                                        <span class="badge">Human Factors</span>
-                                        <span class="badge">Users Behaviour</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <h4 data-i18n="keyOutcomes">Key Outcomes</h4>
-                            <p>
-                                <ul>
-                                    <li data-i18n="out31">Development of a modular Virtual Reality framework capable of reproducing perceptual alterations associated with alcohol, THC and hallucinogenic substances.</li>
-
-                                    <li data-i18n="out32">Design and implementation of configurable visual, auditory and motor impairment simulation algorithms.</li>
-
-                                    <li data-i18n="out33">Integration of scientific evidence on psychoactive substance effects into immersive simulation environments.</li>
-
-                                    <li data-i18n="out34">Creation of a reusable software architecture applicable to road safety education and public awareness initiatives.</li>
-                                </ul>
-                            </p>
-
-
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <button class="project-header" type="button" aria-expanded="false">
-                        <img class="project-thumb" src="image/DigTwin-480.webp" alt="Digital Twin for Asset Management" width="1280" height="934" decoding="async" loading="lazy" srcset="image/DigTwin-480.webp 480w, image/DigTwin-960.webp 960w, image/DigTwin-1280.webp 1280w" sizes="160px">
-                        <div class="project-summary">
-                            <h3 data-i18n="proj4Title">Digital Twin for Asset Management</h3>
-                            <p data-i18n="proj4Summary">Application of BIM-based digital twins to infrastructure and asset management, with attention to simulation, data integration and decision support.</p>
-                        </div>
-                        <span class="project-toggle">⌄</span>
-                    </button>
-
-                    <div class="project-content" inert>
-                        <div class="project-inner">
-                            <div class="project-layout">
-                                <img class="project-main-image" src="image/BIM-659.webp" alt="Digital twin project" width="659" height="378" decoding="async" loading="lazy" srcset="image/BIM-480.webp 480w, image/BIM-659.webp 659w" sizes="(max-width: 860px) 100vw, 1160px">
-
-                                <div class="project-details">
-                                    <h4 data-i18n="projectOverview">Project overview</h4>
-                                    <p data-i18n="proj4Overview">Research and development project concerning the implementation of Digital Twin methodologies for the management and valorisation of existing building assets. The work involved the creation of a structured digital information environment based on BIM principles, integrating geometric, technical and documentary information into a unified framework. The project addressed information acquisition, asset data modelling, digital documentation management and lifecycle-oriented asset management strategies, with the objective of enhancing operational efficiency, supporting maintenance activities and improving the overall accessibility and reliability of asset-related information.</p>
-                                    <h4 data-i18n="caseStudy">Case Study</h4>
-                                    <p>Palazzo Uffici di Ferservizi S.p.A., Gruppo Ferrovie dello Stato Italiane S.p.A.</p>
-                                    <div class="project-meta-grid">
-                                        <div class="project-meta">
-                                            <strong data-i18n="mainFocus">Main focus</strong>
-                                            <span data-i18n="metaBimFocus">BIM, digital twins, asset lifecycle, data integration, Property Management, Asset Management.</span>
-                                        </div>
-
-                                        <div class="project-meta">
-                                            <strong data-i18n="roleLabel">Role</strong>
-                                            <span data-i18n="metaBimRole">Digital modelling, asset analysis, information management.</span>
-                                        </div>
-                                    </div>
-
-                                    <h4 data-i18n="technologies">Technologies</h4>
-                                    <div class="badge-list">
-                                        <span class="badge">BIM</span>
-                                        <span class="badge">Digital Twins</span>
-                                        <span class="badge">Asset Management</span>
-                                        <span class="badge">Facility Management</span>
-                                        <span class="badge">Property Management</span>
-                                        <span class="badge">Decision Support</span>
-                                        <span class="badge">Due Diligence</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h4 data-i18n="keyOutcomes">Key Outcomes</h4>
-                            <p>
-                                <ul>
-                                    <li data-i18n="out41">Development of a Digital Twin framework for Asset Management applications.</li>
-
-                                    <li data-i18n="out42">Integration of BIM-based information models with operational Asset Management Processes.</li>
-
-                                </ul>
-                            </p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <button class="project-header" type="button" aria-expanded="false">
-                        <img class="project-thumb" src="image/Tesi-402.webp" alt="Road safety engineering project" width="402" height="267" decoding="async" loading="lazy" srcset="image/Tesi-402.webp 402w" sizes="160px">
-                        <div class="project-summary">
-                            <h3 data-i18n="proj5Title">Road Safety Engineering</h3>
-                            <p data-i18n="proj5Summary">Analysis of the effects of Texting While Driving on Driver Behaviour: A Driving Simulation Study vulnerable road users, driver distraction, advanced warning systems and behavioural responses in complex traffic scenarios.</p>
-                        </div>
-                        <span class="project-toggle">⌄</span>
-                    </button>
-
-                    <div class="project-content" inert>
-                        <div class="project-inner">
-                            <div class="project-layout">
-                                <img class="project-main-image" src="image/drivwhiledriv-516.webp" alt="Road safety research" width="516" height="332" decoding="async" loading="lazy" srcset="image/drivwhiledriv-480.webp 480w, image/drivwhiledriv-516.webp 516w" sizes="(max-width: 860px) 100vw, 1160px">
-
-                                <div class="project-details">
-                                    <h4 data-i18n="projectOverview">Project overview</h4>
-                                    <p data-i18n="proj5Overview">Research project focused on the analysis of driver distraction induced by smartphone use while driving. The study investigated the effects of texting activities on driver behaviour through an immersive driving simulation environment (Calvi et al., 2023). The research included a comprehensive literature review, a large-scale survey on driving habits involving more than 1,200 participants, the development of experimental driving scenarios, the implementation of controlled distraction conditions, and the statistical assessment of driving performance under conventional texting and smartphone-optimised interfaces (Calvi et al., 2024). The objective was to evaluate the impact of smartphone-related distractions on road safety and to assess the effectiveness of emerging driver-oriented technologies such as Android Auto in mitigating distraction-related risks.</p>
-
-                                    <div class="project-meta-grid">
-                                        <div class="project-meta">
-                                            <strong data-i18n="mainFocus">Main focus</strong>
-                                            <span data-i18n="metaHumanFocus">Human behaviour, VRU safety, warning systems, risk assessment.</span>
-                                        </div>
-
-                                        <div class="project-meta">
-                                            <strong data-i18n="roleLabel">Role</strong>
-                                            <span data-i18n="metaResearchRole">Research design, data analysis, scientific dissemination.</span>
-                                        </div>
-                                    </div>
-
-                                    <h4 data-i18n="technologies">Technologies</h4>
-                                    <div class="badge-list">
-                                        <span class="badge">Road Safety</span>
-                                        <span class="badge">Human Factors</span>
-                                        <span class="badge">VRU Interaction</span>
-                                        <span class="badge">Statistical Analysis</span>
-                                        <span class="badge">Simulator Studies</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h4 data-i18n="keyOutcomes">Key Outcomes</h4>
-
-                            <ul>
-                                <li data-i18n="out51">Development of an experimental methodology for assessing the effects of smartphone-induced distraction on driving performance.</li>
-
-                                <li data-i18n="out52">Evaluation of behavioural and safety-related impacts associated with texting while driving.</li>
-
-                                <li data-i18n="out53">Assessment of Android Auto as a driver support technology for reducing distraction-related effects.</li>
-
-                                <li data-i18n="out54">Collection and analysis of behavioural data from immersive driving simulation experiments.</li>
-
-                                <li data-i18n="out55">Identification of critical factors influencing driver attention, reaction capability and safety performance.</li>
-                            </ul>
-
-                            <div class="related-publications-block">
-                                <h4 class="related-publications-title"
-                                    data-i18n="relatedPublications">
+<div class="project-meta-grid">
+<div class="project-meta">
+<strong data-i18n="mainFocus">Main focus</strong>
+<span data-i18n="metaRoadSafety">Road safety, driver behaviour, immersive simulation.</span>
+</div>
+<div class="project-meta">
+<strong data-i18n="roleLabel">Role</strong>
+<span data-i18n="metaScenarioRole">Scenario development, system integration, experimental setup.</span>
+</div>
+</div>
+<h4 data-i18n="technologies">Technologies</h4>
+<div class="badge-list">
+<span class="badge">Unity</span>
+<span class="badge">Virtual Reality</span>
+<span class="badge">Driving Simulation</span>
+<span class="badge">C#</span>
+<span class="badge">Human Factors</span>
+<span class="badge">Users Behaviour</span>
+</div>
+</div>
+</div>
+<h4 data-i18n="keyOutcomes">Key Outcomes</h4>
+<p>
+<ul>
+<li data-i18n="out31">Development of a modular Virtual Reality framework capable of reproducing perceptual alterations associated with alcohol, THC and hallucinogenic substances.</li>
+<li data-i18n="out32">Design and implementation of configurable visual, auditory and motor impairment simulation algorithms.</li>
+<li data-i18n="out33">Integration of scientific evidence on psychoactive substance effects into immersive simulation environments.</li>
+<li data-i18n="out34">Creation of a reusable software architecture applicable to road safety education and public awareness initiatives.</li>
+</ul>
+</p>
+</div>
+</div>
+</article>
+<article class="project-card">
+<button aria-expanded="false" class="project-header" type="button">
+<img alt="Digital Twin for Asset Management" class="project-thumb" decoding="async" height="934" loading="lazy" sizes="160px" src="image/DigTwin-480.webp" srcset="image/DigTwin-480.webp 480w, image/DigTwin-960.webp 960w, image/DigTwin-1280.webp 1280w" width="1280"/>
+<div class="project-summary">
+<h3 data-i18n="proj4Title">Digital Twin for Asset Management</h3>
+<p data-i18n="proj4Summary">Application of BIM-based digital twins to infrastructure and asset management, with attention to simulation, data integration and decision support.</p>
+</div>
+<span class="project-toggle">⌄</span>
+</button>
+<div class="project-content" inert="">
+<div class="project-inner">
+<div class="project-layout">
+<img alt="Digital twin project" class="project-main-image" decoding="async" height="378" loading="lazy" sizes="(max-width: 860px) 100vw, 1160px" src="image/BIM-659.webp" srcset="image/BIM-480.webp 480w, image/BIM-659.webp 659w" width="659"/>
+<div class="project-details">
+<h4 data-i18n="projectOverview">Project overview</h4>
+<p data-i18n="proj4Overview">Research and development project concerning the implementation of Digital Twin methodologies for the management and valorisation of existing building assets. The work involved the creation of a structured digital information environment based on BIM principles, integrating geometric, technical and documentary information into a unified framework. The project addressed information acquisition, asset data modelling, digital documentation management and lifecycle-oriented asset management strategies, with the objective of enhancing operational efficiency, supporting maintenance activities and improving the overall accessibility and reliability of asset-related information.</p>
+<h4 data-i18n="caseStudy">Case Study</h4>
+<p>Palazzo Uffici di Ferservizi S.p.A., Gruppo Ferrovie dello Stato Italiane S.p.A.</p>
+<div class="project-meta-grid">
+<div class="project-meta">
+<strong data-i18n="mainFocus">Main focus</strong>
+<span data-i18n="metaBimFocus">BIM, digital twins, asset lifecycle, data integration, Property Management, Asset Management.</span>
+</div>
+<div class="project-meta">
+<strong data-i18n="roleLabel">Role</strong>
+<span data-i18n="metaBimRole">Digital modelling, asset analysis, information management.</span>
+</div>
+</div>
+<h4 data-i18n="technologies">Technologies</h4>
+<div class="badge-list">
+<span class="badge">BIM</span>
+<span class="badge">Digital Twins</span>
+<span class="badge">Asset Management</span>
+<span class="badge">Facility Management</span>
+<span class="badge">Property Management</span>
+<span class="badge">Decision Support</span>
+<span class="badge">Due Diligence</span>
+</div>
+</div>
+</div>
+<h4 data-i18n="keyOutcomes">Key Outcomes</h4>
+<p>
+<ul>
+<li data-i18n="out41">Development of a Digital Twin framework for Asset Management applications.</li>
+<li data-i18n="out42">Integration of BIM-based information models with operational Asset Management Processes.</li>
+</ul>
+</p>
+</div>
+</div>
+</article>
+<article class="project-card">
+<button aria-expanded="false" class="project-header" type="button">
+<img alt="Road safety engineering project" class="project-thumb" decoding="async" height="267" loading="lazy" sizes="160px" src="image/Tesi-402.webp" srcset="image/Tesi-402.webp 402w" width="402"/>
+<div class="project-summary">
+<h3 data-i18n="proj5Title">Road Safety Engineering</h3>
+<p data-i18n="proj5Summary">Analysis of the effects of Texting While Driving on Driver Behaviour: A Driving Simulation Study vulnerable road users, driver distraction, advanced warning systems and behavioural responses in complex traffic scenarios.</p>
+</div>
+<span class="project-toggle">⌄</span>
+</button>
+<div class="project-content" inert="">
+<div class="project-inner">
+<div class="project-layout">
+<img alt="Road safety research" class="project-main-image" decoding="async" height="332" loading="lazy" sizes="(max-width: 860px) 100vw, 1160px" src="image/drivwhiledriv-516.webp" srcset="image/drivwhiledriv-480.webp 480w, image/drivwhiledriv-516.webp 516w" width="516"/>
+<div class="project-details">
+<h4 data-i18n="projectOverview">Project overview</h4>
+<p data-i18n="proj5Overview">Research project focused on the analysis of driver distraction induced by smartphone use while driving. The study investigated the effects of texting activities on driver behaviour through an immersive driving simulation environment (Calvi et al., 2023). The research included a comprehensive literature review, a large-scale survey on driving habits involving more than 1,200 participants, the development of experimental driving scenarios, the implementation of controlled distraction conditions, and the statistical assessment of driving performance under conventional texting and smartphone-optimised interfaces (Calvi et al., 2024). The objective was to evaluate the impact of smartphone-related distractions on road safety and to assess the effectiveness of emerging driver-oriented technologies such as Android Auto in mitigating distraction-related risks.</p>
+<div class="project-meta-grid">
+<div class="project-meta">
+<strong data-i18n="mainFocus">Main focus</strong>
+<span data-i18n="metaHumanFocus">Human behaviour, VRU safety, warning systems, risk assessment.</span>
+</div>
+<div class="project-meta">
+<strong data-i18n="roleLabel">Role</strong>
+<span data-i18n="metaResearchRole">Research design, data analysis, scientific dissemination.</span>
+</div>
+</div>
+<h4 data-i18n="technologies">Technologies</h4>
+<div class="badge-list">
+<span class="badge">Road Safety</span>
+<span class="badge">Human Factors</span>
+<span class="badge">VRU Interaction</span>
+<span class="badge">Statistical Analysis</span>
+<span class="badge">Simulator Studies</span>
+</div>
+</div>
+</div>
+<h4 data-i18n="keyOutcomes">Key Outcomes</h4>
+<ul>
+<li data-i18n="out51">Development of an experimental methodology for assessing the effects of smartphone-induced distraction on driving performance.</li>
+<li data-i18n="out52">Evaluation of behavioural and safety-related impacts associated with texting while driving.</li>
+<li data-i18n="out53">Assessment of Android Auto as a driver support technology for reducing distraction-related effects.</li>
+<li data-i18n="out54">Collection and analysis of behavioural data from immersive driving simulation experiments.</li>
+<li data-i18n="out55">Identification of critical factors influencing driver attention, reaction capability and safety performance.</li>
+</ul>
+<div class="related-publications-block">
+<h4 class="related-publications-title" data-i18n="relatedPublications">
                                     Related Scientific Publications
                                 </h4>
-                                <p class="related-publications-subtitle" data-i18n="relatedSubtitle">Scientific outputs connected to this project area.</p>
-                                <div class="related-publications-list">
-                                    <article class="publication-card" onclick="openPublication('https://www.stradeeautostrade.it/')" onkeydown="publicationKeyOpen(event,'https://www.stradeeautostrade.it/')" role="link" tabindex="0">
-                                        <h3>L’utilizzo dello smartphone alla guida</h3>
-                                        <p>Calvi, A., D’Amico, F., Mustone, V., <span class="author">Vennarucci, A.</span> (2023). Strade & Autostrade, 158, 203–208.</p>
-                                        <div class="publication-meta">
-                                            <span class="tag" data-i18n="tagMagazine">Magazine Article</span>
-                                            <span class="doi">ISSN 1723-2155</span>
-                                        </div>
-                                    </article>
-                                    <article class="publication-card" onclick="openPublication('https://doi.org/10.48295/ET.2024.97.6')" onkeydown="publicationKeyOpen(event,'https://doi.org/10.48295/ET.2024.97.6')" role="link" tabindex="0">
-                                        <h3>Distraction effects of manual texting and voice messaging when approaching pedestrian crossings on urban roads</h3>
-                                        <p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2024). European Transport, 97, 6.</p>
-                                        <div class="publication-meta">
-                                            <span class="tag" data-i18n="tagJournal">Journal Article</span>
-                                            <span class="doi">10.48295/ET.2024.97.6</span>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-
-        <section class="quote">
-            <div class="quote-box">
-                <p data-i18n="quote">Engineering projects become meaningful when research, practice and technology converge toward safer and smarter systems.</p>
-            </div>
-        </section>
-
-        <section class="back-top">
-            <h2 data-i18n="continueTitle">Continue Exploring</h2>
-            <p data-i18n="continueText">Return to the top of the page or use the navigation menu to explore the remaining sections of the website.</p>
-            <button class="button button-primary" type="button" onclick="scrollToTop()" data-i18n="backTopButton">↑ Back to Top</button>
-        </section>
-    </main>
-
-    <footer class="footer" data-i18n="footer">© Andrea Vennarucci. All rights reserved.</footer>
-
-    <script>
+<p class="related-publications-subtitle" data-i18n="relatedSubtitle">Scientific outputs connected to this project area.</p>
+<div class="related-publications-list">
+<article class="publication-card" onclick="openPublication('https://www.stradeeautostrade.it/')" onkeydown="publicationKeyOpen(event,'https://www.stradeeautostrade.it/')" role="link" tabindex="0">
+<h3>L’utilizzo dello smartphone alla guida</h3>
+<p>Calvi, A., D’Amico, F., Mustone, V., <span class="author">Vennarucci, A.</span> (2023). Strade &amp; Autostrade, 158, 203–208.</p>
+<div class="publication-meta">
+<span class="tag" data-i18n="tagMagazine">Magazine Article</span>
+<span class="doi">ISSN 1723-2155</span>
+</div>
+</article>
+<article class="publication-card" onclick="openPublication('https://doi.org/10.48295/ET.2024.97.6')" onkeydown="publicationKeyOpen(event,'https://doi.org/10.48295/ET.2024.97.6')" role="link" tabindex="0">
+<h3>Distraction effects of manual texting and voice messaging when approaching pedestrian crossings on urban roads</h3>
+<p>Calvi, A., D’Amico, F., <span class="author">Vennarucci, A.</span> (2024). European Transport, 97, 6.</p>
+<div class="publication-meta">
+<span class="tag" data-i18n="tagJournal">Journal Article</span>
+<span class="doi">10.48295/ET.2024.97.6</span>
+</div>
+</article>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<section class="quote">
+<div class="quote-box">
+<p data-i18n="quote">Engineering projects become meaningful when research, practice and technology converge toward safer and smarter systems.</p>
+</div>
+</section>
+<section class="back-top">
+<h2 data-i18n="continueTitle">Continue Exploring</h2>
+<p data-i18n="continueText">Return to the top of the page or use the navigation menu to explore the remaining sections of the website.</p>
+<button class="button button-primary" data-i18n="backTopButton" onclick="scrollToTop()" type="button">↑ Back to Top</button>
+</section>
+</main>
+<footer class="footer" data-i18n="footer">© Andrea Vennarucci. All rights reserved.</footer>
+<script>
 
         let currentLanguage = siteStorage.getItem("siteLanguage") || "en";
 
