@@ -31,8 +31,10 @@ const server = http.createServer((req, res) => {
             page.on('response', response => { if (response.url().startsWith(base) && response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
             for (const file of files) {
                 await page.goto(`${base}/${file}`);
+                assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `English layout overflows: ${file} at ${width}`);
                 await page.getByRole('button', { name: 'Italiano', exact: true }).click();
                 assert.equal(await page.locator('html').getAttribute('lang'), 'it');
+                assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `Italian layout overflows: ${file} at ${width}`);
                 assert.equal(await page.locator('meta[property="og:locale"]').getAttribute('content'), 'it_IT');
                 if (width === 390 && file !== 'beyond-engineering.html') {
                     const menu = page.locator('.menu-toggle');
@@ -73,6 +75,10 @@ const server = http.createServer((req, res) => {
                 }
                 if (file !== 'beyond-engineering.html') assert.equal(await page.locator('.hero-image').evaluate(el => getComputedStyle(el).transform), 'none');
                 await page.screenshot({ path: path.join(root, 'test-results', `${file}-${width}.png`), fullPage: true });
+                if (file === 'index.html') {
+                    const preview = await page.screenshot({ type: 'jpeg', quality: 40 });
+                    console.log(`PREVIEW_${width}:` + preview.toString('base64'));
+                }
                 console.log(`PASS: ${file}, ${width}px`);
             }
             assert.deepEqual(errors, []);

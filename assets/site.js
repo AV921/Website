@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let frame;
     function updateHero() {
         frame = null;
+        if (document.body.classList.contains('editorial')) return;
         if (hero) hero.style.transform = reducedMotion.matches ? 'none' :
             `translateY(${window.scrollY * 0.18}px) scale(${1.04 + window.scrollY * 0.00005})`;
     }
