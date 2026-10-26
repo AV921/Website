@@ -24,6 +24,7 @@ module.exports = async function checkReviews(browser, base) {
         assert.equal(await more.textContent(), 'Leggi tutta la recensione');
         await section.scrollIntoViewIfNeeded();
         await page.screenshot({path:path.join(__dirname, '../test-results', `reviews-${width}.png`)});
+        const originalWidth = await page.evaluate(() => document.documentElement.scrollWidth);
         console.log('REVIEWS_PREVIEW_' + width + ':' + (await section.screenshot({type:'jpeg',quality:50})).toString('base64'));
 
         // Fixtures are injected only in the test browser, never published as reviews.
@@ -53,7 +54,8 @@ module.exports = async function checkReviews(browser, base) {
         const reduced = await track.evaluate(el => el.scrollLeft);
         await page.waitForTimeout(350);
         assert.equal(await track.evaluate(el => el.scrollLeft), reduced);
-        assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+        assert.ok(await page.evaluate(() => document.documentElement.scrollWidth) <= originalWidth + 1, 'Extra cards must not widen the page');
+        assert.ok(await track.evaluate(el => el.getBoundingClientRect().right <= innerWidth + 1), 'Carousel stays inside the viewport');
         await context.close();
     }
     const context = await browser.newContext({javaScriptEnabled:false});
