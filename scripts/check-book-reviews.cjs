@@ -4,26 +4,42 @@ const path = require('node:path');
 
 module.exports = async function checkReviews(browser, base) {
     const source = fs.readFileSync(path.join(__dirname, '../beyond-engineering.html'), 'utf8');
-    const originalCard = source.match(/<article class="review-card">[\s\S]*?<\/article>/)[0];
+    const originalCard = source.match(/<article class="review-card"[^>]*>[\s\S]*?<\/article>/)[0];
     for (const width of [390, 1440]) {
-        const context = await browser.newContext({ viewport: {width, height:900} });
+        const context = await browser.newContext({ viewport: {width, height:900}, hasTouch: width === 390 });
         const page = await context.newPage();
         await page.goto(`${base}/beyond-engineering.html`);
         const section = page.locator('.book-reviews');
         await section.scrollIntoViewIfNeeded();
         assert.equal(await section.locator('.review-card').count(), 1);
         assert.equal(await section.locator('.reviews-controls').isVisible(), false);
-        const more = section.locator('.review-more');
-        assert.equal(await more.isVisible(), true);
-        await more.click();
-        assert.equal(await more.getAttribute('aria-expanded'), 'true');
-        assert.ok(await section.locator('.review-text').evaluate(el => el.clientHeight >= el.scrollHeight - 1));
-        await more.click();
-        assert.equal(await more.getAttribute('aria-expanded'), 'false');
+        const trigger = section.locator('.review-card-trigger');
+        const dialog = page.locator('#review-dialog');
+        assert.ok(await trigger.evaluate(el => el.getBoundingClientRect().width <= 330));
+        assert.equal(await section.locator('.review-card-preview').evaluate(el => getComputedStyle(el).webkitLineClamp), '3');
+        if (width === 390) await trigger.tap(); else await trigger.click();
+        assert.equal(await dialog.evaluate(el => el.open), true);
+        assert.deepEqual(await dialog.locator('.review-dialog-text p').allTextContents(), await section.locator('.review-text p').allTextContents());
+        assert.ok(await page.evaluate(() => document.documentElement.classList.contains('review-dialog-open')));
+        await page.keyboard.press('Tab');
+        assert.ok(await dialog.evaluate(el => el.contains(document.activeElement)), 'Focus stays inside modal');
+        await page.keyboard.press('Escape');
+        assert.equal(await dialog.evaluate(el => el.open), false);
+        assert.equal(await trigger.evaluate(el => el === document.activeElement), true);
         await page.getByRole('button', {name:'Italiano', exact:true}).click();
-        assert.equal(await more.textContent(), 'Leggi tutta la recensione');
+        assert.equal(await section.locator('.review-card-action').textContent(), 'Leggi la recensione ↗');
         await section.scrollIntoViewIfNeeded();
         await page.screenshot({path:path.join(__dirname, '../test-results', `reviews-${width}.png`)});
+        console.log(`REVIEW_CARD_${width}:` + (await section.screenshot({type:'jpeg', quality:50})).toString('base64'));
+        await trigger.click();
+        await page.screenshot({path:path.join(__dirname, '../test-results', `review-modal-${width}.png`)});
+        console.log(`REVIEW_MODAL_${width}:` + (await page.screenshot({type:'jpeg', quality:40})).toString('base64'));
+        assert.ok(await dialog.evaluate(el => el.getBoundingClientRect().right <= innerWidth));
+        await dialog.locator('.review-dialog-close').click();
+        assert.ok(await page.evaluate(() => !document.documentElement.classList.contains('review-dialog-open')));
+        await trigger.click();
+        await page.mouse.click(1,1);
+        assert.equal(await dialog.evaluate(el => el.open), false, 'Backdrop closes modal');
         const originalWidth = await page.evaluate(() => document.documentElement.scrollWidth);
 
         // Fixtures are injected only in the test browser, never published as reviews.
@@ -41,6 +57,12 @@ module.exports = async function checkReviews(browser, base) {
         const stopped = await track.evaluate(el => el.scrollLeft);
         await page.waitForTimeout(350);
         assert.equal(await track.evaluate(el => el.scrollLeft), stopped, 'Hover pauses scrolling');
+        await section.locator('.review-card-trigger').first().click();
+        await page.mouse.move(0,0);
+        const modalStopped = await track.evaluate(el => el.scrollLeft);
+        await page.waitForTimeout(350);
+        assert.equal(await track.evaluate(el => el.scrollLeft), modalStopped, 'Modal pauses carousel');
+        await dialog.locator('.review-dialog-x').click();
         await section.locator('.reviews-next').click();
         await page.waitForTimeout(600);
         assert.ok(await track.evaluate(el => el.scrollLeft) > stopped, 'Manual next works');
@@ -63,5 +85,5 @@ module.exports = async function checkReviews(browser, base) {
     assert.ok(await page.locator('.review-text').evaluate(el => el.clientHeight >= el.scrollHeight - 1));
     assert.equal(await page.locator('.review-more').isVisible(), false);
     await context.close();
-    console.log('PASS: book reviews, single/multiple, expansion, hover pause, manual controls, reduced motion and no JS');
+    console.log('PASS: compact reviews, mouse/touch modal, full text, focus, Escape, backdrop, carousel pause, reduced motion and no JS');
 };
