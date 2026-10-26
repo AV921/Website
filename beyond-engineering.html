@@ -31,6 +31,8 @@
     <script src="assets/site.js"></script>
     <link rel="stylesheet" href="assets/beyond-engineering.css">
     <link rel="stylesheet" href="assets/site.css">
+    <link rel="stylesheet" href="assets/book-reviews.css?v=1">
+    <script defer src="assets/book-reviews.js?v=1"></script>
 </head>
 
 <body>
@@ -242,6 +244,29 @@
                     </div>
 
                 </article>
+                <section class="book-reviews" aria-labelledby="reviews-heading">
+                    <div class="reviews-heading">
+                        <h3 id="reviews-heading">Reader reviews</h3>
+                        <div class="reviews-controls" hidden>
+                            <button type="button" class="reviews-prev" aria-label="Previous review">←</button>
+                            <button type="button" class="reviews-pause">Pause</button>
+                            <button type="button" class="reviews-next" aria-label="Next review">→</button>
+                        </div>
+                    </div>
+                    <div class="reviews-track" tabindex="0" role="region" aria-label="Reader reviews">
+                        <article class="review-card">
+                            <h4 class="review-author">Bianca Maria Diamanti</h4>
+                            <div class="review-text" id="review-bianca-maria-diamanti" lang="it">
+                                <p>«È del poesia il fin la meraviglia» — Giovan Battista Marino.</p>
+                                <p>Andrea Vennarucci è più poeta, filosofo o fisico?</p>
+                                <p>Andrea è tutto ciò, con le sue parole, il suo pensiero, le sue emozioni raggiunge il fin: la meraviglia. «La fisica delle cose create» è un approfondimento poetico, filosofico e scientifico, di quanto appartiene all’uomo, al mistero che avvolge la vita e la sorella morte, alla natura, che il pensiero e la ricerca provano a svelare.</p>
+                                <p>Ogni svelamento porta ad una nuova domanda che interroga l’uomo e tutto ciò che lo circonda.</p>
+                                <p>Andrea Vennarucci trova nella forma e varietà dei versi, ora in rime, ora poche righe, un lessico poetico capace di dare forma e apertura a questo mistero.</p>
+                            </div>
+                            <button type="button" class="review-more" aria-expanded="false" aria-controls="review-bianca-maria-diamanti" hidden>Read full review</button>
+                        </article>
+                    </div>
+                </section>
 
             </div>
         </section>
