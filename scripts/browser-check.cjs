@@ -79,6 +79,7 @@ const server = http.createServer((req, res) => {
             await context.close();
         }
         await require('./check-book-reviews.cjs')(browser, base);
+        await require('./check-review-submission.cjs')(browser, base);
         const touchContext = await browser.newContext({ hasTouch: true, isMobile: true, viewport: { width: 390, height: 844 } });
         const touchPage = await touchContext.newPage();
         await touchPage.goto(`${base}/beyond-engineering.html`);
