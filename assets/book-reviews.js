@@ -34,7 +34,7 @@
     function canMove() {
         return overflow && visible && !document.hidden && !motion.matches && !userPaused && !hovering
             && !section.contains(document.activeElement)
-            && !dialog.open;
+            && !dialog.open && !document.querySelector('.review-submission[open]');
     }
     function stop() { cancelAnimationFrame(frame); frame = 0; previous = 0; }
     function tick(time) {
