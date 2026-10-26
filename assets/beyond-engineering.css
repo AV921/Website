@@ -1,5 +1,7 @@
 
         :root {
+            --font-body: "Manrope", Arial, sans-serif;
+            --font-display: "Cormorant Garamond", Georgia, serif;
             --background: #f3f0e9;
             --background-light: #faf8f3;
             --text: #171612;
@@ -17,7 +19,7 @@
             margin: 0;
             background: var(--background);
             color: var(--text);
-            font-family: "Manrope", Arial, sans-serif;
+            font-family: var(--font-body);
             font-weight: 300;
             line-height: 1.75;
             text-rendering: optimizeLegibility;
@@ -51,7 +53,7 @@
         h2,
         h3,
         blockquote {
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: var(--font-display);
         }
 
         .contenitore {
@@ -93,7 +95,7 @@
         .firma {
             justify-self: start;
             text-decoration: none;
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: var(--font-display);
             font-size: 1.4rem;
             font-weight: 500;
             letter-spacing: 0.01em;
@@ -212,7 +214,7 @@
                 right: -0.04em;
                 bottom: -0.34em;
                 color: rgba(23, 22, 18, 0.025);
-                font-family: "Cormorant Garamond", Georgia, serif;
+                font-family: var(--font-display);
                 font-size: clamp(18rem, 42vw, 42rem);
                 line-height: 1;
                 pointer-events: none;
@@ -288,7 +290,7 @@
 
         .numero-sezione {
             color: var(--text-soft);
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: var(--font-display);
             font-size: 1.35rem;
             font-style: italic;
         }
@@ -325,7 +327,7 @@
             top: 9%;
             left: 0;
             color: var(--accent);
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: var(--font-display);
             font-size: clamp(4rem, 8vw, 8rem);
             font-style: italic;
             line-height: 1;
@@ -369,7 +371,7 @@
             z-index: 4;
             display: none;
             color: #b3261e;
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: var(--font-display);
             font-size: clamp(1rem, 1.55vw, 1.35rem);
             font-weight: 600;
             font-style: italic;
@@ -581,7 +583,7 @@
 
         .interesse-numero {
             color: var(--accent);
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: var(--font-display);
             font-size: 1.4rem;
             font-style: italic;
         }
@@ -626,7 +628,7 @@
 
         .prospettiva-testo {
             color: var(--text-soft);
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family: var(--font-display);
             font-size: clamp(1.5rem, 2.3vw, 2.15rem);
             line-height: 1.55;
             text-align:justify;
