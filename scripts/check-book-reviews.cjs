@@ -44,7 +44,9 @@ module.exports = async function checkReviews(browser, base) {
         await section.locator('.reviews-next').click();
         await page.waitForTimeout(600);
         assert.ok(await track.evaluate(el => el.scrollLeft) > stopped, 'Manual next works');
+        await section.locator('.reviews-pause').click();
         await page.emulateMedia({reducedMotion:'reduce'});
+        await section.locator('.reviews-pause').waitFor({state:'hidden'});
         assert.equal(await section.locator('.reviews-pause').isVisible(), false);
         await page.mouse.move(0,0);
         await page.evaluate(() => document.activeElement.blur());
