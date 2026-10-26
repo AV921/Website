@@ -7,11 +7,18 @@
     const pause = section.querySelector('.reviews-pause');
     const cards = [...track.querySelectorAll('.review-card')];
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    const dialog = document.createElement('dialog');
+    dialog.id = 'review-dialog';
+    dialog.className = 'review-dialog';
+    dialog.setAttribute('aria-labelledby', 'review-dialog-title');
+    dialog.innerHTML = '<button type="button" class="review-dialog-x" autofocus>×</button><p class="review-dialog-label"></p><h2 id="review-dialog-title"></h2><div class="review-dialog-text" lang="it"></div><button type="button" class="review-dialog-close"></button>';
+    document.body.append(dialog);
+    let opener;
     let overflow = false, userPaused = false, hovering = false, visible = false;
     let frame = 0, previous = 0, position = 0, direction = 1;
     const copy = () => document.documentElement.lang === 'it'
-        ? {title:'Recensioni dei lettori', more:'Leggi tutta la recensione', less:'Riduci', pause:'Pausa', play:'Riprendi', prev:'Recensione precedente', next:'Recensione successiva'}
-        : {title:'Reader reviews', more:'Read full review', less:'Show less', pause:'Pause', play:'Resume', prev:'Previous review', next:'Next review'};
+        ? {title:'Voci dei lettori', more:'Leggi la recensione', close:'Chiudi', review:'Recensione', pause:'Pausa', play:'Riprendi', prev:'Recensione precedente', next:'Recensione successiva'}
+        : {title:'Readers’ voices', more:'Read the review', close:'Close', review:'Review', pause:'Pause', play:'Resume', prev:'Previous review', next:'Next review'};
     function labels() {
         const text = copy();
         section.querySelector('#reviews-heading').textContent = text.title;
@@ -19,15 +26,15 @@
         pause.textContent = userPaused ? text.play : text.pause;
         section.querySelector('.reviews-prev').setAttribute('aria-label', text.prev);
         section.querySelector('.reviews-next').setAttribute('aria-label', text.next);
-        cards.forEach(card => {
-            const button = card.querySelector('.review-more');
-            button.textContent = button.getAttribute('aria-expanded') === 'true' ? text.less : text.more;
-        });
+        section.querySelectorAll('.review-card-action').forEach(el => { el.textContent = text.more + ' ↗'; });
+        dialog.querySelector('.review-dialog-label').textContent = text.review;
+        dialog.querySelector('.review-dialog-close').textContent = text.close;
+        dialog.querySelector('.review-dialog-x').setAttribute('aria-label', text.close);
     }
     function canMove() {
         return overflow && visible && !document.hidden && !motion.matches && !userPaused && !hovering
             && !section.contains(document.activeElement)
-            && !cards.some(card => card.querySelector('.review-more').getAttribute('aria-expanded') === 'true');
+            && !dialog.open;
     }
     function stop() { cancelAnimationFrame(frame); frame = 0; previous = 0; }
     function tick(time) {
@@ -47,27 +54,56 @@
         if (!frame) { position = track.scrollLeft; frame = requestAnimationFrame(tick); }
     }
     function measure() {
-        cards.forEach(card => {
-            const button = card.querySelector('.review-more');
-            if (button.getAttribute('aria-expanded') === 'true') return;
-            card.classList.add('is-collapsed');
-            const text = card.querySelector('.review-text');
-            const clipped = text.scrollHeight > text.clientHeight + 1;
-            button.hidden = !clipped;
-            card.classList.toggle('is-collapsed', clipped);
-        });
         overflow = track.scrollWidth > track.clientWidth + 1;
         controls.hidden = !overflow;
         pause.hidden = motion.matches;
         update();
     }
-    cards.forEach(card => card.querySelector('.review-more').addEventListener('click', () => {
-        const button = card.querySelector('.review-more');
-        const expanded = button.getAttribute('aria-expanded') !== 'true';
-        button.setAttribute('aria-expanded', String(expanded));
-        card.classList.toggle('is-collapsed', !expanded);
-        labels(); update();
-    }));
+    cards.forEach((card, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'review-card-trigger';
+        button.setAttribute('aria-haspopup', 'dialog');
+        button.setAttribute('aria-controls', dialog.id);
+        button.setAttribute('aria-labelledby', `review-name-${index} review-action-${index}`);
+        const name = document.createElement('span');
+        name.id = `review-name-${index}`;
+        name.className = 'review-card-name';
+        name.textContent = card.querySelector('.review-author').textContent;
+        const preview = document.createElement('span');
+        preview.className = 'review-card-preview';
+        preview.lang = card.querySelector('.review-text').lang || 'it';
+        preview.textContent = card.dataset.reviewPreview || card.querySelector('.review-text').textContent.replace(/\s+/g, ' ').trim();
+        const action = document.createElement('span');
+        action.id = `review-action-${index}`;
+        action.className = 'review-card-action';
+        button.append(name, preview, action);
+        button.addEventListener('click', () => {
+            opener = button;
+            dialog.querySelector('#review-dialog-title').textContent = name.textContent;
+            const content = dialog.querySelector('.review-dialog-text');
+            content.replaceChildren(...[...card.querySelector('.review-text').children].map(el => el.cloneNode(true)));
+            dialog.showModal();
+            dialog.scrollTop = 0;
+            document.documentElement.classList.add('review-dialog-open');
+            update();
+        });
+        card.prepend(button);
+        card.classList.add('review-card-enhanced');
+    });
+    dialog.querySelectorAll('button').forEach(button => button.addEventListener('click', () => dialog.close()));
+    let backdropDown = false;
+    const outsideDialog = event => {
+        const rect = dialog.getBoundingClientRect();
+        return event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+    };
+    dialog.addEventListener('pointerdown', event => { backdropDown = event.target === dialog && outsideDialog(event); });
+    dialog.addEventListener('click', event => { if (backdropDown && event.target === dialog && outsideDialog(event)) dialog.close(); });
+    dialog.addEventListener('close', () => {
+        document.documentElement.classList.remove('review-dialog-open');
+        opener?.focus({preventScroll:true});
+        update();
+    });
     pause.addEventListener('click', () => { userPaused = !userPaused; labels(); update(); });
     for (const [selector, step] of [['.reviews-prev', -1], ['.reviews-next', 1]]) {
         section.querySelector(selector).addEventListener('click', () => {
