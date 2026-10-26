@@ -36,6 +36,7 @@ module.exports = async function checkReviews(browser, base) {
         console.log(`REVIEW_MODAL_${width}:` + (await page.screenshot({type:'jpeg', quality:40})).toString('base64'));
         assert.ok(await dialog.evaluate(el => el.getBoundingClientRect().right <= innerWidth));
         await dialog.locator('.review-dialog-close').click();
+        await page.waitForFunction(() => !document.documentElement.classList.contains('review-dialog-open'));
         assert.ok(await page.evaluate(() => !document.documentElement.classList.contains('review-dialog-open')));
         await trigger.click();
         await page.mouse.click(1,1);
