@@ -30,10 +30,8 @@ module.exports = async function checkReviews(browser, base) {
         assert.equal(await section.locator('.review-card-action').textContent(), 'Leggi la recensione ↗');
         await section.scrollIntoViewIfNeeded();
         await page.screenshot({animations: 'disabled', path:path.join(__dirname, '../test-results', `reviews-${width}.png`)});
-        console.log(`REVIEW_CARD_${width}:` + (await section.screenshot({animations: 'disabled', type:'jpeg', quality:50})).toString('base64'));
         await trigger.click();
         await page.screenshot({animations: 'disabled', path:path.join(__dirname, '../test-results', `review-modal-${width}.png`)});
-        console.log(`REVIEW_MODAL_${width}:` + (await page.screenshot({animations: 'disabled', type:'jpeg', quality:40})).toString('base64'));
         assert.ok(await dialog.evaluate(el => el.getBoundingClientRect().right <= innerWidth));
         await dialog.locator('.review-dialog-close').click();
         await page.waitForFunction(() => !document.documentElement.classList.contains('review-dialog-open'));
