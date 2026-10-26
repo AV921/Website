@@ -25,7 +25,6 @@ module.exports = async function checkReviews(browser, base) {
         await section.scrollIntoViewIfNeeded();
         await page.screenshot({path:path.join(__dirname, '../test-results', `reviews-${width}.png`)});
         const originalWidth = await page.evaluate(() => document.documentElement.scrollWidth);
-        console.log('REVIEWS_PREVIEW_' + width + ':' + (await section.screenshot({type:'jpeg',quality:50})).toString('base64'));
 
         // Fixtures are injected only in the test browser, never published as reviews.
         const multiple = source.replace(originalCard, Array.from({length:5}, (_, i) => originalCard.replaceAll('bianca-maria-diamanti', `fixture-${i}`)).join('\n'));
