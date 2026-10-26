@@ -16,6 +16,7 @@
 .review-card-enhanced > .review-author, .review-card-enhanced > .review-text { display: none; }
 .book-reviews .review-card-trigger { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; width: 100%; height: 100%; padding: 24px; border: 0; border-radius: 7px; text-align: left; background: transparent; transition: background .2s; }
 .book-reviews .review-card-trigger:hover { background: rgba(140,116,82,.04); }
+.book-reviews .review-card-trigger:focus-visible { outline-offset: -4px; }
 .review-card-name { font: 400 20px/1.4 Georgia, serif; text-decoration: underline; text-decoration-color: var(--accent, #8c7452); text-decoration-thickness: 1px; text-underline-offset: 6px; }
 .review-card-preview { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; max-height: 5.1em; font: 400 14px/1.7 Arial, sans-serif; color: var(--text-soft, #625f58); }
 .review-card-action { font: 400 13px/1.7 Georgia, serif; text-decoration: underline; text-decoration-color: var(--accent, #8c7452); text-underline-offset: 5px; margin-top: auto; }
